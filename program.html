@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Education software client management web application services." />
+    <meta name="author" content="" />
+    <title> Syllabus</title>
+    <link rel="shortcut icon" type="image/png"
+        href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="../evocss.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark">
+
+    <div class="container   text-light py-3">
+        <h4 class="text-center">
+            <span class="text-light">End of School:</span> <span class="text-warning">June 5, 2022 </span>
+            <span class="text-info" id="demo"></span>
+        </h4>
+        <hr>
+        <h2>Syllabus </h5>
+            <h5>
+                <li>
+                    1. Introduction to Web Development & Set Up
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    2. HTML
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    3. HTML & CSS (LOAD IMAGE)
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    4. CSS & BOOTSTRAP
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    5. JAVASCRIPT
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    6. JAVASCRIPT
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    7. JAVASCRIPT
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    8. JAVASCRIPT
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    9. JAVASCRIPT
+                </li>
+            </h5>
+            <h5>
+                <li>
+                    10. DEPLOYMENT
+                </li>
+            </h5>
+
+    </div>
+
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jun 5, 2022 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
