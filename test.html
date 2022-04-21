@@ -43,11 +43,6 @@
 <body class="bg-dark text-light">
 
 
-
-
-
-
-
     <div class="container  ">
         <div class="d-flex justify-content-end text-danger pe-4">
 
@@ -106,14 +101,14 @@
                 <form action="/action_page.php">
                     <h4 class="text-light">Question <span id="questionNo"
                             class="text-light border border-danger px-2">1</span></h4>
-                      <input type="radio" id="html" name="fav_language" value="HTML">
-                      <label for="html">HTML</label><br>
-                      <input type="radio" id="css" name="fav_language" value="CSS">
-                      <label for="css">CSS</label><br>
-                      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                      <label for="javascript">JavaScript</label><br>
-                      <input type="radio" id="react" name="fav_language" value="React">
-                      <label for="javascript">React</label>
+                      <input type="radio" id="A" name="fav_language" value="A">
+                      <label for="A">A</label><br>
+                      <input type="radio" id="B" name="fav_language" value="B">
+                      <label for="B">B</label><br>
+                      <input type="radio" id="C" name="fav_language" value="C">
+                      <label for="C">C</label><br>
+                      <input type="radio" id="D" name="fav_language" value="D">
+                      <label for="D">D</label>
                 </form>
                 <br>
                 <button type="button" class="btn btn-outline-primary " id="saveBtn" onclick="saveFunction()">Save <i
@@ -197,8 +192,8 @@
 
     <script>
 
-        var doneList = { "1": "css", "2": "react", "12": "javascript" }
-        var flagList = { "4": "css", "5": "react", "6": "javascript" }
+        var doneList = { "1": "A", "2": "B", "12": "C" }
+        var flagList = { "4": "A", "5": "B", "6": "C" }
 
 
         var currentQuestion = 1;
