@@ -134,9 +134,10 @@
 
                 <div class="text-end">
                     <br> <br> <br>
-                    <br> <br> <br> <br> <br>
+                    <br> <br> <br> <br>
 
-                    <button type="button" class="btn btn-outline-dark">Submit</button>
+                    <a class="btn btn-outline-dark" href="https://www.evolution3w.com/" role="button">Submit</a>
+
 
                 </div>
             </div>
@@ -203,8 +204,8 @@
 
     <script>
 
-        var doneList = { "1": "A", "2": "B", "12": "C" }
-        var flagList = { "4": "A", "5": "B", "6": "C" }
+        var doneList = { "1": "A", "2": "B", "12": "C", "42": "C" }
+        var flagList = { "4": "A", "5": "B", "6": "C", "26": "C" }
 
 
         var currentQuestion = 1;
@@ -223,16 +224,49 @@
         var questionBox = document.getElementById("questionBox");
 
         for (let i = 1; i < qArray.length + 1; i++) {
+            console.log(flagList[i])
 
-            if (i === 1) {
+            if (i === 1 && doneList[i] !== undefined) {
                 var qBtn = `
-<button type="button" class="btn btn-outline-dark btn-sm notDone border-danger border-2 py-0" id=b${i} onclick="btnFunction(${i})">${i}</button>`
+<button type="button" class="btn   btn-sm  btn-primary py-0  border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
-            } else {
+            }
+            else if (i === 1 && flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn btn-outline-dark btn-sm py-0  btn-warning  border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+
+
+            }
+            else if (i === 1 && doneList[i] !== undefined && flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn btn-outline-dark btn-sm py-0 notDone border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+
+
+            }
+
+            else if (doneList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn  btn-primary btn-sm py-0 border-dark "
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+
+            }
+
+            else if (flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn  btn-warning btn-sm  py-0 border-dark "
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+
+            }
+
+
+            else {
 
                 var qBtn = `
-<button type="button" class="btn btn-outline-dark btn-sm notDone border-dark  py-0" id=b${i} onclick="btnFunction(${i})">${i}</button>`
+<button type="button" class="btn btn-outline-dark btn-sm notDone border-dark py-0 " id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
             }
 
@@ -296,14 +330,23 @@
                 document.getElementById(doneList[id.toString()]).checked = true;
             }
             catch (err) {
-                console.log('error')
-                var checkRadio = document.querySelector('input[name="fav_language"]:checked');
-                // console.log(document.querySelector('input[name="fav_language"]:checked'));
 
-                if (checkRadio != null) {
-                    document.querySelector('input[name="fav_language"]:checked').checked = false;
+                try { document.getElementById(flagList[id.toString()]).checked = true; }
+
+                catch (err) {
+                    console.log('error')
+                    var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+                    // console.log(document.querySelector('input[name="fav_language"]:checked'));
+
+                    if (checkRadio != null) {
+                        document.querySelector('input[name="fav_language"]:checked').checked = false;
+
+                    }
 
                 }
+
+
+
 
             }
 
@@ -359,6 +402,8 @@
 
 
 
+
+
         function clearAnswers() {
 
             console.log('clear answers')
@@ -366,6 +411,7 @@
 
         }
 
+        btnFunction(1)
 
 
 
