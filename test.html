@@ -50,6 +50,9 @@
 
         </div>
     </nav>
+    <div class="progress" style="height: 1px;">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"></div>
+    </div>
 
     <div class="mx-2 pt-2 mx-lg-4 mx-xl-5">
 
@@ -60,6 +63,7 @@
             </span>
 
             <span id="demo">00h 00m 00s </span>
+
         </div>
         <div class="fw-bold mb-1 mx-0">PASSAGE I</div>
 
@@ -380,6 +384,7 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
                 // console.log('saved: ', currentQuestion, savedAnswer);
 
                 localStorage.setItem('doneList', JSON.stringify(doneList));
+                console.log('questions complete: ', Object.keys(doneList).length)
 
             }
         }
