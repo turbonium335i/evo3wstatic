@@ -69,7 +69,7 @@
                     <input type="checkbox" id="vehicle1" name="uid" value="uidv"> &nbsp;I am not a bot.
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-outline-light" type="submit" id="study">Login</button>
+            <a href="/demo.html" class="w-100 btn btn-lg btn-outline-light" type="submit" id="study">Demo Login</a>
             <p class="mt-5 mb-3 text-muted">&copy; Platinum Academy 2022</p>
         </form>
     </main>
@@ -77,22 +77,22 @@
 
     <script>
 
-        $("#studyid").submit(function (event) {
-            event.preventDefault();
+        // $("#studyid").submit(function (event) {
+        //     event.preventDefault();
 
-            var checkBox = document.getElementById("vehicle1");
-            if (checkBox.checked == false) {
+        //     var checkBox = document.getElementById("vehicle1");
+        //     if (checkBox.checked == false) {
 
-                $("#checkblink").fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500)
-            } else {
-                $.when($("#studyid").fadeOut(500)).then(function () { location.reload(); });
-
-
+        //         $("#checkblink").fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500)
+        //     } else {
+        //         $.when($("#studyid").fadeOut(500)).then(function () { location.reload(); });
 
 
 
-            }
-        })
+
+
+        //     }
+        // })
 
 
 
