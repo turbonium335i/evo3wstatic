@@ -15,7 +15,8 @@
 
 <style>
     .scrolly {
-        height: 600px;
+        /* height: 600px; */
+        height: 85vh;
         overflow-y: auto;
     }
 
@@ -135,7 +136,9 @@
                     <br> <br> <br>
                     <br> <br> <br> <br> <br>
 
-                    <a href="/results.html" type="button" class="btn btn-outline-primary"> &#10006; End Section</a>
+                    <!-- <a href="/results.html" type="button" class="btn btn-outline-primary"> &#10006; End Section</a> -->
+                    <button type="button" class="btn btn-outline-dark" onclick="doneAnswers()"> &#10006; End
+                        Section</button>
 
                 </div>
             </div>
@@ -153,6 +156,9 @@
 
 
     <script>
+
+
+        var timeLeft = 3610000
 
         var countDownDate = (Date.now() + 3610000)
         var x = setInterval(function () {
@@ -179,6 +185,10 @@
                 clearInterval(x);
                 document.getElementById("demo").innerHTML = "TIME UP";
             }
+            timeLeft -= 1000
+            localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
+            console.log(localStorage.getItem('timeLeft'))
+
         }, 1000);
 
         function timerFunction() {
@@ -294,12 +304,6 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
         }
-
-
-
-
-
-
 
 
         function btnFunction(id) {
@@ -418,8 +422,7 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
         function doneAnswers() {
 
-            console.log(doneList)
-
+            console.log(localStorage.getItem("doneList"))
 
         }
 
@@ -435,7 +438,8 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
         var localuserid = localStorage.getItem('userid')
         // localStorage.setItem('etype', "idiom");
-        // localStorage.removeItem("name of localStorage variable you want to remove");
+        // localStorage.removeItem("name of localStorage variable you want to remove"); 
+
 
     </script>
 </body>
