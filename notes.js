@@ -18,3 +18,19 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 );
+
+
+var currentSection = localStorage.getItem('currentSection')
+console.log(currentSection)
+
+if (currentSection === 'reading'){
+
+localStorage.setItem('currentSection', "writing");
+
+} else if (currentSection === 'writing') {
+
+localStorage.setItem('currentSection', "completed");}
+
+else {
+ localStorage.setItem('currentSection', "reading");
+}
