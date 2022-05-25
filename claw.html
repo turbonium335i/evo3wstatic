@@ -282,6 +282,15 @@
                                             });
                                             setTimeout(function () {
                                                 closeClaws();
+
+
+                                                alert('Thanks for saving me!')
+                                                $("p").fadeOut();
+                                                $("body").css("background-color", "green").fadeOut(3000, function () {
+                                                    window.location.href = 'http://127.0.0.1:8000/'
+                                                });
+
+
                                             }, 300);
                                         }
                                     });
@@ -319,6 +328,14 @@
                                             $("#moveContainer").show();
                                             $(".toy").remove();
                                             placeToy();
+                                            alert("Meh, good effort. I've seen worse. This is not a compliment.")
+                                            $("p").fadeOut();
+                                            $("body").css("background-color", "black").fadeOut(3000, function () {
+                                                window.location.href = 'http://127.0.0.1:8000/'
+                                            });
+
+
+
                                         }, 300);
                                     }
                                 });
