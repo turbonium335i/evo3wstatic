@@ -338,6 +338,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="container  my-5" onclick="location.href = '/grammar.html';" style="cursor:pointer;">
+            <h4 class="text-warning">Beta: Grammar Dojo Ai</h4>
+            <canvas id="myChart"></canvas>
+        </div>
     </section>
 
 
@@ -498,6 +503,61 @@
             }
         }
 
+    </script>
+
+    <script>
+        var a = document.getElementById("a");
+        a.addEventListener("click", function () { a.classList.toggle("bg-secondary"); });
+
+        var b = document.getElementById("b");
+        b.addEventListener("click", function () { b.classList.toggle("bg-secondary"); });
+
+        var c = document.getElementById("c");
+        c.addEventListener("click", function () { c.classList.toggle("bg-success"); });
+        c.addEventListener("click", function () { c.classList.toggle("border-success"); });
+
+        var d = document.getElementById("d");
+        d.addEventListener("click", function () { d.classList.toggle("bg-secondary"); });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'S+V',
+                    'Idiom',
+                    'Diction',
+                    'Tense',
+                    'Redundancy',
+                    'Structure',
+                    'Non-essential'
+                ],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [65, 59, 90, 81, 56, 55, 40],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }, {
+                    label: 'Dataset 2',
+                    data: [28, 48, 40, 19, 96, 27, 100],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }]
+            },
+
+        });
     </script>
 
 
