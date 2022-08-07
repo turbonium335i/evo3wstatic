@@ -59,7 +59,7 @@
         </div>
         <br>
         <div class="h5 text-end" id="qCount">Question 1/10</div>
-        <div class="container   rounded my-3 p-1 ps-2 pb-5 text-warning h6 " id="question">
+        <div class="container   rounded my-3 p-1 ps-2 pb-5  h5 " id="question">
 
             Along the highway <u>is</u> a dog and a cat.
 
@@ -165,10 +165,12 @@
         document.getElementById("c").innerHTML = "C.   " + randomItem.choice3
         document.getElementById("d").innerHTML = "D.   " + randomItem.choice4
         document.getElementById("a").innerHTML = "A.   " + randomItem.choice1
-        document.getElementById("solution").innerHTML = "Solution: " + randomItem.solution
+        document.getElementById("solution").innerHTML = "Solution: " + randomItem.solution + `<h6 class="text-primary my-3  ">${randomItem.tag}</h6>`
         document.getElementById("qCount").innerHTML = "Question   " + randomItem.id + "/" + apiLen
 
     }
+
+
 
     // load questions in order
     // function loadQuestion(q) {
