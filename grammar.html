@@ -49,12 +49,11 @@
 
         <div class="text-center m-3">
 
-            <h5 class="text-warning">BETA DEV: Grammar Dojo Ai</h5>
-            Level: Yellow Belt <span style="color:yellow">&diams;&diams;&diams;&diams;&diams;</span>
+            <h5 class="text-light">BETA DEV: Grammar Dojo Ai</h5>
 
         </div>
 
-        <div class="progress" style="height: 5px;">
+        <div class="progress bg-secondary" style="height: 5px;">
             <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
                 aria-valuemax="100"></div>
         </div>
@@ -67,11 +66,11 @@
         </div>
 
 
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 pb-2 ps-2" id="a" style="cursor:pointer;">A. This is a
+        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">A. This is a
             NO CHANGE.</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 pb-2 ps-2" id="b" style="cursor:pointer;">B. is</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 pb-2 ps-2" id="c" style="cursor:pointer;">C. are</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 pb-2 ps-2" id="d" style="cursor:pointer;">D. was</div>
+        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">B. is</div>
+        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">C. are</div>
+        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">D. was</div>
 
         <div class="text-end mx-lg-5 my-4 ">
             <button type="button" class="btn btn-outline-primary " id="next">Next <i
@@ -218,17 +217,30 @@
 
 
 
+
     var q = 0
     var apiLen = apiJson.length
     var qbox = document.getElementById("question")
     function loadQuestion(q) {
-        qbox.innerHTML = apiJson[q].question
-        document.getElementById("b").innerHTML = "B.   " + apiJson[q].choice2
-        document.getElementById("c").innerHTML = "C.   " + apiJson[q].choice3
-        document.getElementById("d").innerHTML = "D.   " + apiJson[q].choice4
-        document.getElementById("a").innerHTML = "A.   " + apiJson[q].choice1
-        document.getElementById("qCount").innerHTML = "Question   " + q + "/" + apiLen
+        var randomItem = apiJson[Math.floor(Math.random() * apiJson.length)];
+        qbox.innerHTML = randomItem.question
+        document.getElementById("b").innerHTML = "B.   " + randomItem.choice2
+        document.getElementById("c").innerHTML = "C.   " + randomItem.choice3
+        document.getElementById("d").innerHTML = "D.   " + randomItem.choice4
+        document.getElementById("a").innerHTML = "A.   " + randomItem.choice1
+        document.getElementById("qCount").innerHTML = "Question   " + randomItem.id + "/" + apiLen
     }
+
+    // load questions in order
+
+    // function loadQuestion(q) {
+    //     qbox.innerHTML = apiJson[q].question
+    //     document.getElementById("b").innerHTML = "B.   " + apiJson[q].choice2
+    //     document.getElementById("c").innerHTML = "C.   " + apiJson[q].choice3
+    //     document.getElementById("d").innerHTML = "D.   " + apiJson[q].choice4
+    //     document.getElementById("a").innerHTML = "A.   " + apiJson[q].choice1
+    //     document.getElementById("qCount").innerHTML = "Question   " + q + "/" + apiLen
+    // }
 
     loadQuestion(q)
 
