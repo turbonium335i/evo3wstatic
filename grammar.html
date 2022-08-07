@@ -78,25 +78,10 @@
             <br>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h5>grammar dojo ai algorithm notes</h5>
-                    <hr class="bg-danger">
-                    question = difficulty [E-1, M-2, H-3]
-                    <br>
-                    if x > someValue && if number of questions solved > 50:
+        <div class="container d-none" id="solution"></div>
 
-                    <br>
-                    student competency level 1, 2, 3, 4, 5
-                    <br>
-                    white, yellow, blue, red, black BELTS
-                </div>
-                <div class="col">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-        </div>
+
+
 
 
 
@@ -108,77 +93,8 @@
 
 </body>
 
-<script>
-    var a = document.getElementById("a");
-    a.addEventListener("click", function () { a.classList.toggle("bg-secondary"); });
-
-    var b = document.getElementById("b");
-    b.addEventListener("click", function () { b.classList.toggle("bg-secondary"); });
-
-    var c = document.getElementById("c");
-    c.addEventListener("click", function () { c.classList.toggle("bg-success"); });
-    c.addEventListener("click", function () { c.classList.toggle("border-success"); });
-
-    var d = document.getElementById("d");
-    d.addEventListener("click", function () { d.classList.toggle("bg-secondary"); });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: [
-                'S+V',
-                'Idiom',
-                'Diction',
-                'Tense',
-                'Redundancy',
-                'Structure',
-                'Non-essential'
-            ],
-            datasets: [{
-                label: 'Dataset 1',
-                data: [65, 59, 90, 81, 56, 55, 40],
-                fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
-            }, {
-                label: 'Dataset 2',
-                data: [28, 48, 40, 19, 96, 27, 100],
-                fill: true,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(54, 162, 235)'
-            }]
-        },
-        options: {
-            scales: {
-                r: {
-                    grid: {
-                        color: 'rgb(56,56,56)'
-                    },
-                    pointLabels: {
-                        color: 'white',
-                        // font: {
-                        //     size: 20,
-                        //     style: 'italic'
-                        // }
-                    }
-                }
-            }
-        }
 
 
-    });
-</script>
 
 <script>
 
@@ -209,12 +125,33 @@
     // getGrammar();
 
     // apiJson.forEach(myFunction)
+
+    var s = document.getElementById("solution")
+
+    function showSolution() {
+        s.classList.remove("d-none")
+    }
+
+    function hideSolution() {
+        s.classList.add("d-none")
+    }
+
+
     var a = document.getElementById("a");
+    a.addEventListener("click", function () { a.classList.toggle("bg-secondary"); });
+
     var b = document.getElementById("b");
+    b.addEventListener("click", function () { b.classList.toggle("bg-secondary"); });
+
     var c = document.getElementById("c");
+    c.addEventListener("click", function () {
+        c.classList.toggle("bg-success");
+        showSolution();
+    });
+    c.addEventListener("click", function () { c.classList.toggle("border-success"); });
+
     var d = document.getElementById("d");
-
-
+    d.addEventListener("click", function () { d.classList.toggle("bg-secondary"); });
 
 
 
@@ -228,11 +165,12 @@
         document.getElementById("c").innerHTML = "C.   " + randomItem.choice3
         document.getElementById("d").innerHTML = "D.   " + randomItem.choice4
         document.getElementById("a").innerHTML = "A.   " + randomItem.choice1
+        document.getElementById("solution").innerHTML = "Solution: " + randomItem.solution
         document.getElementById("qCount").innerHTML = "Question   " + randomItem.id + "/" + apiLen
+
     }
 
     // load questions in order
-
     // function loadQuestion(q) {
     //     qbox.innerHTML = apiJson[q].question
     //     document.getElementById("b").innerHTML = "B.   " + apiJson[q].choice2
@@ -251,6 +189,8 @@
         b.classList.remove("bg-secondary");
         c.classList.remove("bg-success", "border-success");
         d.classList.remove("bg-secondary");
+        hideSolution()
+
         q += 1;
         loadQuestion(q)
     }
