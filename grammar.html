@@ -59,8 +59,8 @@
                 aria-valuemax="100"></div>
         </div>
         <br>
-        <div class="h5 text-end">Question 1/10</div>
-        <div class="container border border-secondary rounded my-3 p-1 ps-2 pb-5 text-warning h6 ">
+        <div class="h5 text-end" id="qCount">Question 1/10</div>
+        <div class="container border border-secondary rounded my-3 p-1 ps-2 pb-5 text-warning h6 " id="question">
 
             Along the highway <u>is</u> a dog and a cat.
 
@@ -74,7 +74,7 @@
         <div class=" border border-secondary rounded mb-2 mx-lg-5 pb-2 ps-2" id="d" style="cursor:pointer;">D. was</div>
 
         <div class="text-end mx-lg-5 mt-4 ">
-            <button type="button" class="btn btn-outline-primary ">Next <i
+            <button type="button" class="btn btn-outline-primary " id="next">Next <i
                     class="bi bi-arrow-right-circle"></i></button>
         </div>
 
@@ -208,7 +208,39 @@
     // }
     // getGrammar();
 
-    apiJson.forEach(myFunction)
+    // apiJson.forEach(myFunction)
+    var a = document.getElementById("a");
+    var b = document.getElementById("b");
+    var c = document.getElementById("c");
+    var d = document.getElementById("d");
+
+
+
+
+    var q = 0
+    var apiLen = apiJson.length
+    var qbox = document.getElementById("question")
+    function loadQuestion(q) {
+        qbox.innerHTML = apiJson[q].question
+        document.getElementById("b").innerHTML = "B.   " + apiJson[q].choice2
+        document.getElementById("c").innerHTML = "C.   " + apiJson[q].choice3
+        document.getElementById("d").innerHTML = "D.   " + apiJson[q].choice4
+        document.getElementById("a").innerHTML = "A.   " + apiJson[q].choice1
+        document.getElementById("qCount").innerHTML = "Question   " + q + "/" + apiLen
+    }
+
+    loadQuestion(q)
+
+    document.getElementById('next').addEventListener("click", updateQuestion)
+
+    function updateQuestion() {
+        a.classList.remove("bg-secondary");
+        b.classList.remove("bg-secondary");
+        c.classList.remove("bg-success", "border-success");
+        d.classList.remove("bg-secondary");
+        q += 1;
+        loadQuestion(q)
+    }
 
 </script>
 
