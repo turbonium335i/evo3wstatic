@@ -54,7 +54,7 @@
         </div>
 
         <div class="progress bg-secondary" style="height: 5px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
                 aria-valuemax="100"></div>
         </div>
         <br>
@@ -158,10 +158,13 @@
 
 
 
+
+    var progressDone = 0
     var currentQuestion = []
     function checkAnswer(ans) {
         console.log(currentQuestion.correct)
         console.log(ans.dataset.id)
+        progressDone += 10
         if (ans.dataset.id === currentQuestion.correct) {
 
             ans.classList.toggle("bg-success");
@@ -177,6 +180,9 @@
         }
 
         showSolution();
+        document
+            .getElementsByClassName("progress-bar")[1]
+            .setAttribute("style", "width:" + progressDone + "%");
     }
 
     var choiceA = "A"
