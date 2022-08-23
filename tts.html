@@ -133,7 +133,7 @@
                 body.style.backgroundSize = "100% 100%";
 
                 // Get speak text
-                const speakText = new SpeechSynthesisUtterance("this is the box to speak");
+                const speakText = new SpeechSynthesisUtterance(textInput.value);
 
                 // Speak end
                 speakText.onend = (e) => {
