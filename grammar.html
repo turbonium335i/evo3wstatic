@@ -16,7 +16,7 @@
 <body class="bg-dark text-light d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/pXrFdz1Q/redcode.png"
+            <a class="navbar-brand" href="/grammar.html"><img src="https://i.postimg.cc/pXrFdz1Q/redcode.png"
                     style="max-width:18px;width:100%"> Grammar Dojo Ai</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -26,15 +26,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link active" aria-current="page" href="/grammaranalysis.html">Analysis</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -246,7 +240,13 @@
 
 
 
-        document.getElementById("solution").innerHTML = "Solution: " + randomItem.solution + `<h6 class="text-primary my-3  ">${randomItem.tag}</h6>`
+        document.getElementById("solution").innerHTML = "Solution: " + randomItem.solution + `<h6 class="text-primary my-3  ">
+            
+            
+            <a href="/wistia.html" class="text-decoration-none" >${randomItem.tag}</a>
+            
+            
+            </h6>`
         document.getElementById("qCount").innerHTML = "Question   " + randomItem.id + "/" + apiLen
 
     }
