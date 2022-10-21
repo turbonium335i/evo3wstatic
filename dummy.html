@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/png"
+            href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K">
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <style>
+            body {
+                background: #141414;
+                color: silver;
+                font-family: 'Roboto Mono', monospace;
+            }
+
+            .filtered {
+                display: none !important;
+            }
+
+            .popover-header {
+                background: #36454F;
+            }
+
+            .popover-content {
+                background: #ffff99;
+            }
+        </style>
+
+        <title>Query System</title>
+    </head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <main>
+        <div class="container py-4">
+
+
+            <div class="p-2 mb-2 bg-dark rounded-3">
+                <div class="container-fluid py-2">
+                    <h1 class="display-6 fw-bold">AllRiverPeople <span class="text-warning" id="querycount">0</span>
+                    </h1>
+                    <p class="col-md-8 fs-4 h6"><a href="{% url 'index'%}" class="text-decoration-none">Home</a> <a
+                            href="http://127.0.0.1:8000/admin/" class="text-decoration-none">Admin</a>
+                    </p>
+                </div>
+            </div>
+
+            <div>
+
+
+                <form onsubmit="return false" class="search" id="fname2">
+                    <label for="fname" class="form-label">Search</label>
+                    <input type="text" autocomplete="on" id="fname" name="tname" value=""
+                        placeholder="Name, College, Major, Notes, etc." style="font-size:20pt;height:50px; "
+                        class="form-control"><br>
+
+                </form>
+                <table class="table table-dark table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-secondary">Name</th>
+                            <th scope="col-1" class="text-secondary">Age</th>
+                            <th scope="col" class="text-secondary">Sex</th>
+                            <th scope="col" class="text-secondary">Education</th>
+                            <th scope="col" class="text-secondary">Major</th>
+                        </tr>
+                    </thead>
+                    <tbody id="apireturn">
+
+                    </tbody>
+                </table>
+                <!-- <div id="apireturn">login required.</div> -->
+
+            </div>
+            <div id="pagination-wrapper" class='text-warning'>Loading...</div>
+
+        </div>
+    </main>
+    <footer class="footer mt-auto py-3 border-top border-secondary bg-dark">
+        <div class="container text-center"><small>
+                <span> <a href="http://www.evolution3w.com" class="text-light text-decoration-none">&copy; All River
+                        2022</a>
+                </span></small>
+        </div>
+        <div class="container text-center"><small>
+                <span> <a href="https://www.evolution3w.com" class="text-muted text-decoration-none">Developed & Managed
+                        by Evolution3W.com</a>
+                </span></small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        var lastpage = 1;
+        var list = [];
+        var apiData = []
+        var state = {
+            querySet: list,
+            page: lastpage,
+            row: 5,
+            window: 5,
+        };
+        function pagination(querySet, page, rows) {
+            var trimStart = (page - 1) * rows;
+            var trimEnd = trimStart + rows;
+            var trimmedData = querySet.slice(trimStart, trimEnd);
+            var pages = Math.ceil(querySet.length / rows);
+            return {
+                querySet: trimmedData,
+                pages: pages,
+            };
+        }
+
+
+
+
+        // removes input focus on submit
+        // document.getElementById("myForm").onsubmit = function (e) {
+        //     e.preventDefault();
+        //     document.getElementById('exampleInputEmail1').blur();
+        // };
+
+        document.getElementById("fname2").onsubmit = function (e) {
+            e.preventDefault();
+            document.getElementById('fname').blur();
+        };
+
+
+
+
+        var searchReturnBox = document.getElementById("returnBox")
+        // var exampleInputEmail1 = document.getElementById("exampleInputEmail1")
+
+        // exampleInputEmail1.addEventListener("keyup", () => {
+        //     var term = exampleInputEmail1.value.trim().toLowerCase();
+        //     todofilter(term);
+        // });
+
+        var todofilter = (term) => {
+            Array.from(searchReturnBox.children)
+                .filter((todo) => !todo.textContent.toLowerCase().includes(term))
+                .forEach((todo) => todo.classList.add('filtered'));
+
+            Array.from(searchReturnBox.children)
+                .filter((todo) => todo.textContent.toLowerCase().includes(term))
+                .forEach((todo) => todo.classList.remove('filtered'));
+        };
+
+
+        var dummyData = [{}]
+
+
+        function loadDummyData(callback) {
+            //   dummyData.forEach(element =>
+            //   searchReturnBox.innerHTML += `<h5><button type="button"
+            //     class="btn btn-outline-secondary btn-sm btx">Go</button>&nbsp ${element.nameFull} - ${element.college} - ${element.country}  </h5>`
+            // );
+
+            dummyData.forEach(element =>
+                searchReturnBox.innerHTML += `<h6 class="ms-3"><button type="button"
+        class="btn btn-outline-secondary btn-sm"
+        data-bs-toggle="popover" title="${element.nameFull}, ${element.age}, ${element.country}" data-bs-content="
+        <li>Education: ${element.college},  ${element.major}</li>
+
+        <li>Country: ${element.country}</li>
+        <li>Current: ${element.currentCountry}</li>
+        <li>Age: ${element.age}</li>
+        <li>Experience: ${element.experience}</li>
+        <li>Phone: ${element.phone}</li>
+        <li>Email: ${element.email}</li>
+           <li>Date: ${(element.submitDate)}</li>
+        <li>Notes: ${element.notes}</li>
+
+          "
+        >+</button>&nbsp ${element.nameFull}, ${element.age} - ${element.college}, ${element.major}  </h6>`
+            );
+            callback()
+
+        }
+
+        function loadPopOver() {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, { html: true })
+            })
+
+
+        }
+
+        // loadDummyData(loadPopOver)
+
+
+        var querycount = 0
+
+
+        function loopit() {
+            var url = 'http://127.0.0.1:8000/applicantapi';
+            fetch(url)
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    var apiData = data.reverse();
+                    apiData.forEach(element =>
+                        searchReturnBox.innerHTML += `<h6 class="ms-3"><button type="button"
+        class="btn btn-outline-secondary btn-sm"
+        data-bs-toggle="popover" title="${element.nameFull}, ${element.age}, ${element.country}" data-bs-content="
+        <li>Education: ${element.college},  ${element.major}</li>
+
+        <li>Country: ${element.country}</li>
+        <li>Current: ${element.currentCountry}</li>
+        <li>Age: ${element.age}</li>
+        <li>Experience: ${element.experience}</li>
+        <li>Phone: ${element.phone}</li>
+        <li>Email: ${element.email}</li>
+           <li>Date: ${element.submitDate}</li>
+        <li>Notes: ${element.notes}</li>
+
+          "
+        >+</button>&nbsp ${element.nameFull}, ${element.age} - ${element.college}, ${element.major}  </h6>`
+                    );
+                }).then(() => {
+                    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                        return new bootstrap.Popover(popoverTriggerEl, { html: true })
+                    })
+                })
+        }
+
+        // loopit()
+
+        function loadPopovers() {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, { html: true })
+            })
+
+        }
+
+
+        function getselectset(callback) {
+            fetch("http://127.0.0.1:8000/applicantapi")
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    state.querySet = data.reverse();
+                    apiData = data
+                    querycount = apiData.length
+                    document.getElementById("querycount").innerHTML = querycount;
+                    callback();
+                });
+        }
+
+        function loadvocab(callback) {
+            $("#apireturn").empty();
+            var pdata = pagination(state.querySet, state.page, state.row);
+            list = pdata.querySet;
+
+
+            for (var i in list) {
+
+                //         var item = `<p><button type="button"
+                // class="btn btn-outline-secondary btn-sm btx"  data-bs-toggle="popover" title="${list[i].nameFull}, ${list[i].age}, ${list[i].country}" data-bs-content="
+                // <li>Education: ${list[i].college},  ${i.major}</li>
+                // <li>Country: ${list[i].country}</li>
+                // <li>Current: ${list[i].currentCountry}</li>
+                // <li>Age: ${list[i].age}</li>
+                // <li>Experience: ${list[i].experience}</li>
+                // <li>Phone: ${list[i].phone}</li>
+                // <li>Email: ${list[i].email}</li>
+                //    <li>Date: ${list[i].submitDate}</li>
+                // <li>Notes: ${list[i].notes}</li>" >+</button>&nbsp ${list[i].nameFull}, ${list[i].age}, ${list[i].sex}, ${list[i].college} - ${list[i].major} </p>`;
+                //         apireturn.innerHTML += item;
+
+                var item = `       <tr class="  btx"  data-bs-toggle="popover"  data-bs-placement="bottom"  title="${list[i].nameFull}, ${list[i].age}, ${list[i].country}" data-bs-content="
+                <li>Education: ${list[i].college},  ${i.major}</li>
+                <li>Country: ${list[i].country}</li>
+                <li>Current: ${list[i].currentCountry}</li>
+                <li>Age: ${list[i].age}</li>
+                <li>Experience: ${list[i].experience}</li>
+                <li>Phone: ${list[i].phone}</li>
+                <li>Email: ${list[i].email}</li>
+                   <li>Date: ${(list[i].submitDate).slice(0, 10)}</li>
+                <li>Notes: ${list[i].notes}</li>" style="cursor: pointer;">
+    
+  
+      <td>${list[i].nameFull}</td>
+      <td> ${list[i].age}</td>
+      <td> ${list[i].sex}</td>
+      <td> ${list[i].college}</td>
+      <td> ${list[i].major}</td>
+    </tr>`
+                apireturn.innerHTML += item;
+
+            }
+
+
+
+            loadPopovers()
+
+
+            function pageButtons(pages) {
+                var wrapper = document.getElementById("pagination-wrapper");
+                wrapper.innerHTML = ``;
+                var maxLeft = state.page - Math.floor(state.window / 2);
+                var maxRight = state.page + Math.floor(state.window / 2);
+                if (maxLeft < 1) {
+                    maxLeft = 1;
+                    maxRight = state.window;
+                }
+                if (maxRight > pages) {
+                    maxLeft = pages - (state.window - 1);
+                    if (maxLeft < 1) {
+                        maxLeft = 1;
+                    }
+                    maxRight = pages;
+                }
+                for (var page = maxLeft; page <= maxRight; page++) {
+                    wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-outline-warning">${page}</button>`;
+                }
+                if (state.page != 1) {
+                    wrapper.innerHTML =
+                        `<button value=${1} class="page btn btn-sm btn-outline-warning" id='rebutton'>&#171; First</button>` +
+                        wrapper.innerHTML;
+                }
+                if (state.page != pages) {
+                    wrapper.innerHTML += `<button value=${pages} class="page btn btn-sm btn-outline-warning">Last &#187;</button>`;
+                }
+                var classpage = document.getElementsByClassName("btn-outline-warning");
+                //                console.log(classpage)
+                for (var i = 0; i < classpage.length; i++) {
+                    //                console.log(classpage[i])
+                    if (classpage[i].value == state.page) {
+                        var current = document.getElementsByClassName("page");
+                        current[i].className = current[i].className.replace(" btn-sm", "");
+                        current[i].className += " btn-secondary";
+                    }
+                }
+                $(".page").on("click", function () {
+                    $("#apireturn").empty();
+                    state.page = Number($(this).val());
+                    var multipage = state.page;
+                    loadvocab();
+                });
+            }
+            pageButtons(pdata.pages);
+        }
+
+        getselectset(loadvocab);
+
+        const searchedbox = document.getElementById("fname2");
+        const searched = document.getElementById("fname");
+        const wrapper = document.getElementById("typed");
+        const searchreturn = document.getElementById("apireturn");
+
+        searched.addEventListener("keyup", () => {
+
+            var search2vale = searched.value.trim().toLowerCase();
+
+            state.querySet = apiData
+            state.querySet = state.querySet.filter(
+
+                obj => obj.nameFull.trim().toLowerCase().includes(search2vale)
+                    || obj.college.trim().toLowerCase().includes(search2vale)
+                    || obj.major.trim().toLowerCase().includes(search2vale)
+                    || obj.notes.trim().toLowerCase().includes(search2vale))
+
+            querycount = state.querySet.length
+            document.getElementById("querycount").innerHTML = querycount;
+
+            loadvocab()
+
+            function searchFiltered(arg) {
+                return arg.nameFull.trim().toLowerCase().includes(search2vale);
+            }
+
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

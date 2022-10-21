@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color:black ;color:green;">
+    <div>
+        <p id="demo"></p>
+        <button onclick="myStopFunction()">Stop time</button>
+        <button onclick="myStartFunction()">Start time</button>
+    </div>
+
+
+    <script>
+        var myVar
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            document.getElementById("demo").innerHTML = t;
+        }
+
+        function myStopFunction() {
+            clearInterval(myVar);
+        }
+        function myStartFunction() {
+            myVar = setInterval(myTimer, 1000);
+        }
+        // myStartFunction();
+    </script>
+</body>
+
+</html>

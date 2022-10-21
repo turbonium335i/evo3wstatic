@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png"
+      href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
+
+
+    <style>
+      body {
+        background: #141414;
+        color: #41FF00;
+        font-family: 'Roboto Mono', monospace;
+      }
+
+      .filtered {
+        display: none !important;
+      }
+
+      .popover-header {
+        background: #36454F;
+      }
+
+      .popover-content {
+        background: #ffff99;
+      }
+    </style>
+
+    <title>Applicant Query</title>
+  </head>
+
+<body>
+
+  <main>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom ">
+        <a href="/" class="d-flex align-items-center text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
+            <title>Bootstrap</title>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+              fill="currentColor"></path>
+          </svg>
+          <span class="fs-4">Applicant Query</span>
+        </a>
+      </header>
+
+      <div class="p-2 mb-2 bg-dark rounded-3">
+        <div class="container-fluid py-2">
+          <h1 class="display-5 fw-bold">AllRiverPeople</h1>
+          <p class="col-md-8 fs-4">Query System</p>
+        </div>
+      </div>
+      <div>
+        <form onsubmit="return false" id="myForm">
+          <div class="mb-2 p-1">
+            <label for="exampleInputEmail1" class="form-label">Search</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autofocus>
+          </div>
+        </form>
+        <div id="returnBox">
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    // removes input focus on submit
+    document.getElementById("myForm").onsubmit = function (e) {
+      e.preventDefault();
+      document.getElementById('exampleInputEmail1').blur();
+    };
+
+
+
+    var searchReturnBox = document.getElementById("returnBox")
+    var exampleInputEmail1 = document.getElementById("exampleInputEmail1")
+
+    exampleInputEmail1.addEventListener("keyup", () => {
+      var term = exampleInputEmail1.value.trim().toLowerCase();
+      todofilter(term);
+    });
+
+    var todofilter = (term) => {
+      Array.from(searchReturnBox.children)
+        .filter((todo) => !todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.add('filtered'));
+
+      Array.from(searchReturnBox.children)
+        .filter((todo) => todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.remove('filtered'));
+    };
+
+
+    var dummyData = [
+      {
+        "id": 1,
+        "nameFull": "bob cat",
+        "submitDate": "2022-09-16T21:41:32+09:00",
+        "college": "columbia",
+        "major": "major",
+        "age": "age",
+        "country": "country",
+        "currentCountry": "currentCountry",
+        "experience": "0",
+        "phone": "000",
+        "email": "email@gmail.com",
+        "fileName": "fileName",
+        "notes": "General Notes"
+      },
+      {
+        "id": 2,
+        "nameFull": "homer simpson",
+        "submitDate": "2022-09-18T20:34:02.410132+09:00",
+        "college": "springfield",
+        "major": "atom",
+        "age": "22",
+        "country": "usa",
+        "currentCountry": "simpson",
+        "experience": "3",
+        "phone": "010109234949",
+        "email": "jasidofj@gmail.com",
+        "fileName": "notes.txt",
+        "notes": "this is the simpsons. intor"
+      },
+      {
+        "id": 11,
+        "nameFull": "Homer Simpson",
+        "submitDate": "2022-09-18T14:37:11.595883+09:00",
+        "college": "Springfield",
+        "major": "Art",
+        "age": "29",
+        "country": "USA",
+        "currentCountry": "Simpson",
+        "experience": "3",
+        "phone": "010101001010",
+        "email": "jasidofj@gmail.com",
+        "fileName": "notes.txt",
+        "notes": "I agree all information above is honest and accurate."
+      },
+      {
+        "id": 12,
+        "nameFull": "Marge Simpson",
+        "submitDate": "2022-09-18T15:08:22.553167+09:00",
+        "college": "springfield",
+        "major": "atoms",
+        "age": "32",
+        "country": "usa",
+        "currentCountry": "Simpson",
+        "experience": "1",
+        "phone": "03099020399023",
+        "email": "lkajsdflkj@gmail.com",
+        "fileName": "17 she was one.pdf",
+        "notes": "I agree all information above is honest and accurate."
+      },
+      {
+        "id": 13,
+        "nameFull": "Homer Simpson",
+        "submitDate": "2022-09-18T21:15:21+09:00",
+        "college": "Stanford",
+        "major": "Economics",
+        "age": "22",
+        "country": "USA",
+        "currentCountry": "Korea",
+        "experience": "3",
+        "phone": "8902347890234",
+        "email": "jioasddjfioj@mgial.com",
+        "fileName": "notes.txt",
+        "notes": "asdfasdfwefsdfsdfsdfsdf"
+      }
+    ]
+
+    function loadDummyData(callback) {
+      //   dummyData.forEach(element =>
+      //   searchReturnBox.innerHTML += `<h5><button type="button" 
+      //     class="btn btn-outline-secondary btn-sm btx">Go</button>&nbsp ${element.nameFull} - ${element.college} - ${element.country}  </h5>`
+      // );
+
+      dummyData.forEach(element =>
+        searchReturnBox.innerHTML += `<h6 class="ms-3"><button type="button" 
+        class="btn btn-outline-secondary btn-sm"          
+        data-bs-toggle="popover" title="${element.nameFull}, ${element.age}, ${element.country}" data-bs-content="
+        <li>${element.college}</li>
+        <li>${element.major}</li>
+        <li>${element.currentCountry}</li>
+        <li>${element.notes}</li>
+        
+          "
+        >+</button>&nbsp ${element.nameFull} - ${element.college} - ${element.major}  </h6>`
+      );
+      callback()
+
+    }
+
+    function loadPopOver() {
+      var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl, { html: true })
+      })
+
+
+    }
+
+    loadDummyData(loadPopOver)
+
+
+
+
+
+    function loopit() {
+      var url = 'http://127.0.0.1:8000/applicantapi';
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function (data) {
+          var apiData = data.reverse();
+          apiData.forEach(element =>
+            searchReturnBox.innerHTML += `<h6 class="ms-3"><button type="button" 
+        class="btn btn-outline-secondary btn-sm"          
+        data-bs-toggle="popover" title="Popover title" data-bs-content="
+        <li>${element.age}</li>
+        <li>${element.country}</li>
+        <li>${element.major}</li>
+        <li>${element.notes}</li>
+        
+          "
+        >+</button>&nbsp ${element.nameFull} - ${element.college} - ${element.major}  </h6>`
+          );
+        }).then(() => {
+          var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+          var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl, { html: true })
+          })
+        })
+    }
+
+    // loopit()
+  </script>
+</body>
+
+</html>
