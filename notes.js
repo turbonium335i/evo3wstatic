@@ -103,3 +103,20 @@ function nextFunction() {
     btnFunction(currentQuestion);
   }
 }
+
+function clearForm() {
+  var education = document.querySelector('input[name="education"]:checked');
+  var sex = document.querySelector('input[name="sex"]:checked');
+  var lvlgrammar = document.querySelector('input[name="lvlgrammar"]:checked');
+  var id_multi_name_fields = document.getElementById("id_multi_name_fields");
+
+  if (education != null) {
+    education.checked = false;
+  } else {
+    pass;
+  }
+
+  sex.checked = false;
+  lvlgrammar.checked = false;
+  id_multi_name_fields.value = "";
+}

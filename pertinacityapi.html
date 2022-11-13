@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color:black; color:green">
+    get api data
+
+    <div id="returnBox">
+
+    </div>
+
+
+
+    <script>
+
+
+
+
+        var apiIdiom = [
+            {
+                "id": 1,
+                "question": "Weeds become resistant <u>of</u> evolution.  Compared with tricky attributes like mimicry and dormancy, resistance can be quite simple to evolve.",
+                "choice1": "NO CHANGE",
+                "choice2": "through",
+                "choice3": "in",
+                "choice4": "for",
+                "correct": "through",
+                "solution": ""
+            },
+            {
+                "id": 2,
+                "question": "Fire marshals worked throughout the night and <u>into</u> the early morning to process the scene, looking for evidence to corroborate that the incident was arson.",
+                "choice1": "NO CHANGE",
+                "choice2": "onto",
+                "choice3": "at",
+                "choice4": "Delete the underlined portion",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 3,
+                "question": "The federal prosecutors maintained that the police officer’s conduct, which was contrary to department policy, killed Taylor, and the prosecution brought forth a multitude <u>as</u> medical experts to corroborate their claims.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "of",
+                "choice4": "Delete the underlined portion",
+                "correct": "of",
+                "solution": ""
+            },
+            {
+                "id": 4,
+                "question": "This festival, celebrated in Scadrial and in Illian, is modeled <u>after</u> a Jeon Ju prototype.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "within",
+                "choice4": "for",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 5,
+                "question": "Dietitian consider prunes <u>to</u> a healthy food: it is an excellent source of potassium and antioxidants, serves to be a digestive aid, and it contains both insoluble and soluble fiber.",
+                "choice1": "NO CHANGE",
+                "choice2": "as",
+                "choice3": "like",
+                "choice4": "for",
+                "correct": "as",
+                "solution": ""
+            },
+            {
+                "id": 6,
+                "question": "Having become frustrated trying to fix broken modules alone, I missed having extra hands around to help. It was during this time that I read an article <u>into</u> shared offices.",
+                "choice1": "NO CHANGE",
+                "choice2": "about",
+                "choice3": "upon",
+                "choice4": "for",
+                "correct": "about",
+                "solution": ""
+            },
+            {
+                "id": 7,
+                "question": "The fight over the ruined grass on the front yard started because grandpa told people that if there is no space on the driveway, drive <u>to</u> the grass and park there.",
+                "choice1": "NO CHANGE",
+                "choice2": "in",
+                "choice3": "into",
+                "choice4": "onto",
+                "correct": "onto",
+                "solution": ""
+            },
+            {
+                "id": 8,
+                "question": "Janice told her partner that the main door to the house will be left unlocked, so come right <u>to</u> the house.",
+                "choice1": "NO CHANGE",
+                "choice2": "into",
+                "choice3": "onto",
+                "choice4": "for",
+                "correct": "into",
+                "solution": ""
+            },
+            {
+                "id": 9,
+                "question": "But a thrifty lifestyle doesn't have to mean a deprived lifestyle. In fact, I've managed to trim down my discretionary spending and boost my savings <u>over</u> making a few simple but meaningful alternatives.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "with",
+                "choice4": "for",
+                "correct": "by",
+                "solution": ""
+            },
+            {
+                "id": 10,
+                "question": "I didn't know if Juno was crying, because it <u>could of just</u> been rain that drizzled down his cheeks.",
+                "choice1": "NO CHANGE",
+                "choice2": "could have just",
+                "choice3": "could just of",
+                "choice4": "could just",
+                "correct": "could have just",
+                "solution": ""
+            },
+            {
+                "id": 11,
+                "question": "Like frugal cooks everywhere, Korean cooks <u>like</u> generations past found imaginative ways to utilize every part of the animals they slaughtered.",
+                "choice1": "NO CHANGE",
+                "choice2": "deriving out of",
+                "choice3": "from",
+                "choice4": "of",
+                "correct": "from",
+                "solution": ""
+            },
+            {
+                "id": 12,
+                "question": "The casket was scheduled to fly to Seoul <u>out</u> Los Angeles International Airport the following morning, and, later, from Seoul to Nouméa, the capital of the French archipelago in the South Pacific.",
+                "choice1": "NO CHANGE",
+                "choice2": "away from",
+                "choice3": "mutually of",
+                "choice4": "out of",
+                "correct": "out of",
+                "solution": ""
+            },
+            {
+                "id": 13,
+                "question": "The Plain Language in Government movement impressed the Clinton administration, which began drafting an executive order mandating plain language in government—<u>down to</u> an unnamed administration functionary deep-sixed the idea because he did not find the mission suitably 'magisterial’.",
+                "choice1": "NO CHANGE",
+                "choice2": "until",
+                "choice3": "as far as",
+                "choice4": "before the coming of",
+                "correct": "until",
+                "solution": ""
+            },
+            {
+                "id": 14,
+                "question": "Pray forgive my urgency my lord, but to deliver the message in time, I must to horse <u>in expectation of</u> the ill-fated dawn.",
+                "choice1": "NO CHANGE",
+                "choice2": "until the rising",
+                "choice3": "before the coming of",
+                "choice4": "prior to the expectation of",
+                "correct": "before the coming of",
+                "solution": ""
+            },
+            {
+                "id": 15,
+                "question": "The owner of the modification shop is a qualified engineer, but he rarely works on drones himself nowadays. However, <u>in occasions</u> he helps the crew in the shop if the shop is swamped.",
+                "choice1": "NO CHANGE",
+                "choice2": "for occasions",
+                "choice3": "with occasions",
+                "choice4": "on occasions",
+                "correct": "on occasions",
+                "solution": ""
+            },
+            {
+                "id": 16,
+                "question": "I do have a few ideas that would greatly improve your proposal, but <u>in addition</u> I think it was an excellent presentation.",
+                "choice1": "NO CHANGE",
+                "choice2": "on the whole",
+                "choice3": "added with",
+                "choice4": "by whole",
+                "correct": "on the whole",
+                "solution": ""
+            },
+            {
+                "id": 17,
+                "question": "Having already worked with most well known West Coast artisans, Mr. Chang had been trying to get one of his lacquered dressers reproduced <u>alongside</u> famed artisans in Boston and approached Christine Witherford for introductions.",
+                "choice1": "NO CHANGE",
+                "choice2": "for",
+                "choice3": "amid",
+                "choice4": "by",
+                "correct": "by",
+                "solution": ""
+            },
+            {
+                "id": 18,
+                "question": "Other times we pulsed gamma rays or x-rays directly into the metamaterials. The radiation we employed were <u>dictations for</u> the metamaterials we were modeling.",
+                "choice1": "NO CHANGE",
+                "choice2": "dictations with",
+                "choice3": "dictated to",
+                "choice4": "dictated by",
+                "correct": "dictated by",
+                "solution": ""
+            },
+            {
+                "id": 19,
+                "question": "You <u>could, of course,</u> buy a jar of this expensive soy paste, but home-made soy paste can be done with proper ingredients and patience.",
+                "choice1": "NO CHANGE",
+                "choice2": "could’ve",
+                "choice3": "could, have course,",
+                "choice4": "could by course",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 20,
+                "question": "Students taking rhetoric courses may question how the skills they acquire in the classroom can be <u>applied for</u> the real world.",
+                "choice1": "NO CHANGE",
+                "choice2": "in application to",
+                "choice3": "applied to",
+                "choice4": "applying with",
+                "correct": "applied to",
+                "solution": ""
+            },
+            {
+                "id": 21,
+                "question": "As more businesses and government agencies endeavor to cut bloat and increase efficiency, they are hiring <u>graduates by</u> STEM (science, technology, engineering, and mathematics) programs to help them reduce inefficiencies.",
+                "choice1": "NO CHANGE",
+                "choice2": "graduates for",
+                "choice3": "graduated with",
+                "choice4": "graduates from",
+                "correct": "graduates from",
+                "solution": ""
+            },
+            {
+                "id": 22,
+                "question": "Imagine a new grocery owner trying to decide how much stock to <u>purchase with</u> the basis of available storage space, each item’s shelf life, and customer demand.",
+                "choice1": "NO CHANGE",
+                "choice2": "purchase on",
+                "choice3": "purchased in",
+                "choice4": "purchase by",
+                "correct": "purchase on",
+                "solution": ""
+            },
+            {
+                "id": 23,
+                "question": "Yet we do know what happens, even if we do just theorize <u>at</u> why.",
+                "choice1": "NO CHANGE",
+                "choice2": "to",
+                "choice3": "as by",
+                "choice4": "about",
+                "correct": "about",
+                "solution": ""
+            },
+            {
+                "id": 24,
+                "question": "Restaurant owners argue that if tipping were abolished, the increase <u>for</u> owners’ labor costs would be ruinous, and the added costs would have to be passed to patrons.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "in",
+                "choice4": "due to",
+                "correct": "in",
+                "solution": ""
+            },
+            {
+                "id": 25,
+                "question": "<u>In dissolving</u> stereotypes and broadening mutual respect, cultural exchange programs can help create a world as connected by empathy as it is by social networking services.",
+                "choice1": "NO CHANGE",
+                "choice2": "With the dissolving",
+                "choice3": "By dissolving",
+                "choice4": "Dissolved by",
+                "correct": "By dissolving",
+                "solution": ""
+            },
+            {
+                "id": 26,
+                "question": "Naysayers might argue that a person’s prejudice fueled by ignorance cannot change in just a few weeks. <u>Evidence about</u> another cultural diplomacy program suggests that it is possible.",
+                "choice1": "NO CHANGE",
+                "choice2": "Evidence from",
+                "choice3": "Evidenced by",
+                "choice4": "Evidence thereby for",
+                "correct": "Evidence from",
+                "solution": ""
+            },
+            {
+                "id": 27,
+                "question": "Other insects, such as ants, termites, and wasps, are able to maintain group cohesion <u>with the recognition for</u> the scent of other individuals, but bees do more than this.",
+                "choice1": "NO CHANGE",
+                "choice2": "by recognition",
+                "choice3": "by recognizing",
+                "choice4": "with recognize",
+                "correct": "by recognizing",
+                "solution": ""
+            },
+            {
+                "id": 28,
+                "question": "When one dolphin hears its own signature whistle, it will respond <u>for</u> the same call, thus establishing the dolphin’s relative locations.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "in",
+                "choice4": "by",
+                "correct": "with",
+                "solution": ""
+            },
+            {
+                "id": 29,
+                "question": "Not only is esports writing personally fulfilling emotionally and financially, <u>and it also holds</u> intangible value.",
+                "choice1": "NO CHANGE",
+                "choice2": "as it also holds",
+                "choice3": "thus it holds also",
+                "choice4": "but it also holds",
+                "correct": "but it also holds",
+                "solution": ""
+            },
+            {
+                "id": 30,
+                "question": "Maybe IG1-HT02 was just prejudiced <u>at</u> humans, or it just hated any biological meatbags in general.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "against",
+                "choice4": "from",
+                "correct": "against",
+                "solution": ""
+            },
+            {
+                "id": 31,
+                "question": "Civic illiteracy has been <u>linked with</u> low youth-voter turnout. Although the 2016 presidential election was highly publicized, barely two in every five young citizens showed up at the polls.",
+                "choice1": "NO CHANGE",
+                "choice2": "linking by",
+                "choice3": "linked from",
+                "choice4": "linking to",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 32,
+                "question": "The flatness and openness of the reclaimed land made it ideal for airplane operations, but it was these very qualities that caused sounds made <u>between</u> the lakebed to be significantly amplified.",
+                "choice1": "NO CHANGE",
+                "choice2": "within",
+                "choice3": "with",
+                "choice4": "due to",
+                "correct": "within",
+                "solution": ""
+            },
+            {
+                "id": 33,
+                "question": "Purple-spotted yellow peonies <u>appear that</u> droop under the weight of their fan-shaped blooms.",
+                "choice1": "NO CHANGE",
+                "choice2": "appearance of",
+                "choice3": "appearing with",
+                "choice4": "appear to",
+                "correct": "appear to",
+                "solution": ""
+            },
+            {
+                "id": 34,
+                "question": "<u>Assuring that</u> the best candidates are entering, engineering programs are encouraged to evaluate the applicant more rigorously.",
+                "choice1": "NO CHANGE",
+                "choice2": "To assure that",
+                "choice3": "In assuring",
+                "choice4": "With assurance that",
+                "correct": "To assure that",
+                "solution": ""
+            },
+            {
+                "id": 35,
+                "question": "Eventually, they had to discontinue the Bayer’s Roundup herbicides and turn <u>over</u> new alternatives.",
+                "choice1": "NO CHANGE",
+                "choice2": "for",
+                "choice3": "on",
+                "choice4": "to",
+                "correct": "to",
+                "solution": ""
+            },
+            {
+                "id": 36,
+                "question": "Given that the oil tanker had too deep a draft to enter the port, the harbor authority <u>could, of course, of</u> required the vessel to unload the crude oil into smaller port oil tankers.",
+                "choice1": "NO CHANGE",
+                "choice2": "could, of course, have",
+                "choice3": "could of",
+                "choice4": "could have course",
+                "correct": "could, of course, have",
+                "solution": ""
+            },
+            {
+                "id": 37,
+                "question": "Weeds become resistant through evolution. Compared with tricky attributes like mimicry and dormancy, resistance can be quite simple <u>to evolve from</u>.",
+                "choice1": "NO CHANGE",
+                "choice2": "evolving from",
+                "choice3": "to evolve",
+                "choice4": "to evolve by",
+                "correct": "to evolve",
+                "solution": ""
+            },
+            {
+                "id": 38,
+                "question": "In spite of the fact <u>of</u> liberating crusades in the black community have been used as catalysts for white feminism, too many campaigns and organizations have made calculated propositions to enlist blacks and have ended up by rolling them.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "for",
+                "choice4": "that",
+                "correct": "that",
+                "solution": ""
+            },
+            {
+                "id": 39,
+                "question": "There is a friendly <u>rivalry with</u> Canada and Denmark today over the island, but it was not so in the past.",
+                "choice1": "NO CHANGE",
+                "choice2": "rival that",
+                "choice3": "rivalry for",
+                "choice4": "rivalry between",
+                "correct": "rivalry between",
+                "solution": ""
+            },
+            {
+                "id": 40,
+                "question": "Researchers led by KAIST materials scientists Dr. Kim <u>found that by</u> carefully designing nanoscale tubes, it is possible to make metamaterials that are not only strong and light but flexible as well.",
+                "choice1": "NO CHANGE",
+                "choice2": "found that",
+                "choice3": "found that with",
+                "choice4": "DELETE THE UNDERLINED PORTION",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 41,
+                "question": "In the nano size range, the structural and mechanical properties of the new metamaterials become less tied to properties <u>such as weight as</u>, and they can be altered more predictably.",
+                "choice1": "NO CHANGE",
+                "choice2": "as such weight as",
+                "choice3": "such as weight",
+                "choice4": "as such as",
+                "correct": "such as weight",
+                "solution": ""
+            },
+            {
+                "id": 42,
+                "question": "A private engineering company created <u>of one</u> the lightest materials ever made, a microlattice of hollow graphite tubes.",
+                "choice1": "NO CHANGE",
+                "choice2": "one of",
+                "choice3": "as one as",
+                "choice4": "one as",
+                "correct": "one of",
+                "solution": ""
+            },
+            {
+                "id": 43,
+                "question": "A recurrent iconographic image is Sang-je, the Heavenly Emperor of the Korean pantheon, <u>depicted of</u> the Heavenly One, and there are several fine examples found in the old pagoda unearthed in Jeon Ju.",
+                "choice1": "NO CHANGE",
+                "choice2": "depicting as",
+                "choice3": "depicted by",
+                "choice4": "depicted as",
+                "correct": "depicted as",
+                "solution": ""
+            },
+            {
+                "id": 44,
+                "question": "I thought the animal pen was well walled all round, but there is a small breach in the wall at the back which a healthy animal <u>could hurdled</u>.",
+                "choice1": "NO CHANGE",
+                "choice2": "could have hurdled",
+                "choice3": "could of hurdled",
+                "choice4": "could of hurdle",
+                "correct": "could have hurdled",
+                "solution": ""
+            },
+            {
+                "id": 45,
+                "question": "To study how mangroves affect carbon sequestration, a team led by Dr. Setiawan, <u>set up</u> an experiment on a patch of mangrove in Bontang Mangrove Park.",
+                "choice1": "NO CHANGE",
+                "choice2": "put forth",
+                "choice3": "put up",
+                "choice4": "set on",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 46,
+                "question": "The last half century has also seen industrial fisheries supplant and replace modest family fisheries. However, particularly among those <u>beneath 35 years</u>, small fisheries has enjoyed a resurgence over the last few decades. This recent change to the established demographics of fishing is a big reason small fisheries deserve attention as a possible career choice.",
+                "choice1": "NO CHANGE",
+                "choice2": "aging less than 35 years",
+                "choice3": "under the age of 35",
+                "choice4": "not yet attaining, 35",
+                "correct": "under the age of 35",
+                "solution": ""
+            },
+            {
+                "id": 47,
+                "question": "Whenever possible, Jung Hwa Kim provided the sources <u>from</u> the tales, the place where the tales were originally told, and any other relevant background information.",
+                "choice1": "NO CHANGE",
+                "choice2": "of",
+                "choice3": "with",
+                "choice4": "to",
+                "correct": "of",
+                "solution": ""
+            },
+            {
+                "id": 48,
+                "question": "If I didn’t clean up, I would <u>of gone</u> around smelling like rotten mayonnaise and soured milk.",
+                "choice1": "NO CHANGE",
+                "choice2": "have gone",
+                "choice3": "gone",
+                "choice4": "have been",
+                "correct": "have gone",
+                "solution": ""
+            },
+            {
+                "id": 49,
+                "question": "A number of experts have stated that high winds <u>could have been</u> a factor in driving the ship off course.",
+                "choice1": "NO CHANGE",
+                "choice2": "could of been",
+                "choice3": "could of",
+                "choice4": "could have",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 50,
+                "question": "A pastor's mission is <u>caring about</u> and contemplate man's fate and existing conditions in order to arouse other people to care and think.",
+                "choice1": "NO CHANGE",
+                "choice2": "caring",
+                "choice3": "to care in",
+                "choice4": "to care about",
+                "correct": "to care about",
+                "solution": ""
+            },
+            {
+                "id": 51,
+                "question": "The lack of mechanized infantry makes it difficult for a tank formation to hold ground or <u>defense against</u> an enemy advance.",
+                "choice1": "NO CHANGE",
+                "choice2": "defend against",
+                "choice3": "defend as",
+                "choice4": "defend with",
+                "correct": "defend against",
+                "solution": ""
+            },
+            {
+                "id": 52,
+                "question": "In my view <u>about</u> the cyber security deputy of the NSA, the congressional committee members today stand woefully ignorant of basic IT knowledge.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "as",
+                "choice4": "to",
+                "correct": "as",
+                "solution": ""
+            },
+            {
+                "id": 53,
+                "question": "Disillusioned by the behavior of his fellow Doves, he took aim <u>with</u> the antiwar movement, whose members, he claimed, had abdicated their historic responsibilities.",
+                "choice1": "NO CHANGE",
+                "choice2": "as",
+                "choice3": "to",
+                "choice4": "at",
+                "correct": "at",
+                "solution": ""
+            },
+            {
+                "id": 54,
+                "question": "The captions managed to inject a layer of humanity to each of the video clips, the collective result <u>for which</u> is a didactic tapestry of youth and aging, triumph and disaster, wealth and poverty, and love and loss.",
+                "choice1": "NO CHANGE",
+                "choice2": "that",
+                "choice3": "of which",
+                "choice4": "DELETE the underlined portion",
+                "correct": "of which",
+                "solution": ""
+            },
+            {
+                "id": 55,
+                "question": "There she met a choreographer whose work she’d admired for years, a director who <u>later went on and won</u> a Blue Dragon Award, and many other artists and musicians, including a lyricist who became one of her closest friends.",
+                "choice1": "NO CHANGE",
+                "choice2": "went on to win",
+                "choice3": "went on and later won",
+                "choice4": "went later on to win",
+                "correct": "went on to win",
+                "solution": ""
+            },
+            {
+                "id": 56,
+                "question": "The moderator proposed the crash emoji in response to <u>train wrecks, and that</u> arose on the group’s board when posts were hijacked by other boards.",
+                "choice1": "NO CHANGE",
+                "choice2": "train wrecks, this",
+                "choice3": "train wrecks of which it",
+                "choice4": "train wrecks that",
+                "correct": "train wrecks that",
+                "solution": ""
+            },
+            {
+                "id": 57,
+                "question": "The collaboration between Gnaeus Longinus and Marcus Lividus had put into motion a significant tactical shift in land warfare: the set piece movements had given <u>away to</u> the fluidic tactical movements that would define a new era of warfare.",
+                "choice1": "NO CHANGE",
+                "choice2": "way to",
+                "choice3": "in to",
+                "choice4": "away for",
+                "correct": "way to",
+                "solution": ""
+            },
+            {
+                "id": 58,
+                "question": "In many large cities, affordable playhouses, live music cafes, and art galleries are being replaced by upscale venues such as five star restaurants, couture boutiques, and exclusive cabaret, so there are few and fewer opportunities for the artists just starting out. When business leaders in Garosu-gil, for example, go <u>so far as</u> to rebrand the area a “luxury zone,” they are not appealing to potential customers who struggle to survive as artists.",
+                "choice1": "NO CHANGE",
+                "choice2": "too far",
+                "choice3": "farther",
+                "choice4": "DELETE the underlined portion",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 59,
+                "question": "According to google, persistent (chronic) diarrhoea <u>is defined off of</u> any diarrhoea that lasted for at least 14 consecutive days.",
+                "choice1": "NO CHANGE",
+                "choice2": "defined from",
+                "choice3": "is defined as",
+                "choice4": "is defining whereas",
+                "correct": "is defined as",
+                "solution": ""
+            },
+            {
+                "id": 60,
+                "question": "By the time she was 14, Vin Nu Wa was internationally acclaimed <u>for</u> one of the four so-called Hidden Tigers of the North.",
+                "choice1": "NO CHANGE",
+                "choice2": "as",
+                "choice3": "for been",
+                "choice4": "with",
+                "correct": "as",
+                "solution": ""
+            },
+            {
+                "id": 61,
+                "question": "Fusing modern musical style and folksy tone, Once More and Again, would find wild success in playhouses around Seoul and also pave the way for this new type of musical production to become a permanent fixture <u>on</u> Korean theater.",
+                "choice1": "NO CHANGE",
+                "choice2": "to",
+                "choice3": "in",
+                "choice4": "with",
+                "correct": "in",
+                "solution": ""
+            },
+            {
+                "id": 62,
+                "question": "The bankers know exactly what they're about and in that respect we don't have a thing <u>to worry in</u>.",
+                "choice1": "NO CHANGE",
+                "choice2": "to worry with it",
+                "choice3": "worrying about",
+                "choice4": "to worry about",
+                "correct": "to worry about",
+                "solution": ""
+            },
+            {
+                "id": 63,
+                "question": "Such choices and others resulted in photographs that fall outside of the archetype of photography as a documentary format. Photographers who came after have acknowledged what Cameron's peers could not: the camera can turn away from the material world and its literalism <u>being</u> an artistic interpretation of life.",
+                "choice1": "NO CHANGE",
+                "choice2": "toward",
+                "choice3": "from",
+                "choice4": "beside",
+                "correct": "toward",
+                "solution": ""
+            },
+            {
+                "id": 64,
+                "question": "The term “artisan” has befittingly been taken up by cheese producers who lovingly create their unique cheeses in small batches, have an intimate knowledge of their ingredients, and <u>for the use off</u> techniques that have been hard won by trial and error.",
+                "choice1": "NO CHANGE",
+                "choice2": "use",
+                "choice3": "by using",
+                "choice4": "are using",
+                "correct": "use",
+                "solution": ""
+            },
+            {
+                "id": 65,
+                "question": "Chang interprets quantitative data from earnings reports in order to analyze financial health of companies, and, if necessary, risks of a particular company. In addition <u>for composing</u> data analysis reports, Chang prepares various investor prospectus and conference presentations.",
+                "choice1": "NO CHANGE",
+                "choice2": "to compose",
+                "choice3": "of composing",
+                "choice4": "to composing",
+                "correct": "to composing",
+                "solution": ""
+            },
+            {
+                "id": 66,
+                "question": "Student environmental activists were delighted <u>by</u> the news of the University's decision to shed fossil fuel companies from their endowment portfolios.",
+                "choice1": "NO CHANGE",
+                "choice2": "whereas",
+                "choice3": "as",
+                "choice4": "that",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 67,
+                "question": "The Temple of Wind and Fire became one of the largest One Way sect temples, with 14 masters, 240 monks, and <u>at least</u> many acolytes.",
+                "choice1": "NO CHANGE",
+                "choice2": "at least as",
+                "choice3": "least as",
+                "choice4": "at least with",
+                "correct": "at least as",
+                "solution": ""
+            },
+            {
+                "id": 68,
+                "question": "Cloud9 fans are everywhere, proudly proclaiming their loyalty to what outsiders perceive <u>of</u> a lost cause.",
+                "choice1": "NO CHANGE",
+                "choice2": "for",
+                "choice3": "as",
+                "choice4": "DELETE THE UNDERLINED PORTION",
+                "correct": "as",
+                "solution": ""
+            },
+            {
+                "id": 69,
+                "question": "Port workers in Elizabeth, who spoke to our reporters in confidence, were <u>with anger in</u> the union capitulation.",
+                "choice1": "NO CHANGE",
+                "choice2": "with anger at",
+                "choice3": "angered in",
+                "choice4": "angry at",
+                "correct": "angry at",
+                "solution": ""
+            },
+            {
+                "id": 70,
+                "question": "Brokers and auctioneers <u>profit of</u> charging a small fee for each transaction completed using their services.",
+                "choice1": "NO CHANGE",
+                "choice2": "profit by",
+                "choice3": "profiting by",
+                "choice4": "profited with",
+                "correct": "profit by",
+                "solution": ""
+            },
+            {
+                "id": 71,
+                "question": "Tony Hsieh of Zappos and Travis Kalanick of Uber have promoted napping <u>throughout</u> their workers and have been effusive about the results.",
+                "choice1": "NO CHANGE",
+                "choice2": "among",
+                "choice3": "between",
+                "choice4": "into",
+                "correct": "among",
+                "solution": ""
+            },
+            {
+                "id": 72,
+                "question": "Early last autumn, Kim Jeong Wook stood on the hillside he farms overlooking Korea’s Taebaek mountain range, a landscape of low mountains dotted <u>with</u> drying pollock.",
+                "choice1": "NO CHANGE",
+                "choice2": "inside",
+                "choice3": "for",
+                "choice4": "on",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 73,
+                "question": "At the start of the Post-War Reconstruction era that followed the Korean war, tens of thousands of able bodied males left rural villages <u>for finding</u> economic opportunities in major cities.",
+                "choice1": "NO CHANGE",
+                "choice2": "with a look for",
+                "choice3": "in search of",
+                "choice4": "to the discovery of",
+                "correct": "in search of",
+                "solution": ""
+            },
+            {
+                "id": 74,
+                "question": "By utilizing new augmented reality software Parapatii argued, designers could begin to design interactive characters that would be both integrated <u>into and responsive to</u> environment changes.",
+                "choice1": "NO CHANGE",
+                "choice2": "on and responsive for",
+                "choice3": "by and responsive of",
+                "choice4": "for and responsive with",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 75,
+                "question": "The volunteers maintained the grove for years, restoring the natural beauty of the landscape and reaping fruits and nuts— until an opportunistic member of the group purchased the land and ultimately <u> seceded as</u> evicting the original volunteers.",
+                "choice1": "NO CHANGE",
+                "choice2": "succeeded for",
+                "choice3": "seceded at",
+                "choice4": "succeeded in",
+                "correct": "succeeded in",
+                "solution": ""
+            },
+            {
+                "id": 76,
+                "question": "The basement LAN League of Legends tournaments became so <u>popular, which</u> attendees could not all fit into the basement, and many had to watch from a monitor rigged up on the porch.",
+                "choice1": "NO CHANGE",
+                "choice2": "popular, whose",
+                "choice3": "popular that",
+                "choice4": "popular in which",
+                "correct": "popular that",
+                "solution": ""
+            },
+            {
+                "id": 77,
+                "question": "I am not so interested in endless dialogue with true believers, but I am fascinated <u>on</u> the thoughts and feelings of the unconverted.",
+                "choice1": "NO CHANGE",
+                "choice2": "as",
+                "choice3": "of",
+                "choice4": "by",
+                "correct": "by",
+                "solution": ""
+            },
+            {
+                "id": 78,
+                "question": "There can be little doubt that the vast wall network built <u>at</u> China along their northern border was a major achievement.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "with",
+                "choice4": "as",
+                "correct": "by",
+                "solution": ""
+            },
+            {
+                "id": 79,
+                "question": "The brothers tried their best to isolate the bad apples <u>as</u> the good, but they missed one of the bad apples, spoiling the rest.",
+                "choice1": "NO CHANGE",
+                "choice2": "from",
+                "choice3": "with",
+                "choice4": "by",
+                "correct": "from",
+                "solution": ""
+            },
+            {
+                "id": 80,
+                "question": "The turret casings are made using the single casting process, which <u>allows as</u> easy manufacturing, but is structurally weaker and prone to metal fatigue.",
+                "choice1": "NO CHANGE",
+                "choice2": "allows by",
+                "choice3": "grants to",
+                "choice4": "allows for",
+                "correct": "allows for",
+                "solution": ""
+            },
+            {
+                "id": 81,
+                "question": "By cajoling friends and family to help out and to <u>attribute to</u> his MLM scheme, Juno believes his membership level will rise to that of Ruby Rose Sales Associate.",
+                "choice1": "NO CHANGE",
+                "choice2": "attribute by",
+                "choice3": "contribute to",
+                "choice4": "contribute by",
+                "correct": "contribute to",
+                "solution": ""
+            },
+            {
+                "id": 82,
+                "question": "He swore on his honor and rebirth that he would voluntarily abdicate the throne if the effort proved <u>as</u> a disaster.",
+                "choice1": "NO CHANGE",
+                "choice2": "to be",
+                "choice3": "being",
+                "choice4": "as being",
+                "correct": "to be",
+                "solution": ""
+            },
+            {
+                "id": 83,
+                "question": "When a negotiator introduces a workable solution to a deadlock that is <u>accepted for</u> a good idea, an inhouse opposition group will often engage in a process called teardown.",
+                "choice1": "NO CHANGE",
+                "choice2": "excepted with",
+                "choice3": "accepted as",
+                "choice4": "excepted from",
+                "correct": "accepted as",
+                "solution": ""
+            },
+            {
+                "id": 84,
+                "question": "When Bitcoin was introduced at the turn of the twenty-first century, some people viewed the digital currency as a novelty, <u>no more then just</u> complex algorithms.",
+                "choice1": "NO CHANGE",
+                "choice2": "to be no more then",
+                "choice3": "that they were no more then",
+                "choice4": "no more than",
+                "correct": "no more than",
+                "solution": ""
+            },
+            {
+                "id": 85,
+                "question": "We leave the discerning readers <u>judging by</u> themselves, the real ramifications of the issue.",
+                "choice1": "NO CHANGE",
+                "choice2": "to judge by",
+                "choice3": "judging with",
+                "choice4": "to judge from",
+                "correct": "to judge by",
+                "solution": ""
+            },
+            {
+                "id": 86,
+                "question": "The potential <u>at</u> clandestine operatives to operate in the Tri-border area and elsewhere in Mekong Valley warrants closer scrutiny.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "for",
+                "choice4": "on",
+                "correct": "for",
+                "solution": ""
+            },
+            {
+                "id": 87,
+                "question": "In principle, tasks such as quantum cryptography, secret sharing, and dense coding all benefit <u>whereas</u> using quantum bits larger than the qubit.",
+                "choice1": "NO CHANGE",
+                "choice2": "as",
+                "choice3": "of",
+                "choice4": "from",
+                "correct": "from",
+                "solution": ""
+            },
+            {
+                "id": 88,
+                "question": "“I coulda been a contender, I <u>could of be</u> somebody, instead of a bum, which is what I am.”",
+                "choice1": "NO CHANGE",
+                "choice2": "could've been",
+                "choice3": "could",
+                "choice4": "could of been",
+                "correct": "could've been",
+                "solution": ""
+            },
+            {
+                "id": 89,
+                "question": "Although the capsicum did not originate <u>for</u> this part of the world, Calabria now boasts many varieties.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "in",
+                "choice4": "as",
+                "correct": "in",
+                "solution": ""
+            },
+            {
+                "id": 90,
+                "question": "Dr. Kane told the other conspirators to <u>depose as</u> the evidence before returning to work.",
+                "choice1": "NO CHANGE",
+                "choice2": "depose of",
+                "choice3": "dispose as",
+                "choice4": "dispose of",
+                "correct": "dispose of",
+                "solution": ""
+            },
+            {
+                "id": 91,
+                "question": "Jennifer and Ross took advantage <u>as</u> the turmoil and snuck inside the freight train.",
+                "choice1": "NO CHANGE",
+                "choice2": "of",
+                "choice3": "with",
+                "choice4": "by",
+                "correct": "of",
+                "solution": ""
+            },
+            {
+                "id": 92,
+                "question": "It might surprise you to know 87% of Americans answered that Jesus would <u>disapprove with</u> modern Christianity.",
+                "choice1": "NO CHANGE",
+                "choice2": "disappoint with",
+                "choice3": "disapprove of",
+                "choice4": "disapprove",
+                "correct": "disapprove of",
+                "solution": ""
+            },
+            {
+                "id": 93,
+                "question": "The prize is in honor of Uehara Sora, an authority <u>as</u> tachyonic particles and a pioneer in the field of faster-than-light particles.",
+                "choice1": "NO CHANGE",
+                "choice2": "from",
+                "choice3": "for",
+                "choice4": "on",
+                "correct": "on",
+                "solution": ""
+            },
+            {
+                "id": 94,
+                "question": "Minister Bourgogne knew that the summit was a success when the various diplomats were arguing <u>with</u> the details of the proposed treaty and not with each other.",
+                "choice1": "NO CHANGE",
+                "choice2": "over",
+                "choice3": "to",
+                "choice4": "as",
+                "correct": "over",
+                "solution": ""
+            },
+            {
+                "id": 95,
+                "question": "Microtransactions has plenty of critics, and the debate <u>over</u> its future could become the catalysts for a new breed of game publishers.",
+                "choice1": "NO CHANGE",
+                "choice2": "with",
+                "choice3": "has",
+                "choice4": "that",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 96,
+                "question": "As a drill sergeant it is my responsibility <u>with motivating</u> nuggets and equip them with the tools required to do their jobs successfully.",
+                "choice1": "NO CHANGE",
+                "choice2": "to motivate",
+                "choice3": "that to motivate",
+                "choice4": "that motivating",
+                "correct": "to motivate",
+                "solution": ""
+            },
+            {
+                "id": 97,
+                "question": "These findings demonstrate <u>that</u> resistance traits can be dissected reliably and accurately by DNA sequence analyses.",
+                "choice1": "NO CHANGE",
+                "choice2": "than",
+                "choice3": "with",
+                "choice4": "for",
+                "correct": "NO CHANGE",
+                "solution": ""
+            },
+            {
+                "id": 98,
+                "question": "Some foolhardily believe that, <u>if</u> the right enticements, Pyongyang can be persuaded to give up its nuke program.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "within",
+                "choice4": "with",
+                "correct": "with",
+                "solution": ""
+            },
+            {
+                "id": 99,
+                "question": "Variegated varieties, especially the tri-tone varieties, are valuable for brightening dark areas in the garden, while the trailing stems are much prized <u>along with</u> flower arrangers.",
+                "choice1": "NO CHANGE",
+                "choice2": "by",
+                "choice3": "in",
+                "choice4": "of",
+                "correct": "by",
+                "solution": ""
+            },
+            {
+                "id": 100,
+                "question": "The question arose as to who would be responsible <u>as</u> caring for our invalid grandson.",
+                "choice1": "NO CHANGE",
+                "choice2": "in",
+                "choice3": "for",
+                "choice4": "of",
+                "correct": "for",
+                "solution": ""
+            }
+        ]
+
+
+
+
+
+
+        function getGrammar() {
+            fetch("https://pertinacity1.pythonanywhere.com/idiomchoiceapiview")
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    // console.log("Grammar Api: ", data);
+                    grammarApi = data;
+                    apiJson = data;
+                    datalen = data.length;
+
+                })
+
+            // document.getElementById('returnBox').innerHTML = sliced
+            // var randomnumbers = res.slice(0, 10);
+
+
+        }
+
+        var sliced = (json)
+        console.log(json.length)
+        // for (let i = 0; i < 100; i++) {
+        //     const node = document.createElement("p");
+        //     node.style.color = "orange";
+        //     const textnode = document.createTextNode(sliced[i].question + ", " + sliced[i].id);
+        //     node.appendChild(textnode);
+        //     document.getElementById("returnBox").appendChild(node);
+
+        //     // console.log(apiJson[i])
+
+        // }
+
+
+    </script>
+
+</body>
+
+</html>

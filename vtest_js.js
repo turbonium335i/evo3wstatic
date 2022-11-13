@@ -4,31 +4,20 @@ var x = setInterval(function () {
     .getElementsByClassName("progress-bar")[0]
     .setAttribute("style", "width:" + progressPercentage + "%");
   progressPercentage += 5;
-  if (progressPercentage >= 80) {
+  if (progressPercentage >= 80 || progressPercentage == 100) {
     clearInterval(x);
   }
 }, 100);
-
-// setTimeout(function () {
-//   document
-//     .getElementsByClassName("progress-bar")[0]
-//     .setAttribute("style", "width:" + 100 + "%");
-
-//   document.getElementById("jsData").innerHTML = "Test is ready. Good Luck!";
-//   document
-//     .getElementById("startBtn")
-//     .classList.remove("d-none", "btn-secondary");
-//   document.getElementById("startBtn").classList.add("btn-outline-warning");
-// }, 2000);
 
 function hideMainDiv() {
   document.getElementById("mainDiv").classList.add("d-none");
   document.getElementById("testDiv").classList.remove("d-none");
   startime();
+  lvlsend(1, "started");
 }
 
 var myVar;
-var timeLeft = 3000000;
+var timeLeft = 901000;
 var countDownDate;
 
 function startTimer() {
@@ -54,7 +43,7 @@ function startTimer() {
     document.getElementById("demo").innerHTML = "TIME'S UP";
     // document.getElementById("testDiv").classList.add("d-none");
     // document.getElementById("resultbox").classList.remove("d-none");
-    // showResults()
+    showResults();
   }
   timeLeft -= 1000;
   // localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
@@ -64,6 +53,19 @@ function startTimer() {
 function startime() {
   myVar = setInterval(startTimer, 1000);
   countDownDate = Date.now() + timeLeft;
+}
+
+function timerFunction() {
+  var timer = document.getElementById("timer");
+  var demo = document.getElementById("demo");
+
+  if (timer.classList.contains("timerOn")) {
+    demo.style.display = "none";
+    timer.classList.remove("timerOn");
+  } else {
+    demo.style.display = "block";
+    timer.classList.add("timerOn");
+  }
 }
 
 function lvlsend(productId, action) {
@@ -99,6 +101,13 @@ var datalen = 0;
 //     document.getElementById("grammarbox").appendChild(node);
 //   }
 // }
+
+//////////////////////////////// confirm eligibility to take the test from django side
+
+var apiGrammar = [];
+var apiContext = [];
+var apiIdiom = [];
+
 function getGrammar() {
   fetch("https://pertinacity1.pythonanywhere.com/grammarapi")
     .then((resp) => resp.json())
@@ -108,12 +117,26 @@ function getGrammar() {
       apiJson = data;
       datalen = data.length;
 
+      // for (let i = 0; i < apiJson.length; i++) {
+      //   console.log(apiJson[i].correct);
+      // }
+
       // grammarApi.forEach(myFunction);
       //   var randData = apiJson[Math.floor(Math.random() * apiJson.length)];
       //   var rArray = [...Array(datalen).keys()];
       // console.log(rArray.length)
 
-      document.getElementById("grammarbox").innerHTML = "api fetch completed!";
+      for (let i = 0; i < datalen; i++) {
+        if (apiJson[i].qtype == "Grammar") {
+          apiGrammar.push(apiJson[i]);
+        } else if (apiJson[i].qtype == "Context") {
+          apiContext.push(apiJson[i]);
+        } else if (apiJson[i].qtype == "Idiom") {
+          apiIdiom.push(apiJson[i]);
+        }
+      }
+
+      document.getElementById("grammarbox").innerHTML = "Connection Secured.";
 
       function getRanArr(lngth) {
         let arr = [];
@@ -125,21 +148,46 @@ function getGrammar() {
         return arr;
       }
 
-      const res = getRanArr(datalen);
-      var randomnumbers = res.slice(0, 20);
+      const res = getRanArr(20);
+      // var randomnumbers = res.slice(0, 10);
+      var randomnumbers = res;
+
+      var idiomLen = 0;
+      var contenxtLen = 0;
+      var grammarLen = 0;
 
       for (let i = 0; i < randomnumbers.length; i++) {
         var rn = randomnumbers[i];
-        levelTestSet.push(data[rn]);
+
+        if (grammarLen < 10) {
+          levelTestSet.push(apiGrammar[rn]);
+          grammarLen += 1;
+        }
+        if (contenxtLen < 5) {
+          levelTestSet.push(apiContext[rn]);
+          contenxtLen += 1;
+        }
+        if (idiomLen < 5) {
+          levelTestSet.push(apiIdiom[rn]);
+          idiomLen += 1;
+        }
+        if (grammarLen == 10 && contenxtLen == 5 && idiomLen == 5) {
+          break;
+        }
       }
-      apiJson = levelTestSet;
-      console.log(levelTestSet);
+
+      apiJson = levelTestSet.sort(() => Math.random() - 0.5);
+      console.log(apiJson);
+
+      // for (let i = 0; i < apiJson.length; i++) {
+      //   console.log(i, apiJson[i].qtype);
+      // }
       updateQuestion();
 
-      document
-        .getElementsByClassName("progress-bar")[0]
-        .setAttribute("style", "width:" + 100 + "%");
-
+      // document
+      //   .getElementsByClassName("progress-bar")[0]
+      //   .setAttribute("style", "width:" + 100 + "%");
+      progressPercentage = 100;
       document.getElementById("jsData").innerHTML = "Test is ready. Good Luck!";
       document
         .getElementById("startBtn")
@@ -163,21 +211,106 @@ var b = document.getElementById("b");
 var c = document.getElementById("c");
 var d = document.getElementById("d");
 
+var qtype = [];
+
+// var qtype = ["a", "b", "c", "b", "a", "b", "c", "a", "a", "a"];
+// function qtypeCount(array) {
+//   var typeCount = {};
+//   array.forEach((val) => (typeCount[val] = (typeCount[val] || 0) + 1));
+//   return typeCount;
+// }
+
+// var wrongCount = qtypeCount(qtype);
+// for (const [key, value] of Object.entries(wrongCount)) {
+//   console.log(key, value);
+// }
+
 function showResults() {
+  function qtypeCount(array) {
+    var typeCount = {};
+    array.forEach((val) => (typeCount[val] = (typeCount[val] || 0) + 1));
+    return typeCount;
+  }
+  var qtypeResult = qtypeCount(qtype);
+  console.log(qtypeResult);
+  var qtypeGrammar = qtypeResult["Grammar"] * 10;
+  var qtypeContext = qtypeResult["Context"] * 20;
+  var qtypeIdiom = qtypeResult["Idiom"] * 20;
+
   document.getElementById("testDiv").classList.add("d-none");
   document.getElementById("resultbox").classList.remove("d-none");
 
   var percentCorrectBar = correctCount.length * 20;
-  document
-    .getElementsByClassName("progress-bar")[2]
-    .setAttribute("style", "width:" + percentCorrectBar + "%");
-  document.getElementById("resultpercentagetext").innerHTML =
-    percentCorrectBar + "%";
 
-  fetti();
-  //   console.log("fetti fired");
-  // setTimeout(function () { window.location.href = 'https://wavecafe.pythonanywhere.com/' }, 6000);
-  // $("body").fadeOut(4000, function () { window.location.href = 'https://wavecafe.pythonanywhere.com/' })
+  if (percentCorrectBar > 40) {
+    document
+      .getElementsByClassName("progress-bar")[2]
+      .setAttribute("style", "width:" + percentCorrectBar + "%");
+    document.getElementById("resultpercentagetext").innerHTML =
+      percentCorrectBar + "%";
+    document.getElementById(
+      "resultBox"
+    ).innerHTML = `Results : <span class="text-success" >Proficieny PASSED!</span>`;
+
+    //subscore bar
+    document
+      .getElementsByClassName("progress-bar")[3]
+      .setAttribute("style", "width:" + qtypeGrammar + "%");
+
+    document.getElementById("grammarResult").innerHTML = qtypeGrammar + "%";
+
+    document
+      .getElementsByClassName("progress-bar")[4]
+      .setAttribute("style", "width:" + qtypeContext + "%");
+
+    document.getElementById("contextResult").innerHTML = qtypeContext + "%";
+
+    document
+      .getElementsByClassName("progress-bar")[5]
+      .setAttribute("style", "width:" + qtypeIdiom + "%");
+
+    document.getElementById("idiomResult").innerHTML = qtypeIdiom + "%";
+
+    fetti();
+    //   console.log("fetti fired");
+    // setTimeout(function () { window.location.href = 'https://wavecafe.pythonanywhere.com/' }, 6000);
+    // $("body").fadeOut(4000, function () { window.location.href = 'https://wavecafe.pythonanywhere.com/' })
+  } else {
+    document
+      .getElementsByClassName("progress-bar")[2]
+      .classList.add("bg-danger");
+
+    document
+      .getElementsByClassName("progress-bar")[2]
+      .setAttribute("style", "width:" + percentCorrectBar + "%");
+
+    document.getElementById("resultpercentagetext").innerHTML =
+      percentCorrectBar + "%";
+    document.getElementById(
+      "resultBox"
+    ).innerHTML = `Results : ${percentCorrectBar}% <br> <span class="text-danger h6" >Proficieny FAILED. Passing score is 80% or above. You may try again in one week.</span>`;
+
+    //subscore bar
+    document
+      .getElementsByClassName("progress-bar")[3]
+      .setAttribute("style", "width:" + qtypeGrammar + "%");
+
+    document.getElementById("grammarResult").innerHTML = qtypeGrammar + "%";
+
+    document
+      .getElementsByClassName("progress-bar")[4]
+      .setAttribute("style", "width:" + qtypeContext + "%");
+
+    document.getElementById("contextResult").innerHTML = qtypeContext + "%";
+
+    document
+      .getElementsByClassName("progress-bar")[5]
+      .setAttribute("style", "width:" + qtypeIdiom + "%");
+
+    document.getElementById("idiomResult").innerHTML = qtypeIdiom + "%";
+  }
+
+  lvlsend(percentCorrectBar, "completed");
 }
 
 function showSolution() {
@@ -202,6 +335,8 @@ c.addEventListener("click", function () {
 d.addEventListener("click", function () {
   checkAnswer(d);
 });
+// qtype correct divided by X
+
 var correctCount = [];
 var progressDone = 0;
 var currentQuestion = [];
@@ -217,7 +352,8 @@ function checkAnswer(ans) {
       correctCount.push(q);
     }
     clicked = true;
-    console.log(correctCount);
+    // console.log(correctCount);
+    qtype.push(currentQuestion.qtype);
     document.getElementById("noCorrect").innerHTML =
       correctCount.length + "/" + progressDone;
   } else {
@@ -248,7 +384,7 @@ function loadQuestion(q) {
   if (q == 5) {
     showResults();
     //endtest // also if time runs out.
-    console.log("fire show results", correctCount.length);
+    // console.log("fire show results", correctCount.length);
   }
 
   clicked = false;

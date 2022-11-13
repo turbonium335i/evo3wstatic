@@ -23,7 +23,7 @@
         <br>
         <div class="d-flex justify-content-start   pe-4 mb-3">
             <h3>
-                <span class="text-dark">Module 1 Directions &nbsp;
+                <span class="text-light"> Directions &nbsp;
                 </span>
             </h3>
 
@@ -78,11 +78,22 @@
 
     </div>
 
-    <div class="container px-lg-5  " id="testDiv">
+    <div class="container px-lg-5  d-none" id="testDiv">
         <div class="text-center m-3">
             <h5 class="text-light">Verification Test / Correct: <span class="text-success" id="noCorrect">0</span></h5>
         </div>
-        <div class="text-danger text-end"><span id="demo">00h 00m 00s </span></div>
+        <div class="d-flex justify-content-end ">
+
+            <span class="text-light" onclick="timerFunction()" style="cursor: pointer;">
+                <i class="bi bi-clock-history text-danger timerOn" id="timer"></i> &nbsp;
+            </span>
+
+            <span id="demo">00h 00m 00s </span>
+        </div>
+
+
+
+
         <div class="progress bg-secondary" style="height: 2px;">
             <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
                 aria-valuemax="100"></div>
@@ -98,31 +109,57 @@
         <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">C. are</div>
         <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">D. was</div>
         <div class="text-end mx-lg-5 my-4 ">
-
+            <button type="button" class="btn btn-outline-secondary float-start " id="read">
+                <i class="bi bi-soundwave"></i></button>
             <button type="button" class="btn btn-outline-primary  " id="next">Next <i
                     class="bi bi-arrow-right-circle"></i></button>
             <br>
         </div>
         <div class="container d-none" id="solution"></div>
     </div>
-    <div id="grammarbox" class="container my-5">gbox</div>
+    <div id="grammarbox" class="container my-5 text-secondary">gbox</div>
 
     <!-- add d-none to result box below -->
-    <div id="resultbox" class="container my-5  ">
+    <div id="resultbox" class="container my-5  d-none">
 
-        <div class="text-warning h4 text-center">Results : Verification Passed!</div>
+        <div class="text-warning h2 text-center mb-5" id="resultBox">
+        </div>
         <br>
+
         General English Proficieny
-        <div class="progress bg-dark border border-success mb-3 rounded-0 mt-2" style="height: 50px;">
+        <div class="progress bg-dark border border-success mb-3 rounded-0 mt-1" style="height: 50px;">
             <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="25"
                 aria-valuemin="0" aria-valuemax="100"><span id="resultpercentagetext">0%</span></div>
         </div>
+        <br>
+        <br>
+        Grammar: <span class="text-warning" id="grammarResult"></span>
+        <div class="progress bg-secondary    mb-3 rounded-0 mt-1" style="height: 2px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        Word in Context: <span class="text-warning" id="contextResult"></span>
+        <div class="progress bg-secondary     mb-3 rounded-0 mt-1" style="height: 2px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        Idiom: <span class="text-warning" id="idiomResult"></span>
+        <div class="progress bg-secondary     mb-3 rounded-0 mt-1" style="height: 2px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="text-center my-5">
+            <a href="" class="btn btn-outline-light btn-lg mt-5"><i class="bi bi-arrow-left-circle"></i> Home
+            </a>
+        </div>
+
     </div>
 
 </body>
 
-<script type="text/javascript" src="vtest_directions.js"></script>
+
 <script type="text/javascript" src="vtest_js.js"></script>
 <script type="text/javascript" src="vtest_confetti.js"></script>
+<script type="text/javascript" src="vtest_speech.js"></script>
 
 </html>
