@@ -70,10 +70,10 @@
             <i class="bi bi-window-fullscreen" onclick="fullscreen()"></i> &nbsp;F11
             &nbsp;
             <span class="text-dark" onclick="timerFunction()" style="cursor: pointer;">
-                <i class="bi bi-clock-history timerOn" id="timer"></i> Remaining &nbsp;
+                <i class="bi bi-clock-history timerOn" id="timer"></i> &nbsp;
             </span>
 
-            <span id="demo">00h 00m 00s </span>
+            <span id="demo" class="text-light border px-1 rounded bg-secondary">00h 00m 00s </span>
         </div>
         <!--    <div class="fw-bold mb-1 mx-0">PASSAGE I</div>-->
 
@@ -208,7 +208,10 @@
 
         if (localStorage.getItem('mathOneApiTime') !== null) {
             console.log(`mathOneApiTime exists`);
-            timeLeft = parseInt(localStorage.getItem('mathOneApiTime'))
+            // timeLeft = parseInt(localStorage.getItem('mathOneApiTime'))
+            timeLeft = 3610000
+
+
 
         } else {
             console.log(`mathOneApiTime not found`);
@@ -244,436 +247,426 @@
             timeLeft -= 1000
             localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
             localStorage.setItem('mathOneApiTime', JSON.stringify(timeLeft));
+        })
 
 
-            function timerFunction() {
+        function timerFunction() {
 
-                var timer = document.getElementById("timer");
-                var demo = document.getElementById("demo");
+            var timer = document.getElementById("timer");
+            var demo = document.getElementById("demo");
 
-                if (timer.classList.contains('timerOn')) {
+            if (timer.classList.contains('timerOn')) {
 
-                    demo.style.display = "none";
-                    timer.classList.remove("timerOn");
-
-
-                } else {
-                    demo.style.display = "block";
-                    timer.classList.add("timerOn");
-
-                }
+                demo.style.display = "none";
+                timer.classList.remove("timerOn");
 
 
+            } else {
+                demo.style.display = "block";
+                timer.classList.add("timerOn");
 
             }
 
 
 
-
+        }
 
 
     </script>
     <script>
-            function viewCal() {
-                const element = document.getElementById("calculatorx");
-                element.scrollIntoView();
-            }
+        function viewCal() {
+            const element = document.getElementById("calculatorx");
+            element.scrollIntoView();
+        }
 
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
 
     <script>
 
-            var obj = {}
+        var obj = {}
 
-            const user_id = JSON.parse(document.getElementById('user_id').textContent);
-            console.log("user_id", user_id)
+        // const user_id = JSON.parse(document.getElementById('user_id').textContent);
+        // console.log("user_id", user_id)
 
-            var localAnswers = localStorage.getItem("mathOneApi");
-            console.log(localAnswers)
+        var localAnswers = localStorage.getItem("mathOneApi");
+        console.log(localAnswers)
 
-            if (localAnswers !== null) {
-                var b = localAnswers.replace(/'/g, '"');
-                obj = JSON.parse(b);
-                console.log(obj);
+        if (localAnswers !== null) {
+            var b = localAnswers.replace(/'/g, '"');
+            obj = JSON.parse(b);
+            console.log(obj);
 
-            }
+        }
 
-            var inputBox = document.getElementById("inputBox");
+        var inputBox = document.getElementById("inputBox");
 
-            var doneList = obj
-            var flagList = {}
+        var doneList = obj
+        var flagList = {}
 
-            var currentQuestion = 1;
-            var lastQuestion = 1;
-
-
-
-            var qCount = 43;
-            var qArray = [];
-            for (let i = 1; i < qCount; i++) {
-                qArray.push({ [i]: '' })
-            }
+        var currentQuestion = 1;
+        var lastQuestion = 1;
 
 
-            var questionBox = document.getElementById("questionBox");
 
-            for (let i = 1; i < qArray.length + 1; i++) {
-                console.log(flagList[i])
+        var qCount = 33;
+        var qArray = [];
+        for (let i = 1; i < qCount; i++) {
+            qArray.push({ [i]: '' })
+        }
 
 
-                if (i === 1 && doneList[i] === '') {
+        var questionBox = document.getElementById("questionBox");
 
-                    var qBtn = `
+        for (let i = 1; i < qArray.length + 1; i++) {
+            console.log(flagList[i])
+
+
+            if (i === 1 && doneList[i] === '') {
+
+                var qBtn = `
 <button type="button" class="btn btn-light btn-sm notDone border-dark py-0 " id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
-                }
+            }
 
-                else if (i === 1 && doneList[i] !== undefined) {
-                    var qBtn = `
+            else if (i === 1 && doneList[i] !== undefined) {
+                var qBtn = `
 <button type="button" class="btn   btn-sm  btn-primary py-0  border-danger border-2"
 id=b${i} onclick="btnFunction(${i})">${i}</button>`
-                }
+            }
 
-                else if (i === 1 && flagList[i] !== undefined) {
-                    var qBtn = `
+            else if (i === 1 && flagList[i] !== undefined) {
+                var qBtn = `
 <button type="button" class="btn btn-outline-dark btn-sm py-0  btn-warning  border-danger border-2"
 id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
-                }
-                else if (i === 1 && doneList[i] !== undefined && flagList[i] !== undefined) {
-                    var qBtn = `
+            }
+            else if (i === 1 && doneList[i] !== undefined && flagList[i] !== undefined) {
+                var qBtn = `
 <button type="button" class="btn btn-outline-dark btn-sm py-0 notDone border-danger border-2"
 id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
-                }
+            }
 
-                else if (doneList[i] === '') {
-                    var qBtn = `
+            else if (doneList[i] === '') {
+                var qBtn = `
 <button type="button" class="btn btn-light btn-sm notDone border-dark py-0 " id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
-                }
+            }
 
 
 
-                else if (doneList[i] !== undefined) {
-                    var qBtn = `
+            else if (doneList[i] !== undefined) {
+                var qBtn = `
 <button type="button" class="btn  btn-primary btn-sm py-0 border-dark "
 id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
-                }
+            }
 
-                else if (flagList[i] !== undefined) {
-                    var qBtn = `
+            else if (flagList[i] !== undefined) {
+                var qBtn = `
 <button type="button" class="btn  btn-warning btn-sm  py-0 border-dark "
 id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
-                }
+            }
 
 
-                else {
+            else {
 
-                    var qBtn = `
+                var qBtn = `
 <button type="button" class="btn btn-light btn-sm notDone border-dark py-0 " id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
-                }
-
-
-
-                questionBox.innerHTML += qBtn;
             }
 
 
 
-            function nextFunction() {
-                console.log('currentQuestion: ', currentQuestion)
-                var checkRadio = document.querySelector('input[name="fav_language"]:checked');
-                if (checkRadio != null) {
-                    var clickedBtn = document.getElementById("b" + currentQuestion.toString());
+            questionBox.innerHTML += qBtn;
+        }
 
-                    console.log(flagList);
 
-                    if (flagList.hasOwnProperty(currentQuestion.toString())) {
-                        console.log("in flag function");
-                        currentQuestion += 1;
-                        btnFunction(currentQuestion);
-                    } else {
 
-                        clickedBtn.classList.remove("btn-light", "btn-warning", "btn-dark");
-                        clickedBtn.classList.add("btn-primary");
-                        doneList[currentQuestion] = checkRadio.id;
-                        console.log(doneList);
-                        localStorage.setItem("doneList", JSON.stringify(doneList));
-                        $("#submitCheck")
-                            .fadeOut(100)
-                            .fadeIn(200)
-                            .fadeOut(100)
-                            .fadeIn(200)
-                            .fadeOut(100)
-                            .fadeIn(100);
-                        currentQuestion += 1;
-                        btnFunction(currentQuestion);
-                    }
+        function nextFunction() {
+            console.log('currentQuestion: ', currentQuestion)
+            var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+            if (checkRadio != null) {
+                var clickedBtn = document.getElementById("b" + currentQuestion.toString());
+
+                console.log(flagList);
+
+                if (flagList.hasOwnProperty(currentQuestion.toString())) {
+                    console.log("in flag function");
+                    currentQuestion += 1;
+                    btnFunction(currentQuestion);
                 } else {
+
+                    clickedBtn.classList.remove("btn-light", "btn-warning", "btn-dark");
+                    clickedBtn.classList.add("btn-primary");
+                    doneList[currentQuestion] = checkRadio.id;
+                    console.log(doneList);
+                    localStorage.setItem("doneList", JSON.stringify(doneList));
+                    $("#submitCheck")
+                        .fadeOut(100)
+                        .fadeIn(200)
+                        .fadeOut(100)
+                        .fadeIn(200)
+                        .fadeOut(100)
+                        .fadeIn(100);
                     currentQuestion += 1;
                     btnFunction(currentQuestion);
                 }
+            } else {
+                currentQuestion += 1;
+                btnFunction(currentQuestion);
+            }
+        }
+
+        function prevFunction() {
+
+            currentQuestion -= 1;
+            btnFunction(currentQuestion)
+
+
+        }
+
+
+
+
+        function btnFunction(id) {
+
+            var subjectiveAnswers = [40, 41]
+
+            if (subjectiveAnswers.includes(id)) {
+
+                multiBox.classList.remove("d-inline");
+                multiBox.classList.add("d-none");
+                inputBox.classList.remove("d-none");
+                inputBox.classList.add("d-inline");
+            } else {
+
+                multiBox.classList.add("d-inline");
+                multiBox.classList.remove("d-none");
+                inputBox.classList.add("d-none");
+                inputBox.classList.remove("d-inline");
+
             }
 
-            function prevFunction() {
 
-                currentQuestion -= 1;
-                btnFunction(currentQuestion)
+            var lastClickedBtn = document.getElementById('b' + (lastQuestion.toString()));
+            lastClickedBtn.classList.remove("border-danger", "border-2");
+            lastClickedBtn.classList.add("border-dark");
+
+            currentQuestion = id
+
+            var clickedBtn = document.getElementById('b' + (id.toString()));
+            clickedBtn.classList.remove("border-dark");
+            clickedBtn.classList.add("border-danger", "border-2");
 
 
+            document.getElementById('questionNo').innerHTML = id
+            $("#questionNo").fadeOut(300).fadeIn(300)
+
+
+
+
+
+            lastQuestion = currentQuestion
+
+
+
+            try {
+
+                document.getElementById(doneList[id.toString()]).checked = true;
             }
+            catch (err) {
 
+                try { document.getElementById(flagList[id.toString()]).checked = true; }
 
-
-
-            function btnFunction(id) {
-
-                var subjectiveAnswers = [40, 41]
-
-                if (subjectiveAnswers.includes(id)) {
-
-                    multiBox.classList.remove("d-inline");
-                    multiBox.classList.add("d-none");
-                    inputBox.classList.remove("d-none");
-                    inputBox.classList.add("d-inline");
-                } else {
-
-                    multiBox.classList.add("d-inline");
-                    multiBox.classList.remove("d-none");
-                    inputBox.classList.add("d-none");
-                    inputBox.classList.remove("d-inline");
-
-                }
-
-
-                var lastClickedBtn = document.getElementById('b' + (lastQuestion.toString()));
-                lastClickedBtn.classList.remove("border-danger", "border-2");
-                lastClickedBtn.classList.add("border-dark");
-
-                currentQuestion = id
-
-                var clickedBtn = document.getElementById('b' + (id.toString()));
-                clickedBtn.classList.remove("border-dark");
-                clickedBtn.classList.add("border-danger", "border-2");
-
-
-                document.getElementById('questionNo').innerHTML = id
-                $("#questionNo").fadeOut(300).fadeIn(300)
-
-
-
-
-
-                lastQuestion = currentQuestion
-
-
-
-                try {
-
-                    document.getElementById(doneList[id.toString()]).checked = true;
-                }
                 catch (err) {
-
-                    try { document.getElementById(flagList[id.toString()]).checked = true; }
-
-                    catch (err) {
-                        console.log('radio empty')
-                        var checkRadio = document.querySelector('input[name="fav_language"]:checked');
-                        // console.log(document.querySelector('input[name="fav_language"]:checked'));
-
-                        if (checkRadio != null) {
-                            document.querySelector('input[name="fav_language"]:checked').checked = false;
-
-                        }
-
-                    }
-
-
-
-
-                }
-
-
-            }
-
-
-            function saveFunction() {
-
-                var checkRadio = document.querySelector('input[name="fav_language"]:checked');
-                checkRadio.checked = false;
-                var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
-                clickedBtn.classList.remove("btn-primary");
-                clickedBtn.classList.add("btn-light", "btn-warning", "notDone");
-
-                delete doneList[currentQuestion];
-                delete flagList[currentQuestion];
-                console.log(doneList);
-                localStorage.setItem('doneList', JSON.stringify(doneList));
-
-
-
-
-
-
-                function flagFunction() {
-
+                    console.log('radio empty')
                     var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+                    // console.log(document.querySelector('input[name="fav_language"]:checked'));
 
                     if (checkRadio != null) {
-
-                        var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
-                        clickedBtn.classList.remove("btn-light", "btn-outline-primary", "btn-dark");
-                        clickedBtn.classList.add("btn-warning");
-                        flagList[currentQuestion] = checkRadio.id;
-                        doneList[currentQuestion] = checkRadio.id;
+                        document.querySelector('input[name="fav_language"]:checked').checked = false;
 
                     }
-
 
                 }
 
 
 
 
-
-                function clearAnswers() {
-
-                    console.log('clear answers')
-                    // document.querySelector('input[name="fav_language"]:checked').checked = false;
-
-                }
+            }
 
 
+        }
 
 
-                function doneAnswers() {
+        function saveFunction() {
 
-                    console.log(doneList);
-                    var ls = localStorage.getItem("doneList");
-                    console.log('ls', ls)
+            var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+            checkRadio.checked = false;
+            var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
+            clickedBtn.classList.remove("btn-primary");
+            clickedBtn.classList.add("btn-light", "btn-warning", "notDone");
 
-                    var endSectionBtn = document.getElementById('endSectionBtn')
-                    endSectionBtn.disabled = true;
+            delete doneList[currentQuestion];
+            delete flagList[currentQuestion];
+            console.log(doneList);
+            localStorage.setItem('doneList', JSON.stringify(doneList));
 
-                    if (ls === null) {
-< !--localStorage.removeItem("doneList"); -->
-                            location.replace("{% url 'index' %}")
-                    } else {
-                        saveAnswers()
-
-                    }
-
-                    function saveAnswers() {
-
-                        var timeLeft = localStorage.getItem("timeLeft");
-                        var selectedTest = localStorage.getItem("selectedTest");
-                        var selectedTestId = localStorage.getItem("selectedTestId");
+        }
 
 
-                        var url = "/endsection";
-
-                        fetch(url, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-
-                            },
-
-                            body: JSON.stringify({
-                                'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
-                                'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
-                            }),
-                        })
-                            .then((response) => {
-                                return response.json();
-                            })
-                            .then((data) => {
-                                console.log("response: ", data);
-                                if (data === "progress saved") {
-< !--alert('data sent success')-->
-< !--localStorage.clear(); -->
-                                        localStorage.removeItem("doneList");
-                                    localStorage.removeItem("timeLeft");
-                                    location.replace("{% url 'directionsm2' %}")
-                                }
-                            });
-                    }
-
-                }
-
-                btnFunction(1)
 
 
-                function doneBackup() {
-                    console.log(doneList);
-                    var ls = localStorage.getItem("doneList");
-                    var timeLeft = localStorage.getItem("timeLeft");
+        function flagFunction() {
 
-                    var selectedTest = localStorage.getItem("selectedTest");
-                    var selectedTestId = localStorage.getItem("selectedTestId");
+            var checkRadio = document.querySelector('input[name="fav_language"]:checked');
 
-                    var url = "/endsection";
+            if (checkRadio != null) {
 
-                    fetch(url, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
+                var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
+                clickedBtn.classList.remove("btn-light", "btn-outline-primary", "btn-dark");
+                clickedBtn.classList.add("btn-warning");
+                flagList[currentQuestion] = checkRadio.id;
+                doneList[currentQuestion] = checkRadio.id;
 
-                        body: JSON.stringify({
-                            'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
-                            'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
-                        }),
+            }
+
+
+        }
+
+
+
+
+
+        function clearAnswers() {
+
+            console.log('clear answers')
+            // document.querySelector('input[name="fav_language"]:checked').checked = false;
+
+        }
+
+
+
+
+        function doneAnswers() {
+
+            console.log(doneList);
+            var ls = localStorage.getItem("doneList");
+            console.log('ls', ls)
+
+            var endSectionBtn = document.getElementById('endSectionBtn')
+            endSectionBtn.disabled = true;
+
+            if (ls === null) {
+                location.replace("{% url 'index' %}")
+            } else {
+                saveAnswers()
+
+            }
+
+            function saveAnswers() {
+
+                var timeLeft = localStorage.getItem("timeLeft");
+                var selectedTest = localStorage.getItem("selectedTest");
+                var selectedTestId = localStorage.getItem("selectedTestId");
+
+
+                var url = "/endsection";
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+
+                    },
+
+                    body: JSON.stringify({
+                        'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
+                        'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
+                    }),
+                })
+                    .then((response) => {
+                        return response.json();
                     })
-                        .then((response) => {
-                            return response.json();
-                        })
-                        .then((data) => {
-                            console.log("response: ", data);
-                            if (data === "progress saved") {
-                                console.log("data saved");
-                            }
-                        });
+                    .then((data) => {
+                        console.log("response: ", data);
+                        if (data === "progress saved") {
+
+                            localStorage.removeItem("doneList");
+                            localStorage.removeItem("timeLeft");
+                            location.replace("{% url 'directionsm2' %}")
+                        }
+                    });
+            }
+
+        }
+
+        btnFunction(1)
+
+
+        function doneBackup() {
+            console.log(doneList);
+            var ls = localStorage.getItem("doneList");
+            var timeLeft = localStorage.getItem("timeLeft");
+
+            var selectedTest = localStorage.getItem("selectedTest");
+            var selectedTestId = localStorage.getItem("selectedTestId");
+
+            var url = "/endsection";
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+                body: JSON.stringify({
+                    'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
+                    'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
+                }),
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log("response: ", data);
+                    if (data === "progress saved") {
+                        console.log("data saved");
+                    }
+                });
+        }
+
+        var elapsed = 0;
+
+        var x = setInterval(function () {
+            var ls = localStorage.getItem("doneList");
+
+            if (ls != null) {
+                doneBackup();
+            } else {
+                console.log("backup empty")
+
+
+
+                elapsed += 60000;
+                console.log(elapsed);
+
+                if (elapsed > 3600000) {
+                    clearInterval();
+                    doneAnswers()
                 }
 
-                var elapsed = 0;
-
-                var x = setInterval(function () {
-                    var ls = localStorage.getItem("doneList");
-
-                    if (ls != null) {
-                        doneBackup();
-                    } else {
-                        console.log("backup empty")
-
-
-
-                        elapsed += 60000;
-                        console.log(elapsed);
-
-                        if (elapsed > 3600000) {
-                            clearInterval();
-                            doneAnswers()
-                        }
-
-                    }
-                }, 60000);
-
-
-
-
-
+            }
+        }, 60000);
 
 
     </script>
@@ -684,32 +677,26 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
     <script>
 
-                function fullscreen() {
-                    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-                        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-                        if (document.documentElement.requestFullScreen) {
-                            document.documentElement.requestFullScreen();
-                        } else if (document.documentElement.mozRequestFullScreen) {
-                            document.documentElement.mozRequestFullScreen();
-                        } else if (document.documentElement.webkitRequestFullScreen) {
-                            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                        }
-                    } else {
-                        if (document.cancelFullScreen) {
-                            document.cancelFullScreen();
-                        } else if (document.mozCancelFullScreen) {
-                            document.mozCancelFullScreen();
-                        } else if (document.webkitCancelFullScreen) {
-                            document.webkitCancelFullScreen();
-                        }
-                    }
+        function fullscreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
                 }
-
-
-
-
-
-
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
+        }
 
 
 
@@ -717,9 +704,9 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
     <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script>
-                var elt = document.getElementById('calculatorx');
-                var calculator = Desmos.GraphingCalculator(elt);
-                calculator.setExpression({ id: 'graph1', latex: 'y=x^2' });
+        var elt = document.getElementById('calculatorx');
+        var calculator = Desmos.GraphingCalculator(elt);
+        calculator.setExpression({ id: 'graph1', latex: 'y=x^2' });
 
 
     </script>
