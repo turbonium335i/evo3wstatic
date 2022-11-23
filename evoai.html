@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evo-A.I.</title>
+    <link rel="shortcut icon" type="image/png"
+        href="https://i.postimg.cc/TwPQwwDF/204-2049751-network-icon-red-network-icon-png.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark text-light">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img
+                    src="https://i.postimg.cc/TwPQwwDF/204-2049751-network-icon-red-network-icon-png.png"
+                    style="max-width:30px;width:100%"> &nbsp;
+                EVO-AI SAT</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">CBT SAT</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <p class="ms-3">Next Test - Jan 1 2023: <span class="text-danger" id="demo">00:00:00</span> </p>
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col   py-2">
+                <canvas id="myChart"></canvas>
+
+            </div>
+            <div class="col d-flex flex-column">
+                <h3 class="text-warning my-2">Student Statistics</h3>
+                <li>Sets Practiced : 434</li>
+                <li>Questions Practiced : 434</li>
+                <li>Words Studied: 300</li>
+                <li>Status: Super Student</li>
+                <li>Grade: 9</li>
+                <br>
+
+                <button class="w-100 btn btn-outline-warning mt-auto mb-2">A.I. Engine Recommended Practice</button>
+
+            </div>
+
+        </div>
+        <hr class="bg-danger">
+        <div class="row">
+            <div class="col   py-3">
+                <p>Random</p>
+                <div class="btn-group d-flex justify-content-center" role="group"
+                    aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+                </div>
+            </div>
+            <div class="col   py-3">
+                <p>Grammar</p>
+                <div class="btn-group d-flex justify-content-center" role="group"
+                    aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col   py-3">
+                <p>Vocabulary</p>
+                <div class="btn-group d-flex justify-content-center" role="group"
+                    aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+                </div>
+            </div>
+            <div class="col   py-3">
+                <p>Practice Sets</p>
+                <div class="btn-group d-flex justify-content-center" role="group"
+                    aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const myChart = new Chart(ctx, {
+            type: "radar",
+            data: {
+                labels: [
+                    "Idiom",
+                    "Grammar",
+                    "Diction",
+                    "Specialization",
+                    "Redundancy",
+                    "Structure",
+                ],
+                datasets: [
+                    {
+                        label: "Student Radar",
+                        data: [78, 48, 49, 99, 96, 99],
+                        fill: true,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgb(54, 162, 235)",
+                        pointBackgroundColor: "rgb(54, 162, 235)",
+                        pointBorderColor: "#fff",
+                        pointHoverBackgroundColor: "#fff",
+                        pointHoverBorderColor: "rgb(54, 162, 235)",
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    r: {
+                        grid: {
+                            color: "rgb(56,56,56)",
+                        },
+                        min: 0,
+                        max: 100,
+                    },
+                },
+            },
+        });
+
+
+
+    </script>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 1, 2023 08:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+
+
+            var distance = countDownDate - now;
+
+
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+            if (hours < 10) {
+                hours = "0" + hours
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds
+            }
+
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s";
+
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "TIME'S UP";
+            }
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
