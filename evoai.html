@@ -46,15 +46,18 @@
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="/index.html">CBT SAT</a>
                     </li>
-                </ul>
+                    <li class="nav-item">
+                        <div class="nav-link text-secondary" onclick="myFunction()" style="cursor:pointer">Mode </div>
+                    </li>
             </div>
+
+            </ul>
+        </div>
         </div>
     </nav>
 
 
-    <p class="ms-3">Next Test - Jan 1 2023: <span class="text-danger" id="demo">00:00:00</span>
-        <span class="border rounded px-2 float-end me-2 " onclick="myFunction()" style="cursor:pointer">Mode</span>
-    </p>
+    <p class="ms-3">Next Test - Jan 1 2023: <span class="text-danger" id="demo">00:00:00</span></p>
 
     <div class="container my-3">
         <div class="row">
@@ -152,7 +155,7 @@
 
             <div class="text-center m-3">
 
-                <h5 class="text-light"> Grammar Dojo Ai</h5>
+                <h5 class="text-secondary"> Grammar Dojo Ai</h5>
 
             </div>
 
@@ -199,7 +202,6 @@
         </div>
         <div id="grammarbox" class="container my-5"></div>
     </div>
-
     <footer class="footer mt-auto py-3 border-top border-secondary" style="background-color: rgba(0,0,0,255);">
         <div class="container text-center"><small>
                 <span> <a href="/calc.html" class="text-light text-decoration-none">&copy;
