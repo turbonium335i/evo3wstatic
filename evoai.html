@@ -147,60 +147,67 @@
 
         </div>
         <br>
-        <div class="progress bg-secondary" style="height: 1px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="container px-lg-5">
 
-            <div class="text-center m-3">
 
-                <h5 class="text-secondary"> Grammar Dojo Ai</h5>
+        <div class="container">
 
-            </div>
-
-            <div class="progress bg-secondary" style="height: 5px;">
+            <div class="progress bg-secondary my-3" style="height: 2px;">
                 <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
                     aria-valuemax="100"></div>
             </div>
+
+
             <br>
-            <div class="h5 text-end" id="qCount">Question 1/10</div>
-            <div class="container   rounded my-3 p-1 ps-2 pb-5  h5 " id="question">
+            <div class="row">
+                <div class="col-12 col-md-6">
 
-                Along the highway <u>is</u> a dog and a cat.
+                    <div class="container mb-5 py-4" id="question">
+
+                        Along the highway <u>is</u> a dog and a cat.
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex justify-content-between my-4 mx-lg-5  fw-bold  "
+                        style="background-color:#D3D3D3; border-bottom: dotted gray;">
+                        <div class="bg-dark text-light px-1" span id="qCount"> </div>
+                        <div class="pe-1"><i class="bi bi-bookmark"></i> </div>
+                    </div>
+
+                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">
+                        A. This
+                        is a
+                        NO CHANGE.</div>
+                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">
+                        B. is
+                    </div>
+                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">
+                        C. are
+                    </div>
+                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">
+                        D. was
+                    </div>
+                </div>
 
             </div>
+        </div>
 
+        <div class="text-end mx-lg-5 my-4 ">
+            <button type="button" class="btn btn-outline-success  " id="read">
+                <i class="bi bi-soundwave"></i></button>
 
-            <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">A. This
-                is a
-                NO CHANGE.</div>
-            <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">B. is
-            </div>
-            <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">C. are
-            </div>
-            <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">D. was
-            </div>
+            <button type="button" class="btn btn-outline-primary  " id="next">Next <i
+                    class="bi bi-arrow-right-circle"></i></button>
+            <br>
+        </div>
 
-            <div class="text-end mx-lg-5 my-4 ">
-                <button type="button" class="btn btn-outline-info  " id="read">
-                    <i class="bi bi-soundwave"></i></button>
+        <div class="container d-none" id="solution"></div>
 
-                <button type="button" class="btn btn-outline-primary  " id="next">Next <i
-                        class="bi bi-arrow-right-circle"></i></button>
-                <br>
-            </div>
-
-            <div class="container d-none" id="solution"></div>
-
-
-
-
-
+        <div class="container px-lg-5">
 
 
         </div>
-        <div id="grammarbox" class="container my-5"></div>
+        <div id="grammarbox" class="container my-5">Grammar Api Call</div>
     </div>
     <footer class="footer mt-auto py-3 border-top border-secondary" style="background-color: rgba(0,0,0,255);">
         <div class="container text-center"><small>
@@ -395,7 +402,7 @@
 
             showSolution();
             document
-                .getElementsByClassName("progress-bar")[1]
+                .getElementsByClassName("progress-bar")[0]
                 .setAttribute("style", "width:" + progressDone + "%");
         }
 
@@ -449,7 +456,7 @@
                 
                 
                 </h6>`
-            document.getElementById("qCount").innerHTML = "Question   " + randomItem.id + "/" + apiLen
+            document.getElementById("qCount").innerHTML = randomItem.id
 
         }
 
