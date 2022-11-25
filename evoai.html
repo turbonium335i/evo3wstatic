@@ -151,7 +151,7 @@
 
         <div class="container">
 
-            <div class="progress bg-secondary my-3" style="height: 2px;">
+            <div class="progress bg-secondary my-3 rounded-0" style="height: 5px;">
                 <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
                     aria-valuemax="100"></div>
             </div>
@@ -168,23 +168,26 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-between my-4 mx-lg-5  fw-bold  "
+                    <div class="d-flex justify-content-between mt-4 mb-2 mx-lg-5  fw-bold  "
                         style="background-color:#D3D3D3; border-bottom: dotted gray;">
                         <div class="bg-dark text-light px-1" span id="qCount"> </div>
                         <div class="pe-1"><i class="bi bi-bookmark"></i> </div>
                     </div>
 
-                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">
+                    <div class="mb-2 mx-lg-5 py-2 ps-1">
+                        Which correctly completes the sentence?</div>
+
+                    <div class=" border border-dark rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">
                         A. This
                         is a
                         NO CHANGE.</div>
-                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">
+                    <div class=" border border-dark rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">
                         B. is
                     </div>
-                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">
+                    <div class=" border border-dark rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">
                         C. are
                     </div>
-                    <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">
+                    <div class=" border border-dark rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">
                         D. was
                     </div>
                 </div>
@@ -474,6 +477,7 @@
 
             q += 1;
             loadQuestion(q)
+
         }
 
 
