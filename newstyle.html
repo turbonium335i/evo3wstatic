@@ -1,9 +1,8 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>CBT Math 1</title>
+    <title>CBT Verbal 1</title>
     <!--    <link rel="shortcut icon" type="image/png"-->
     <!--          href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K">-->
     <!-- -->
@@ -14,7 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
 
 <style>
@@ -64,14 +63,14 @@
     </nav>
     <hr class="bg-success m-0 p-0  " style="height:5px;" id="submitCheck">
     <div class="mx-2 pt-2 mx-lg-4 mx-xl-5">
-        {{ request.user.id|json_script:"user_id" }}
-        <div class="d-flex justify-content-end text-danger pe-4">
+
+        <div class="d-flex justify-content-center text-secondary pe-4">
 
 
             <i class="bi bi-window-fullscreen" onclick="fullscreen()"></i> &nbsp;F11
             &nbsp;
             <span class="text-dark" onclick="timerFunction()" style="cursor: pointer;">
-                <i class="bi bi-clock-history timerOn" id="timer"></i> Remaining &nbsp;
+                <i class="bi bi-clock-history timerOn" id="timer"></i> Timer &nbsp;
             </span>
 
             <span id="demo">00h 00m 00s </span>
@@ -79,54 +78,40 @@
         <!--    <div class="fw-bold mb-1 mx-0">PASSAGE I</div>-->
 
 
-        <div class="row pt-2">
+        <div class="row pt-2" style="border-top: dotted gray;border-bottom: dotted gray;">
             <div class="col-sm-9  scrolly border-end border-none">
-                <!--            <iframe-->
-                <!--                    src="https://drive.google.com/file/d/14xUAfhLiG2AQR-jdNcjwT9ZYlA0ZaHZr/preview"-->
-                <!--                    width="100%"-->
-                <!--                    height="100%"-->
-                <!--            ></iframe>-->
-                <iframe src="{{testPDF.pdfLink}}" width="100%" height="100%"></iframe>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper urna justo, nec auctor sapien
+                feugiat vel. Quisque id libero dolor. Nullam posuere eget mi ac malesuada. Ut convallis diam sem, at
+                molestie dui iaculis sed. Sed placerat feugiat quam et mollis. Suspendisse potenti. Pellentesque id
+                lacus a nulla faucibus egestas et ut mi. Quisque condimentum aliquet eros vitae porttitor. Integer
+                egestas libero eget sem pharetra, vitae feugiat massa porta. Aenean eget dictum est. Ut tincidunt porta
+                justo, eget venenatis leo sagittis non. Quisque bibendum leo et lacus pretium aliquet. Nullam ante
+                massa, accumsan non efficitur at, posuere in nunc.
 
-                <!--            In publishing and graphic design, Lorem ipsum is a placeholder-->
-                <!--            text commonly used to demonstrate the visual form of a document or-->
-                <!--            a typeface without relying on meaningful content. Lorem ipsum may-->
-                <!--            be used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available. In-->
-                <!--            publishing and graphic design, Lorem ipsum is a placeholder text-->
-                <!--            commonly used to demonstrate the visual form of a document or a-->
-                <!--            typeface without relying on meaningful content. Lorem ipsum may be-->
-                <!--            used as a placeholder before the final copy is available.-->
+                Phasellus vel maximus sapien. Donec quis dui quis risus facilisis ullamcorper ut a justo. Etiam mollis,
+                nisl vitae tincidunt hendrerit, magna purus ultricies purus, sit amet blandit sapien augue non ex.
+                Quisque malesuada, quam eget maximus elementum, nisl ante blandit tellus, sit amet pulvinar felis lacus
+                ac nunc. Suspendisse quis lobortis sapien. Sed suscipit bibendum ex, id condimentum felis blandit eget.
+                Curabitur sed bibendum sapien. Nam in vestibulum tellus. Suspendisse vel mauris nec tortor pretium
+                efficitur. Nullam id pulvinar lacus. Cras tortor justo, pretium vitae enim quis, imperdiet blandit
+                sapien.
+
+
+
+
             </div>
 
 
-            <div class="col-sm-3 scrolly mt-5 mt-md-0  ps-5 ps-sm-3 ps-md-3 ps-lg-5 text-dark">
-                <h4 class="text-dark">Question <span id="questionNo"
-                        class="text-dark border border-danger px-2">1</span></h4>
-                <form action="/action_page.php" class="d-inline" id="multiBox">
+            <div class="col-sm-3 scrolly mt-5 mt-sm-0  ps-5 ps-sm-3 ps-md-3 ps-lg-5 text-dark">
+                <form action="/action_page.php">
+
+                    <div class="d-flex justify-content-between  mb-2 fw-bold  "
+                        style="background-color:#D3D3D3; border-bottom: dotted gray;">
+                        <div class="bg-dark text-light px-1" span id="questionNo"> </div>
+
+                    </div>
+
+
 
                       <input type="radio" id="A" name="fav_language" value="A">
                       <label for="A">A</label><br>
@@ -136,35 +121,23 @@
                       <label for="C">C</label><br>
                       <input type="radio" id="D" name="fav_language" value="D">
                       <label for="D">D</label>
-                    <br>
-                </form>
-
-                <form class="d-none" id="inputBox">
-                    <label for="fname">Answer:</label>
-                    <br>
-                    <input type="text" id="fname" name="fname" autofocus><br><br>
-
                 </form>
                 <br>
                 <!--            <button type="button" class="btn btn-outline-primary " id="saveBtn" onclick="saveFunction()">Save <i-->
                 <!--                    class="bi bi-save"></i></button>-->
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    <i class="bi bi-calculator-fill"></i> </button>
                 <button type="button" class="btn btn-outline-secondary " id="saveBtn" onclick="saveFunction()">
                     <i class="bi bi-eraser"></i></button>
 
 
                 <button type="button" class="btn btn-outline-warning " id="flagBtn" onclick="flagFunction()"><i
-                        class="bi bi-flag"></i></button>
+                        class="bi bi-bookmark"></i></button>
 
                 <br><br> <br><br>
-                <button type="button" class="btn btn-outline-dark" id="backBtn" onclick="prevFunction()"><i
+                <button type="button" class="btn btn-primary rounded-pill" id="backBtn" onclick="prevFunction()"><i
                         class="bi bi-arrow-left-circle"></i>
                     Prev
                 </button>
-                <button type="button" class="btn btn-outline-dark" id="nextBtn" onclick="nextFunction()">Next <i
+                <button type="button" class="btn btn-primary rounded-pill" id="nextBtn" onclick="nextFunction()">Next <i
                         class="bi bi-arrow-right-circle"></i></button>
 
                 <div class="text-end">
@@ -178,49 +151,6 @@
 
 
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header  text-light fw-bold" style="background-color: rgba(55,53,53,255)">
-                                <i class="bi bi-calculator-fill"></i> &nbsp; Calculator
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body  " style="background-color: rgba(55,53,53,255)">
-                                <div class="calculator-grid">
-                                    <div class="output">
-                                        <div data-previous-operand class="previous-operand"></div>
-                                        <div data-current-operand class="current-operand"></div>
-                                    </div>
-                                    <button data-all-clear class="span-two border">AC</button>
-                                    <button data-delete class="border">DEL</button>
-                                    <button data-operation class="border">÷</button>
-                                    <button data-number class="border">1</button>
-                                    <button data-number class="border">2</button>
-                                    <button data-number class="border">3</button>
-                                    <button data-operation class="border">*</button>
-                                    <button data-number class="border">4</button>
-                                    <button data-number class="border">5</button>
-                                    <button data-number class="border">6</button>
-                                    <button data-operation class="border">+</button>
-                                    <button data-number class="border">7</button>
-                                    <button data-number class="border">8</button>
-                                    <button data-number class="border">9</button>
-                                    <button data-operation class="border">-</button>
-                                    <button data-number class="border">.</button>
-                                    <button data-number class="border">0</button>
-                                    <button data-equals class="span-two border">=</button>
-                                </div>
-                                <br>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
                 <br>
 
                 <p style="line-height: 0.9;"><small class="text-danger">
@@ -236,14 +166,14 @@
 
     <script>
 
-        var timeLeft = 2100000
+        var timeLeft = 1920000
 
-        if (localStorage.getItem('mathOneApiTime') !== null) {
-            console.log(`mathOneApiTime exists`);
-            timeLeft = parseInt(localStorage.getItem('mathOneApiTime'))
+        if (localStorage.getItem('readingApiTime') !== null) {
+            console.log(`readingApiTime exists`);
+            timeLeft = parseInt(localStorage.getItem('readingApiTime'))
 
         } else {
-            console.log(`mathOneApiTime not found`);
+            console.log(`readingApiTime not found`);
         }
 
 
@@ -275,8 +205,8 @@
 
             timeLeft -= 1000
             localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
-            localStorage.setItem('mathOneApiTime', JSON.stringify(timeLeft));
-< !--console.log(localStorage.getItem('timeLeft'))-->
+            localStorage.setItem('readingApiTime', JSON.stringify(timeLeft));
+            <!--            console.log(localStorage.getItem('timeLeft'))-->
         }, 1000);
 
         function timerFunction() {
@@ -302,17 +232,15 @@
 
 
 
-
     </script>
 
     <script>
 
         var obj = {}
 
-        const user_id = JSON.parse(document.getElementById('user_id').textContent);
-        console.log("user_id", user_id)
 
-        var localAnswers = localStorage.getItem("mathOneApi");
+
+        var localAnswers = localStorage.getItem("readingApi");
         console.log(localAnswers)
 
         if (localAnswers !== null) {
@@ -322,7 +250,6 @@
 
         }
 
-        var inputBox = document.getElementById("inputBox");
 
         var doneList = obj
         var flagList = {}
@@ -332,7 +259,7 @@
 
 
 
-        var qCount = 23;
+        var qCount = 28;
         var qArray = [];
         for (let i = 1; i < qCount; i++) {
             qArray.push({ [i]: '' })
@@ -459,23 +386,6 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
         function btnFunction(id) {
 
-            var subjectiveAnswers = [40, 41]
-
-            if (subjectiveAnswers.includes(id)) {
-
-                multiBox.classList.remove("d-inline");
-                multiBox.classList.add("d-none");
-                inputBox.classList.remove("d-none");
-                inputBox.classList.add("d-inline");
-            } else {
-
-                multiBox.classList.add("d-inline");
-                multiBox.classList.remove("d-none");
-                inputBox.classList.add("d-none");
-                inputBox.classList.remove("d-inline");
-
-            }
-
 
             var lastClickedBtn = document.getElementById('b' + (lastQuestion.toString()));
             lastClickedBtn.classList.remove("border-danger", "border-2");
@@ -544,17 +454,6 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
 
-< !--            var checkRadio = document.querySelector('input[name="fav_language"]:checked'); -->
-< !--            if (checkRadio != null) {
-                -->
-< !--                 var clickedBtn = document.getElementById('b' + (currentQuestion.toString())); -->
-< !--clickedBtn.classList.remove("btn-light", "btn-warning", "btn-dark"); -->
-< !--clickedBtn.classList.add("btn-primary"); -->
-< !--doneList[currentQuestion] = checkRadio.id; -->
-< !--console.log(doneList); -->
-< !--localStorage.setItem('doneList', JSON.stringify(doneList)); -->
-< !--$("#submitCheck").fadeOut(100).fadeIn(200).fadeOut(100).fadeIn(200).fadeOut(100).fadeIn(100)-->
-< !--            } -->
 
         }
 
@@ -600,8 +499,8 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
             endSectionBtn.disabled = true;
 
             if (ls === null) {
-< !--localStorage.removeItem("doneList"); -->
-                    location.replace("{% url 'index' %}")
+                <!--     localStorage.removeItem("doneList");-->
+                location.replace("{% url 'index' %}")
             } else {
                 saveAnswers()
 
@@ -624,8 +523,8 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
                     },
 
                     body: JSON.stringify({
-                        'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
-                        'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
+                        'ls': ls, 'timeLeft': timeLeft, 'section': 'reading',
+                        'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'r'
                     }),
                 })
                     .then((response) => {
@@ -634,11 +533,10 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
                     .then((data) => {
                         console.log("response: ", data);
                         if (data === "progress saved") {
-< !--alert('data sent success')-->
-< !--localStorage.clear(); -->
-                                localStorage.removeItem("doneList");
+
+                            localStorage.removeItem("doneList");
                             localStorage.removeItem("timeLeft");
-                            location.replace("{% url 'directionsm2' %}")
+                            location.replace("{% url 'directions2' %}")
                         }
                     });
             }
@@ -665,8 +563,8 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
                 },
 
                 body: JSON.stringify({
-                    'ls': ls, 'timeLeft': timeLeft, 'section': 'math1',
-                    'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'm1'
+                    'ls': ls, 'timeLeft': timeLeft, 'section': 'reading',
+                    'user_id': user_id, 'selectedTest': selectedTest, 'selectedTestId': selectedTestId, 'testStatus': 'r'
                 }),
             })
                 .then((response) => {
@@ -695,14 +593,13 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
                 elapsed += 60000;
                 console.log(elapsed);
 
-                if (elapsed > 2100000) {
+                if (elapsed > 1920000) {
                     clearInterval();
                     doneAnswers()
                 }
 
             }
         }, 60000);
-
 
 
 
@@ -740,146 +637,6 @@ id=b${i} onclick="btnFunction(${i})">${i}</button>`
 
 
 
-
-
-    </script>
-    <script>
-        class Calculator {
-            constructor(previousOperandTextElement, currentOperandTextElement) {
-                this.previousOperandTextElement = previousOperandTextElement;
-                this.currentOperandTextElement = currentOperandTextElement;
-                this.clear();
-            }
-
-            clear() {
-                this.currentOperand = "";
-                this.previousOperand = "";
-                this.operation = undefined;
-            }
-
-            delete() {
-                this.currentOperand = this.currentOperand.toString().slice(0, -1);
-            }
-
-            appendNumber(number) {
-                if (number === "." && this.currentOperand.includes(".")) return;
-                this.currentOperand = this.currentOperand.toString() + number.toString();
-            }
-
-            chooseOperation(operation) {
-                if (this.currentOperand === "") return;
-                if (this.previousOperand !== "") {
-                    this.compute();
-                }
-                this.operation = operation;
-                this.previousOperand = this.currentOperand;
-                this.currentOperand = "";
-            }
-
-            compute() {
-                let computation;
-                const prev = parseFloat(this.previousOperand);
-                const current = parseFloat(this.currentOperand);
-                if (isNaN(prev) || isNaN(current)) return;
-                switch (this.operation) {
-                    case "+":
-                        computation = prev + current;
-                        break;
-                    case "-":
-                        computation = prev - current;
-                        break;
-                    case "*":
-                        computation = prev * current;
-                        break;
-                    case "÷":
-                        computation = prev / current;
-                        break;
-                    default:
-                        return;
-                }
-                this.currentOperand = computation;
-                this.operation = undefined;
-                this.previousOperand = "";
-            }
-
-            getDisplayNumber(number) {
-                const stringNumber = number.toString();
-                const integerDigits = parseFloat(stringNumber.split(".")[0]);
-                const decimalDigits = stringNumber.split(".")[1];
-                let integerDisplay;
-                if (isNaN(integerDigits)) {
-                    integerDisplay = "";
-                } else {
-                    integerDisplay = integerDigits.toLocaleString("en", {
-                        maximumFractionDigits: 0,
-                    });
-                }
-                if (decimalDigits != null) {
-                    return `${integerDisplay}.${decimalDigits}`;
-                } else {
-                    return integerDisplay;
-                }
-            }
-
-            updateDisplay() {
-                this.currentOperandTextElement.innerText = this.getDisplayNumber(
-                    this.currentOperand
-                );
-                if (this.operation != null) {
-                    this.previousOperandTextElement.innerText = `${this.getDisplayNumber(
-                        this.previousOperand
-                    )} ${this.operation}`;
-                } else {
-                    this.previousOperandTextElement.innerText = "";
-                }
-            }
-        }
-
-        const numberButtons = document.querySelectorAll("[data-number]");
-        const operationButtons = document.querySelectorAll("[data-operation]");
-        const equalsButton = document.querySelector("[data-equals]");
-        const deleteButton = document.querySelector("[data-delete]");
-        const allClearButton = document.querySelector("[data-all-clear]");
-        const previousOperandTextElement = document.querySelector(
-            "[data-previous-operand]"
-        );
-        const currentOperandTextElement = document.querySelector(
-            "[data-current-operand]"
-        );
-
-        const calculator = new Calculator(
-            previousOperandTextElement,
-            currentOperandTextElement
-        );
-
-        numberButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                calculator.appendNumber(button.innerText);
-                calculator.updateDisplay();
-            });
-        });
-
-        operationButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                calculator.chooseOperation(button.innerText);
-                calculator.updateDisplay();
-            });
-        });
-
-        equalsButton.addEventListener("click", (button) => {
-            calculator.compute();
-            calculator.updateDisplay();
-        });
-
-        allClearButton.addEventListener("click", (button) => {
-            calculator.clear();
-            calculator.updateDisplay();
-        });
-
-        deleteButton.addEventListener("click", (button) => {
-            calculator.delete();
-            calculator.updateDisplay();
-        });
 
     </script>
 </body>
