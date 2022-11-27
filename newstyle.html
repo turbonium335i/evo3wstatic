@@ -64,17 +64,22 @@
     <hr class="bg-success m-0 p-0  " style="height:5px;" id="submitCheck">
     <div class="mx-2 pt-2 mx-lg-4 mx-xl-5">
 
-        <div class="d-flex justify-content-center text-secondary pe-4">
+        <div class="d-flex justify-content-between ">
 
+            <span class="fw-bold"> Section 1: Reading and Writing</span>
+            <div>
+                <span class="border border-dark rounded px-1 mb-1 me-1" onclick="fullscreen()" style="cursor: pointer;">
+                    <i class="bi bi-window-fullscreen"></i> F11
+                </span>
+                <span class=" border border-dark rounded px-1 mb-1 text-center" onclick="timerFunction()"
+                    style="cursor: pointer;">
+                    <i class="bi bi-clock-history timerOn" id="timer"></i> Timer
+                </span>
 
-            <i class="bi bi-window-fullscreen" onclick="fullscreen()"></i> &nbsp;F11
-            &nbsp;
-            <span class="text-dark" onclick="timerFunction()" style="cursor: pointer;">
-                <i class="bi bi-clock-history timerOn" id="timer"></i> Timer &nbsp;
-            </span>
+            </div>
 
-            <span id="demo">00h 00m 00s </span>
         </div>
+        <div id="demo" class="text-center fw-bold">00:00:00</div>
         <!--    <div class="fw-bold mb-1 mx-0">PASSAGE I</div>-->
 
 
@@ -189,8 +194,8 @@
                 seconds = "0" + seconds
             }
 
-            document.getElementById("demo").innerHTML = hours + "h "
-                + minutes + "m " + seconds + "s ";
+            document.getElementById("demo").innerHTML = hours + ":"
+                + minutes + ":" + seconds;
 
             if (distance < 0) {
                 clearInterval(x);
