@@ -18,6 +18,10 @@
             color: orange;
             background-color: black;
         }
+
+        .highlighter {
+            background: yellow;
+        }
     </style>
 </head>
 
@@ -211,6 +215,58 @@
 
         </div>
         <div id="grammarbox" class="container my-5">Grammar Api Call</div>
+    </div>
+    <div class="container">
+
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-6 border-end">
+
+                <div class="mb-5 py-4" id="target">
+
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh
+                    euismod tincidunt
+                    ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis nostrud exerci
+                    tution ullam
+                    corper suscipit lobortis nisi ut aliquip ex ea commodo consequat. Duis te feugi facilisi. Duis autem
+                    dolor in
+                    hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at
+                    vero eros
+                    et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis dolore
+                    te feugat
+                    nulla facilisi.
+
+                </div> <br><br>
+                <button class="btn btn-outline-primary " id="clear" onclick="clean()">clear</button>
+
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-between mt-4 mb-2 mx-lg-5  fw-bold  "
+                    style="background-color:#D3D3D3; border-bottom: dotted gray;">
+                    <div class="bg-dark text-light px-1" span> 12</div>
+                    <div class="pe-1"><i class="bi bi-bookmark"></i> </div>
+                </div>
+
+                <div class="mb-2 mx-lg-5 py-2 ps-1">
+                    Which correctly completes the sentence?</div>
+
+                <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="aa" style="cursor:pointer;">
+                    A. This
+                    is a
+                    NO CHANGE.</div>
+                <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="bb" style="cursor:pointer;">
+                    B. is
+                </div>
+                <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="cc" style="cursor:pointer;">
+                    C. are
+                </div>
+                <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="dd" style="cursor:pointer;">
+                    D. was
+                </div>
+
+            </div>
+
+        </div>
     </div>
     <footer class="footer mt-auto py-3 border-top border-secondary" style="background-color: rgba(0,0,0,255);">
         <div class="container text-center"><small>
@@ -581,6 +637,66 @@
             element.classList.toggle("textOrange");
         }
     </script>
+    <script>
+
+        var flag = 0,
+            element = document;
+        element.addEventListener("touchstart", function () {
+            flag = 0;
+        }, false);
+        element.addEventListener("touchmove", function () {
+            flag = 1;
+        }, false);
+        element.addEventListener("touchend", function () {
+            if (flag === 1) {
+                getSelText();
+            }
+        }, false);
+
+
+        var flag = 0,
+            element = document;
+        element.addEventListener("mousedown", function () {
+            flag = 0;
+        }, false);
+        element.addEventListener("mousemove", function () {
+            flag = 1;
+        }, false);
+        element.addEventListener("mouseup", function () {
+            if (flag === 1) {
+                getSelText();
+            }
+        }, false);
+
+        // document.addEventListener("selectionchange", function (e) {
+        //     //do something, e.g. document.getSelection()        
+        //     alert(e)
+        // });
+
+        function getSelText() {
+            var sel = window.getSelection ? window.getSelection() : document.selection.createRange(); // FF : IE
+            if (sel.getRangeAt) { // thats for FF
+                var range = sel.getRangeAt(0);
+                var newNode = document.createElement("span");
+                newNode.setAttribute('class', 'highlighter');
+                range.surroundContents(newNode);
+            } else { //and thats for IE7
+                sel.pasteHTML('<span class="highlighter">' + sel.htmlText + '</span>');
+
+            }
+        }
+
+
+        var originalText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis nostrud exerci tution ullam corper suscipit lobortis nisi ut aliquip ex ea commodo consequat. Duis te feugi facilisi. Duis autem dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis dolore te feugat nulla facilisi."
+
+        function clean() {
+            var text = document.getElementById("target")
+            text.innerHTML = originalText
+
+            // text.style.backgroundColor = "green";
+        }
+    </script>
+
 
 </body>
 
