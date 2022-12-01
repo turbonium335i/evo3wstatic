@@ -639,34 +639,34 @@
     </script>
     <script>
 
-        // var flag = 0,
-        //     element = document;
-        // element.addEventListener("touchstart", function () {
-        //     flag = 0;
-        // }, false);
-        // element.addEventListener("touchmove", function () {
-        //     flag = 1;
-        // }, false);
-        // element.addEventListener("touchend", function () {
-        //     if (flag === 1) {
-        //         getSelText();
-        //     }
-        // }, false);
-
-
         var flag = 0,
             element = document;
-        element.addEventListener("mousedown", function () {
+        element.addEventListener("touchstart", function () {
             flag = 0;
         }, false);
-        element.addEventListener("mousemove", function () {
+        element.addEventListener("touchmove", function () {
             flag = 1;
         }, false);
-        element.addEventListener("mouseup", function () {
+        element.addEventListener("touchend", function () {
             if (flag === 1) {
                 getSelText();
             }
         }, false);
+
+
+        // var flag = 0,
+        //     element = document;
+        // element.addEventListener("mousedown", function () {
+        //     flag = 0;
+        // }, false);
+        // element.addEventListener("mousemove", function () {
+        //     flag = 1;
+        // }, false);
+        // element.addEventListener("mouseup", function () {
+        //     if (flag === 1) {
+        //         getSelText();
+        //     }
+        // }, false);
 
         // document.addEventListener("selectionchange", function (e) {
         //     //do something, e.g. document.getSelection()        
