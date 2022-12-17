@@ -2,152 +2,100 @@
 <html lang="en">
 
 <head>
+    <title> Evolution-AI</title>
     <link rel="shortcut icon" type="image/png"
         href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K">
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body class=" bg-dark text-light">
-    <div class="container" id="mainDiv">
-        <h5 id="testName" class="text-center text-warning mt-5">Wavepoint English Proficienty Quiz </h5>
-        <br>
-        <div class="d-flex justify-content-start   pe-4 mb-3">
-            <h3>
-                <span class="text-warning">Directions &nbsp;
-                </span>
-            </h3>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-md-9 p-0 ">
+                <div class="card text-center rounded" style=" height:75vh; margin: auto;background-color:black;">
+                    <div class="progress" style="border-radius: 0%; height: 7px;">
+                        <div class="progress-bar bg-info" id="barbar" role="progressbar" style="width: 100%"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="card-header" id="boxbox" style="color:white;background-color: 	#262626;">
+                        <span id="settitle" style="color: #1DA1F2">Vocabulary Set 1 </span>
+                    </h5>
+                    <div class="card-body rounded-bottom" style="background-color: #121212; ">
+                        <h5 id="rembar" style="color:#FFA900; margin:0px;">&#10073; </h5>
+                        <br>
+                        <h2></h2>
+                        <h3 class="text-light mb-5" id="title">promote, support, champion, cultivate, encourage, endorse
+                        </h3>
+                        <br>
+                        <form id="myform" action="" method="" target="" class="mt-5">
+                            <label for="fname">&#8645;</label><br><br>
+                            <input type="text" autocomplete="off" id="fname" name="tname" value=""
+                                class="rounded border border-primary bg-secondary text-warning"
+                                style="font-size:20pt;height:60px;width:300px;text-align: center;" autofocus><br><br>
+                            <input class="btn btn-outline-success" id="startcore" type="submit" value="Enter">
+                        </form>
+                        <br>
+                        <br>
+                        <h2 id="wordtyped" style="color:gray;">---</h2><br>
+                        <h3 class="boxo" id="loopbox3" style="text-align:center;"><i
+                                class="bi bi-check-lg text-success"></i><i class="bi bi-check-lg text-success"></i><i
+                                class="bi bi-check-lg text-success"></i><i class="bi bi-check-lg text-success"></i></h3>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-3 p-0 ">
+                <div class="card rounded" style=" height:75vh; margin: auto;background-color:black;">
+                    <div class="progress" style="border-radius: 0%; height: 7px;">
+                        <div class="progress-bar bg-info" id="sidebank" role="progressbar" style="width: 100%"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="card-header" id="boxbox9"
+                        style="color:white;background-color: 	#262626;text-align: center;">
+
+                        <span id="countdown"><i class="bi bi-alarm text-danger"></i> 00:00 </span>
+
+                    </h5>
+                    <div class="card-body rounded-bottom d-flex flex-column" style="background-color: #121212; ">
+
+                        <div><i class="bi bi-volume-up"></i> On / Words Remaining: 10</div>
+                        <br>
+                        <h5>Word Bank</h5>
+                        <div class=" text-warning">words, words, words, words, words, words,
+                            words, words, words, words</div>
+                        <br>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary" type="button"> <i
+                                    class="bi bi-arrow-counterclockwise"></i> Button</button>
+                        </div>
+                        <div class="mt-auto">
+
+                            <img class="img-fluid rounded card-img-top"
+                                src="https://tongglobalcdn.visitkorea.or.kr/cms/resource/32/2785432_image2_1.jpg"
+                                style="height:33vh;">
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+
         </div>
-        <div class="progress bg-dark" style="height: 2px;">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <br>
-        <div class="ms-3">
-            <p>
-                The questions in this section address a number of important reading and writing skills. Each question
-                includes one
-                or more texts, which may include a table or a graph. Read each text and question carefully, then choose
-                the
-                best answer
-                to the question based on the text(s).
-            </p>
-            <p> All questions in this section are multiple-choice with four answer choices. Each question has a single
-                best
-                answer.
-            </p>
-            <br>
-            <li>Mobile phones, smartwatches, fitness trackers, or other wearable technology (simple nondigital watches
-                are
-                acceptable)
-            </li>
-            <li>Separate timers of any type</li>
-            <li>Cameras or any other photographic equipment</li>
-            <li>Unacceptable calculators that have QWERTY (computer-like) keypads, use paper tape, make noise, or use a
-                power cord
-            </li>
-        </div>
-        <div class="text-center py-5" id="linkDiv">
-            <button class="btn btn-secondary btn-lg" id="startBtn" onclick="hideMainDiv()">Start Section <i
-                    class="bi bi-arrow-right-circle"></i></button>
-        </div>
-        <br>
-        <div id="jsData"></div>
     </div>
-    <div class="container px-lg-5 mt-5  " id="testDiv">
-        <div class="text-center m-3">
-            <h5 class="text-warning">Wavepoint English Proficienty Quiz</h5>
-        </div>
-        <div class="text-danger text-end"><span id="demo">00h 00m 00s </span></div>
-        <div class="progress bg-secondary" style="height: 5px;">
-            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100"></div>
-        </div>
-        <br>
-        <div class="h5 text-end" id="qCount">Question 1/10</div>
-        <div class="container   rounded my-3 p-1 ps-2 pb-5  h5 " id="question">
-            Along the highway <u>is</u> a dog and a cat.
-        </div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="a" style="cursor:pointer;">A. This is a
-            NO CHANGE.</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="b" style="cursor:pointer;">B. is</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="c" style="cursor:pointer;">C. are</div>
-        <div class=" border border-secondary rounded mb-2 mx-lg-5 py-2 ps-2" id="d" style="cursor:pointer;">D. was</div>
-        <div class="text-end mx-lg-5 my-4 ">
-            <button type="button" class="btn btn-outline-info  " id="read">
-                <i class="bi bi-soundwave"></i></button>
-            <button type="button" class="btn btn-outline-primary  " id="next">Next <i
-                    class="bi bi-arrow-right-circle"></i></button>
-            <br>
-        </div>
-        <div class="container d-none" id="solution"></div>
-    </div>
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script>
-        function hideMainDiv() {
-            document.getElementById("mainDiv").classList.add("d-none");
-            document.getElementById("testDiv").classList.remove("d-none");
-            startTimer()
-        }
-    </script>
-
-    <!-- timer -->
-    <script>
-        var timeLeft = 30000
-        var countDownDate = (Date.now() + timeLeft)
-
-        function startTimer() {
-            var x = setInterval(function () {
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                if (hours < 10) {
-                    hours = "0" + hours
-                }
-                if (minutes < 10) {
-                    minutes = "0" + minutes
-                }
-                if (seconds < 10) {
-                    seconds = "0" + seconds
-                }
-                document.getElementById("demo").innerHTML = hours + "h "
-                    + minutes + "m " + seconds + "s ";
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("demo").innerHTML = "TIME'S UP";
-                }
-                timeLeft -= 1000
-                localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
-                console.log(localStorage.getItem('timeLeft'))
-            }, 1000);
-        }
-
-        function timerFunction() {
-            // var timer = document.getElementById("timer");
-            // var demo = document.getElementById("demo");
-
-            if (timer.classList.contains('timerOn')) {
-                demo.style.display = "none";
-                timer.classList.remove("timerOn");
-            } else {
-                demo.style.display = "block";
-                timer.classList.add("timerOn");
-            }
-        }
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </body>
 
 </html>
