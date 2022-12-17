@@ -192,7 +192,9 @@
         }, false);
         element.addEventListener("mouseup", function () {
             if (flag === 1) {
-                getSelText();
+                // getSelText();
+                highlight("orange")
+
             }
         }, false);
 
@@ -202,25 +204,64 @@
         // });
         var seltext = "Annotation Notes"
 
-        function getSelText(action) {
-            var sel = window.getSelection ? window.getSelection() : document.selection.createRange(); // FF : IE
-            seltext = window.getSelection().toString()
+        // function getSelText(action) {
+        //     var sel = window.getSelection ? window.getSelection() : document.selection.createRange(); // FF : IE
+        //     seltext = window.getSelection().toString()
 
-            document.getElementById("selput").innerText = seltext
+        //     document.getElementById("selput").innerText = seltext
 
-            if (action === 1) {
+        //     // if (action === 1) {
 
-                // thats for FF
-                var range = sel.getRangeAt(0);
-                var newNode = document.createElement("span");
-                newNode.setAttribute('class', 'highlighter');
+        //     if (sel.getRangeAt) { // thats for FF
+        //         var range = sel.getRangeAt(0);
+        //         var newNode = document.createElement("span");
+        //         newNode.setAttribute('class', 'highlighter');
 
-                newNode.setAttribute("onclick", onclick = "openNav()");
-                range.surroundContents(newNode);
+        //         newNode.setAttribute("onclick", onclick = "openNav()");
+        //         range.surroundContents(newNode);
+        //     } else { //and thats for IE7
+        //         sel.pasteHTML('<span class="highlighter" onclick="openNav()">' + sel.htmlText + '</span>');
 
+        //     }
+        //     // }
+
+        // }
+
+        function makeEditableAndHighlight(colour) {
+            var range, sel = window.getSelection();
+            if (sel.rangeCount && sel.getRangeAt) {
+                range = sel.getRangeAt(0);
             }
-
+            document.designMode = "on";
+            if (range) {
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+            // Use HiliteColor since some browsers apply BackColor to the whole block
+            if (!document.execCommand("HiliteColor", false, colour)) {
+                document.execCommand("BackColor", false, colour);
+            }
+            document.designMode = "off";
         }
+
+        function highlight(colour) {
+            var range, sel;
+            if (window.getSelection) {
+                // IE9 and non-IE
+                try {
+                    if (!document.execCommand("BackColor", false, colour)) {
+                        makeEditableAndHighlight(colour);
+                    }
+                } catch (ex) {
+                    makeEditableAndHighlight(colour);
+                }
+            } else if (document.selection && document.selection.createRange) {
+                // IE <= 8 case
+                range = document.selection.createRange();
+                range.execCommand("BackColor", false, colour);
+            }
+        }
+
 
 
         var originalText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis nostrud exerci tution ullam corper suscipit lobortis nisi ut aliquip ex ea commodo consequat. Duis te feugi facilisi. Duis autem dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis dolore te feugat nulla facilisi."
