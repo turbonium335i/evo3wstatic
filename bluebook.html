@@ -208,20 +208,20 @@
 
             document.getElementById("selput").innerText = seltext
 
-            if (action === 1) {
+            // if (action === 1) {
 
-                if (sel.getRangeAt) { // thats for FF
-                    var range = sel.getRangeAt(0);
-                    var newNode = document.createElement("span");
-                    newNode.setAttribute('class', 'highlighter');
+            if (sel.getRangeAt) { // thats for FF
+                var range = sel.getRangeAt(0);
+                var newNode = document.createElement("span");
+                newNode.setAttribute('class', 'highlighter');
 
-                    newNode.setAttribute("onclick", onclick = "openNav()");
-                    range.surroundContents(newNode);
-                } else { //and thats for IE7
-                    sel.pasteHTML('<span class="highlighter" onclick="openNav()">' + sel.htmlText + '</span>');
+                newNode.setAttribute("onclick", onclick = "openNav()");
+                range.surroundContents(newNode);
+            } else { //and thats for IE7
+                sel.pasteHTML('<span class="highlighter" onclick="openNav()">' + sel.htmlText + '</span>');
 
-                }
             }
+            // }
 
         }
 
