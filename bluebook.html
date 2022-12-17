@@ -119,19 +119,23 @@
         <div class="bg-dark pb-3 text-light mb-3">Annotation Notes <p class="text-warning float-end mx-3 pt-2"
                 href="#contact" onclick="closeNav()">CLOSE X</p>
         </div>
-        <button class="btn btn-warning " onclick="getSelText('do')">Highlight</button>
-        <button class="btn btn-secondary" onclick="clean()">Underline</button>
-        <div class="mx-5 pt-3 mb-2">
+        <div class="ps-3 ">
+            <button class="btn btn-warning " onclick="getSelText('do')">Highlight</button>
+            <button class="btn btn-secondary" onclick="clean()">Underline</button>
+        </div>
+        <div class="mx-5 pt-3">
 
 
-            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="6"
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="5"
                 spellcheck="false"></textarea>
-            <br>
+
 
 
         </div>
-        <button class="btn btn-primary rounded-5">Save</button> <button
-            class="btn btn-secondary rounded-5">Cancel</button>
+        <div class="ps-3 mt-2"> <button class="btn btn-primary rounded-5">Save</button>
+            <button class="btn btn-secondary rounded-5">Cancel</button>
+        </div>
+
     </div>
 
 
@@ -142,7 +146,7 @@
         }
 
         function openNav() {
-            document.getElementById("mySidebar").style.height = "40vh";
+            document.getElementById("mySidebar").style.height = "45vh";
 
         }
     </script>
