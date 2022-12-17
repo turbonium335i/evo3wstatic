@@ -134,7 +134,7 @@
             <p class="text-warning float-end mx-3 pt-2" href="#contact" onclick="closeNav()">CLOSE X</p>
         </div>
         <div class="ps-3 ">
-            <button class="btn btn-warning " onclick="getSelText(1)">Highlight</button>
+            <button class="btn btn-warning ">Highlight</button>
             <button class="btn btn-secondary" onclick="clean()">Underline</button>
         </div>
         <div class="mx-5 pt-3">
@@ -154,18 +154,28 @@
 
 
     <script>
+
+
+        var selectedText = ""
+        var open = false
+
+
         function closeNav() {
             document.getElementById("mySidebar").style.height = "0px";
+            open = false
 
         }
 
         function openNav() {
             document.getElementById("mySidebar").style.height = "45vh";
+            open = true
 
         }
-    </script>
-    <script>
-        var selectedText = ""
+
+
+
+
+
 
         var flag = 0,
             element = document;
@@ -202,22 +212,27 @@
         // });
         var seltext = "Annotation Notes"
 
+
+
         function getSelText(action) {
             var sel = window.getSelection ? window.getSelection() : document.selection.createRange(); // FF : IE
             seltext = window.getSelection().toString()
 
             document.getElementById("selput").innerText = seltext
 
-            if (action === 1) {
+            if (open) {
 
-                // thats for FF
-                var range = sel.getRangeAt(0);
-                var newNode = document.createElement("span");
-                newNode.setAttribute('class', 'highlighter');
+                if (sel.getRangeAt) { // thats for FF
+                    var range = sel.getRangeAt(0);
+                    var newNode = document.createElement("span");
+                    newNode.setAttribute('class', 'highlighter');
 
-                newNode.setAttribute("onclick", onclick = "openNav()");
-                range.surroundContents(newNode);
+                    newNode.setAttribute("onclick", onclick = "openNav()");
+                    range.surroundContents(newNode);
+                } else { //and thats for IE7
+                    sel.pasteHTML('<span class="highlighter" onclick="openNav()">' + sel.htmlText + '</span>');
 
+                }
             }
 
         }
