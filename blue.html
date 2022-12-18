@@ -17,25 +17,38 @@
 
 </head>
 
-<body class="bg-dark text-light">
-    <div class="container text-warning">Selected: <span id="selput">...</span></div>
+<body class="bg-dark text-light my-3">
+    <div class="container text-warning my-2">Selected: <span id="selput" class="text-secondary">...</span></div>
 
     <div class="container p-5 border" id="c1">
         <h1>For iOS ipad iphone</h1>
-        <p>This is an example: </p>
-        <p>in other paragraph.</p>
-        <p>one more paragraph </p>
+        <p id="c3">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+            (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+            ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
+            comes from a line in section 1.10.32. </p>
 
-        <button type="button" class="btx">Click Me!</button>
+
+        <button type="button" id="btx1">HighLight</button>
     </div>
 
-    <div class="container p-5 d-none border" id="c2">
+    <div class="container p-5 border" id="c2">
         <h1>For iOS ipad 2</h1>
-        <p>This is an example: </p>
-        <p>in other paragraph.</p>
-        <p>one more paragraph </p>
+        <p id="c4">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+            section 1.10.32.</p>
 
-        <button type="button" class="btx">Click Me!</button>
+
+        <button type="button" id="btx2">HighLight</button>
     </div>
 
 
@@ -52,7 +65,6 @@
             range = sel.getRangeAt(0);
 
             console.log(range, sel)
-            localStorage.setItem("stuff", range);
         }
         document.designMode = "on";
         if (range) {
@@ -65,11 +77,14 @@
         }
         document.designMode = "off";
         document.activeElement.blur();
-        document.getElementById('c1').classList.add("d-none");
-        document.getElementById('c2').classList.remove("d-none");
-
-
+        var seltext = sel.toString()
+        document.getElementById('selput').innerText = seltext
     }
+
+    // document.getElementById('c1').classList.add("d-none");
+    // document.getElementById('c2').classList.remove("d-none");
+
+
 
     function highlight(colour) {
         var range, sel;
@@ -96,9 +111,26 @@
         // document.getElementById('selput').innerText = seltext
     }
 
-    $('.btx').on('click touchend', function () {
+    $('#btx1').on('click touchend', function () {
         highlight('green');
+        console.log(this.id);
     });
+
+    $('#btx2').on('click touchend', function () {
+        highlight('orange');
+        console.log(this.id);
+    });
+
+    $('#c3').on('click touchend', function () {
+        highlight('gold');
+        console.log(this.id);
+    });
+
+    $('#c4').on('click touchend', function () {
+        highlight('red');
+        console.log(this.id);
+    });
+
 
     function showall() {
         document.getElementById('c1').classList.remove("d-none");
