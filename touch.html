@@ -24,7 +24,7 @@
         <p>This is an example: </p>
         <p>in other paragraph.</p>
         <p>one more paragraph </p>
-
+        <p>Click me away!</p>
         <button type="button">Click Me!</button>
     </div>
 
@@ -48,7 +48,6 @@
             document.execCommand("BackColor", false, colour);
         }
         document.designMode = "off";
-        document.activeElement.blur();
     }
 
     function highlight(colour) {
@@ -69,9 +68,20 @@
         }
     }
 
+
     $('button').on('click touchend', function () {
         highlight('green');
     });
+</script>
+
+<script>
+    $('body').on('mousedown touchstart', function (e) {
+        $('p').fadeTo('fast', 1);
+    });
+    $('body').on('mouseup touchend', function (e) {
+        $('p').delay(2000).fadeTo(1500, 0);
+    });
+
 </script>
 
 </html>
