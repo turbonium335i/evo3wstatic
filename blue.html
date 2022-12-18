@@ -18,17 +18,30 @@
 </head>
 
 <body class="bg-dark text-light">
+    <div class="container text-warning">Selected: <span id="selput">...</span></div>
 
-    <div class="container p-5">
+    <div class="container p-5 border" id="c1">
         <h1>For iOS ipad iphone</h1>
         <p>This is an example: </p>
         <p>in other paragraph.</p>
         <p>one more paragraph </p>
 
-        <button type="button">Click Me!</button>
+        <button type="button" class="btx">Click Me!</button>
+    </div>
+
+    <div class="container p-5 d-none border" id="c2">
+        <h1>For iOS ipad 2</h1>
+        <p>This is an example: </p>
+        <p>in other paragraph.</p>
+        <p>one more paragraph </p>
+
+        <button type="button" class="btx">Click Me!</button>
     </div>
 
 
+    <div class="container mt-5">
+        <button class="btn btn-warning" onclick="showall()">show</button>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
     crossorigin="anonymous"></script>
@@ -37,6 +50,9 @@
         var range, sel = window.getSelection();
         if (sel.rangeCount && sel.getRangeAt) {
             range = sel.getRangeAt(0);
+
+            console.log(range, sel)
+            localStorage.setItem("stuff", range);
         }
         document.designMode = "on";
         if (range) {
@@ -49,6 +65,10 @@
         }
         document.designMode = "off";
         document.activeElement.blur();
+        document.getElementById('c1').classList.add("d-none");
+        document.getElementById('c2').classList.remove("d-none");
+
+
     }
 
     function highlight(colour) {
@@ -56,22 +76,34 @@
         if (window.getSelection) {
             // IE9 and non-IE
             try {
-                if (!document.execCommand("BackColor", false, colour)) {
-                    makeEditableAndHighlight(colour);
-                }
+
+                makeEditableAndHighlight(colour);
+                console.log('ie9')
+
             } catch (ex) {
                 makeEditableAndHighlight(colour);
+                console.log('ie9 catch')
             }
         } else if (document.selection && document.selection.createRange) {
             // IE <= 8 case
+            console.log('ie8')
             range = document.selection.createRange();
             range.execCommand("BackColor", false, colour);
         }
+
+        console.log(range, sel)
+        // var seltext = sel.toString()
+        // document.getElementById('selput').innerText = seltext
     }
 
-    $('button').on('click touchend', function () {
+    $('.btx').on('click touchend', function () {
         highlight('green');
     });
+
+    function showall() {
+        document.getElementById('c1').classList.remove("d-none");
+
+    }
 </script>
 
 </html>
