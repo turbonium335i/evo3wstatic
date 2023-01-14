@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting</title>
+    <link rel="shortcut icon" type="image/png" href="https://i.postimg.cc/pXrFdz1Q/redcode.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+
+
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/grammar.html"><img src="https://i.postimg.cc/pXrFdz1Q/redcode.png"
+                    style="max-width:18px;width:100%"> Accounting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/grammaranalysis.html">Analysis</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <form onsubmit="return false" class="search" id="fname2">
+        <label for="fname" class="form-label">Search</label>
+        <input type="text" autocomplete="on" id="fname" name="tname" value=""
+            placeholder="Name, College, Major, Notes, etc." style="font-size:20pt;height:50px; "
+            class="form-control"><br>
+
+    </form>
+
+
+
+    <div class="container" id="parent">
+
+
+
+    </div>
+
+
+
+
+    <footer class="footer mt-auto py-3 border-top border-secondary" style="background-color: rgba(0,0,0,255);">
+        <div class="container text-center"><small>
+                <span> <a href="/calc.html" class="text-light text-decoration-none">&copy;
+                        Calculator</a>&nbsp;<a href="/claw.html" class="text-light text-decoration-none">&copy;
+                        Claw</a>
+                </span></small>
+        </div>
+        <div class="container text-center"><small>
+                <span> <a href="https://www.evolution3w.com" class="text-muted text-decoration-none">Developed & Managed
+                        by Evolution3W.com</a>
+                </span></small>
+        </div>
+    </footer>
+
+</body>
+
+
+
+
+
+<script>
+
+
+    var lessonlog = []
+    let parent = document.querySelector('#parent');
+
+
+    function getGrammar() {
+        fetch('http://127.0.0.1:8000/apilesson')
+            .then((resp) => resp.json())
+            .then(function (data) {
+                lessonlog = data;
+                console.log(lessonlog)
+                log()
+
+            })
+    }
+    getGrammar();
+
+    function log() {
+
+
+
+        for (let i = 0; i < lessonlog.length; i++) {
+            let p = document.createElement('li');
+            p.classList = "text-primary list-unstyled"
+            p.setAttribute("id", `lesson${i}`);
+            p.textContent = i + 1 + ". " + lessonlog[i]['date'] + " " + lessonlog[i]['name'] + " "
+            let span = document.createElement('span');
+            span.textContent = lessonlog[i]['code']
+            if (lessonlog[i]['code'] == "2") {
+                span.classList = "text-success"
+            } else if (lessonlog[i]['code'] == "1") {
+                span.classList = "text-danger"
+
+            } else {
+                span.classList = "text-danger"
+            }
+
+
+            p.appendChild(span);
+
+            parent.appendChild(p);
+        }
+
+    }
+
+
+    const searched = document.getElementById('fname');
+
+
+
+    const filterTodos = (term) => {
+        console.log(term)
+        // wrapper.innerHTML = "typed: " + term;
+
+    };
+
+    searched.addEventListener("keyup", () => {
+        var term = searched.value.trim().toLowerCase();
+        // filterTodos(term);
+        // todofilter(term);
+        console.log(term)
+    });
+
+    const todofilter = (term) => {
+        Array.from(searchreturn.children)
+            .filter((todo) => !todo.textContent.includes(term))
+            .forEach((todo) => todo.classList.add('filtered'));
+
+        Array.from(searchreturn.children)
+            .filter((todo) => todo.textContent.includes(term))
+            .forEach((todo) => todo.classList.remove('filtered'));
+
+    };
+
+
+
+</script>
+
+
+
+</html>
