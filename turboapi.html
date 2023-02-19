@@ -61,11 +61,12 @@
 
             <div>
 
+                <button class="float-end btn-outline-primary text-dark rounded" onclick="clearbox()">Clear</button>
 
                 <form onsubmit="return false" class="search" id="fname2">
                     <label for="fname" class="form-label">Search</label>
                     <input type="text" autocomplete="on" id="fname" name="tname" value="" placeholder="Name, Code."
-                        style="font-size:20pt;height:50px; " class="form-control"><br>
+                        style="font-size:20pt;height:50px; " class="form-control" autofocus><br>
 
                 </form>
                 <table class="table table-dark table-hover table-striped table-sm">
@@ -154,6 +155,12 @@
         };
 
 
+        function clearbox() {
+            document.getElementById('fname').value = ''
+            document.getElementById("fname").focus();
+            getselectset(loadvocab);
+        }
+
 
 
         var querycount = 0
@@ -161,15 +168,15 @@
 
 
         function getselectset(callback) {
-
-
-
             state.querySet = dqapi
             apiData = dqapi
             console.log(dqapi)
             querycount = apiData.length
             document.getElementById("querycount").innerHTML = querycount;
             callback();
+            // callDjango(2)
+
+
 
             // fetch("http://127.0.0.1:8000/dqapi")
             //     .then((resp) => resp.json())
@@ -183,9 +190,27 @@
 
             //         querycount = apiData.length
             //         document.getElementById("querycount").innerHTML = querycount;
-            //         callback();
+            //         
             //     });
         }
+
+        var testItems = []
+
+        function callDjango(tid) {
+            fetch("http://127.0.0.1:8000/tsapi")
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    console.log(data)
+                    var seltes = (data.filter(a => a.id == tid))
+                    var qid = (seltes[0]['multiq'])
+
+                    console.log(qid)
+                    testItems = list.filter(i => qid.includes(i.id));
+                    console.log(testItems)
+                });
+        }
+
+
 
         function addQ(q) {
             var clickedQ = document.querySelector(`#a${q}`)
