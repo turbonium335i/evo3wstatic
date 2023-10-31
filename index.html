@@ -160,7 +160,7 @@
                 <div class="col-md p-5">
                     <h1>Advancement through evolution.</h1>
 
-                    <p class="">
+                    <p class="" id="tbox1">
 
                         EVO AI specializes in delivering dynamic, secure software tailored for small to
                         medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.
@@ -296,7 +296,7 @@
                             <img src="https://i.postimg.cc/0QyKmf3k/toy.jpg" class="rounded-circle mb-3" alt="" />
                             <h3 class="card-title mb-3">Jon</h3>
                             <p class="card-text">
-                                Lead Developer, Product Manager & CEO of EVO AI
+                                Lead Developer & CEO
 
 
                             </p>
@@ -314,7 +314,7 @@
                             <img src="https://i.postimg.cc/0QyKmf3k/toy.jpg" class="rounded-circle mb-3" alt="" />
                             <h3 class="card-title mb-3">Mike</h3>
                             <p class="card-text">
-                                Tech Advisor
+                                Content & Database Manager
 
                             </p>
                             <a href="#"><i class="bi bi-twitter text-light mx-1"></i></a>
@@ -507,7 +507,7 @@
 
     <script>
         var langIcon = document.getElementById("langIcon");
-        // var startDemoBtn = document.getElementById("startDemoBtn");
+        var tbox1 = document.getElementById("tbox1");
 
         function langBlink() {
             $("#langIcon").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
@@ -518,12 +518,13 @@
             if (langIcon.classList.contains('english')) {
                 langIcon.innerHTML = "A";
                 langIcon.classList.remove("english");
-                // startDemoBtn.innerHTML = "데모 시작하기";
+                tbox1.innerHTML = "EVO AI는 중소기업을 위한 동적이고 안전한 소프트웨어를 제공하는 전문 기업으로, 교육 기술과 인공지능 솔루션에 주력합니다.";
                 langBlink()
             } else {
                 langIcon.classList.add("english");
                 langIcon.innerHTML = "한";
-                // startDemoBtn.innerHTML = "Start Demo";
+                tbox1.innerHTML = `EVO AI specializes in delivering dynamic, secure software tailored for small to
+                        medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.`;
                 langBlink()
 
 
