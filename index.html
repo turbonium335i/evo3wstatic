@@ -114,8 +114,6 @@
 
 <body class="d-flex flex-column min-vh-100">
     <div id="particles-js">
-
-
     </div>
 
 
@@ -162,7 +160,7 @@
                 <div class="col-md p-5">
                     <h1>Advancement through evolution.</h1>
 
-                    <p class="lead">
+                    <p class="">
 
                         EVO AI specializes in delivering dynamic, secure software tailored for small to
                         medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.
@@ -242,7 +240,7 @@
                     <p>
 
                         Innovation is in our DNA. We believe that evolution is the path to true progress. At EVO AI, we
-                        don't just develop software; we evolve it. Our commitment to adaptability and
+                        don't just develop software. We evolve it. Our commitment to adaptability and
                         improvement ensures that your business stays at the forefront of the digital landscape.
                     </p>
                     <a href="#" class="btn btn-light mt-3">
@@ -505,6 +503,38 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+
+
+    <script>
+        var langIcon = document.getElementById("langIcon");
+        // var startDemoBtn = document.getElementById("startDemoBtn");
+
+        function langBlink() {
+            $("#langIcon").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+        }
+
+        function myFunction() {
+
+            if (langIcon.classList.contains('english')) {
+                langIcon.innerHTML = "A";
+                langIcon.classList.remove("english");
+                // startDemoBtn.innerHTML = "데모 시작하기";
+                langBlink()
+            } else {
+                langIcon.classList.add("english");
+                langIcon.innerHTML = "한";
+                // startDemoBtn.innerHTML = "Start Demo";
+                langBlink()
+
+
+            }
+        }
+
+        langBlink()
+    </script>
+
+
+
 
     <script>
 
