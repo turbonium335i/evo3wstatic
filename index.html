@@ -10,7 +10,8 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
 
     <!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'  %}">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -176,7 +177,7 @@
                                 <i class="bi bi-stack" data-aos="fade-up"></i>
                             </div>
                             <h3 class="card-title mb-3">Process Automation</h3>
-                            <p class="card-text">
+                            <p class="card-text" id="tbox2">
                                 Our process automation services streamline and optimize your business operations,
                                 reducing manual tasks and increasing efficiency, so you can focus on what truly matters
                                 - growing your business.
@@ -197,14 +198,14 @@
                                 <i class="bi bi-upc-scan" data-aos="fade-up"></i>
                             </div>
                             <h3 class="card-title mb-3">AI/ML Solutions</h3>
-                            <p class="card-text">
+                            <p class="card-text" id="tbox3">
                                 Our AI and machine learning services harness the power of data to unlock valuable
                                 insights and make data-driven decisions, helping your business stay ahead in a rapidly
                                 evolving digital landscape.
                             </p>
                             <div class="mt-auto">
 
-                                <a href="#" class="btn btn-outline-primary ">Read More</a>
+                                <a href="#" class="btn btn-outline-primary">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -218,7 +219,7 @@
                                 <i class="bi bi-wrench" data-aos="fade-up"></i>
                             </div>
                             <h3 class="card-title mb-3">IT Consulting</h3>
-                            <p class="card-text">
+                            <p class="card-text" id="tbox4">
                                 Our IT consulting services offer strategic guidance and expertise to help your business
                                 align technology with your goals, ensuring efficient, secure, and cost-effective
                                 solutions that drive success.
@@ -244,7 +245,7 @@
                         Unleash Your Full Potential!
 
                     </p>
-                    <p>
+                    <p id="tbox5">
 
                         We believe that evolution is the path to true progress. At EVO AI, we
                         don't just develop software. We evolve it. Our commitment to adaptability and
@@ -271,7 +272,7 @@
                         Integrate the Future of Education
 
                     </p>
-                    <p>
+                    <p id="tbox6">
 
                         EVO AI's expertise in modern web technology allows us to build with the future in mind.
                         Our dedicated team aims to promote and develop based on each company's specific needs,
@@ -293,8 +294,7 @@
         <div class="container">
             <h2 class="text-center text-light">Our Team</h2>
             <p class="lead text-center text-white mb-5">
-                Our instructors all have 5+ years working as a web developer in the
-                industry
+                Our team all have 10+ years working in the Education Technology Industry.
             </p>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
@@ -438,11 +438,12 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="bi bi-c-circle"></i> Evo Ai Korea
+                        <h6 class="text-uppercase fw-bold mb-4 text-danger">
+                            <i class="bi bi-c-circle text-danger"></i> Evo Ai Korea
 
                         </h6>
-                        <p>
+                        <p id="tbox7">
+
                             Innovative evolution is at the core of EVO AI & Techonology.
                             So if there's any new tech you'd like to develop, please don't hesitate to contact us.
                         </p>
@@ -495,7 +496,7 @@
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2023 Copyright
-            <a class="text-reset fw-bold text-decoration-none" href="">Evo Ai Korea</a>
+            <a class="text-reset fw-bold text-decoration-none " href="">EVO AI KOREA</a>
         </div>
         <!-- Copyright -->
     </footer>
@@ -509,6 +510,16 @@
         var langIcon = document.getElementById("langIcon");
         var tbox1 = document.getElementById("tbox1");
 
+        var tbox2 = document.getElementById("tbox2");
+        var tbox3 = document.getElementById("tbox3");
+        var tbox4 = document.getElementById("tbox4");
+        var tbox5 = document.getElementById("tbox5");
+        var tbox6 = document.getElementById("tbox6");
+        var tbox7 = document.getElementById("tbox7");
+
+
+
+
         function langBlink() {
             $("#langIcon").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
         }
@@ -519,12 +530,30 @@
                 langIcon.innerHTML = "A";
                 langIcon.classList.remove("english");
                 tbox1.innerHTML = "EVO AI는 중소기업을 위한 동적이고 안전한 소프트웨어를 제공하는 전문 기업으로, 교육 기술과 인공지능 솔루션에 주력합니다.";
+                tbox2.innerHTML = `우리의 프로세스 자동화 서비스는 비즈니스 운영을 간소화하고 최적화하여 수동 작업을 줄이고 효율성을 증가시킵니다. 이로써 비즈니스 성장에 집중할 수 있습니다.`
+                tbox3.innerHTML = `우리의 AI 및 기계 학습 서비스는 데이터의 힘을 활용하여 가치 있는 통찰력을 개방하고 데이터 기반 결정을 내리는 데 도움을 줍니다. 이는 꾸준히 변화하는 디지털 환경에서 귀사의 비즈니스가 선도할 수 있도록 도와줍니다.`
+                tbox4.innerHTML = `우리의 IT 컨설팅 서비스는 전략적인 지침과 전문 지식을 제공하여 귀사의 기술을 목표에 맞추도록 도와줍니다. 효율적이고 안전하며 비용 효율적인 솔루션을 보장하여 성공을 이끌어냅니다.`
+                tbox5.innerHTML = `우리는 진화가 진정한 진전의 길이라고 믿습니다. EVO AI에서는 소프트웨어를 단순히 개발하는 것이 아니라 진화시킵니다. 적응력과 개선에 대한 우리의 헌신은 귀사의 비즈니스가 디지털 환경의 최전선에 머무를 수 있도록 보장합니다.`
+                tbox6.innerHTML = `EVO AI의 현대 웹 기술에 대한 전문 지식을 통해 우리는 미래를 고려하여 건설할 수 있습니다. 헌신적인 팀은 각 회사의 특정한 요구에 기반하여 촉진하고 발전시키기를 목표로 하며, 각 클라이언트가 독특하기 때문에 EVO AI에서는 모든 비즈니스가 받아야 할 주의를 확실히 하는 것이 중요합니다.`
+                tbox7.innerHTML = `혁신적인 진화는 EVO AI & Technology의 핵심입니다. 따라서 개발하고 싶은 새로운 기술이 있다면 언제든지 저희에게 연락해 주세요.`
+
+
+
                 langBlink()
             } else {
                 langIcon.classList.add("english");
                 langIcon.innerHTML = "한";
                 tbox1.innerHTML = `EVO AI specializes in delivering dynamic, secure software tailored for small to
                         medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.`;
+                tbox2.innerHTML = `Our process automation services streamline and optimize your business operations, reducing manual tasks and increasing efficiency, so you can focus on what truly matters - growing your business.`
+                tbox3.innerHTML = `Our AI and machine learning services harness the power of data to unlock valuable insights and make data-driven decisions, helping your business stay ahead in a rapidly evolving digital landscape.`
+                tbox4.innerHTML = `Our IT consulting services offer strategic guidance and expertise to help your business align technology with your goals, ensuring efficient, secure, and cost-effective solutions that drive success.`
+                tbox5.innerHTML = `We believe that evolution is the path to true progress. At EVO AI, we don't just develop software. We evolve it. Our commitment to adaptability and improvement ensures that your business stays at the forefront of the digital landscape.`
+                tbox6.innerHTML = `EVO AI's expertise in modern web technology allows us to build with the future in mind. Our dedicated team aims to promote and develop based on each company's specific needs, and because each client is unique, we at EVO AI make sure that every business gets the attention it deserves.`
+                tbox7.innerHTML = `Innovative evolution is at the core of EVO AI & Technology. So if there's any new tech you'd like to develop, please don't hesitate to contact us.`
+
+
+
                 langBlink()
 
 
