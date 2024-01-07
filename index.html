@@ -162,7 +162,7 @@
                         EVO AI specializes in delivering dynamic, secure software tailored for small to
                         medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.
                     </p>
-                    <div class="btn btn-light mt-3">
+                    <div class="btn btn-light mt-3" id="evobtn">
                         <i class="bi bi-chevron-right"></i> Evolution
                     </div>
                 </div>
@@ -675,7 +675,7 @@
         const synth = window.speechSynthesis;
         // DOM Elements
         const textInput = "ehrro"
-        const readBtn = document.querySelector("#tbox8");
+        const readBtn = document.querySelector("#evobtn");
         //Browser identifier
         // Firefox 1.0+
         var isFirefox = typeof InstallTrigger !== "undefined";
@@ -720,7 +720,7 @@
             }
             if (textInput.value !== "") {
                 // Get speak text
-                const speakText = new SpeechSynthesisUtterance("Seeking a competitive edge through technology? Let's talk about creating a tailor-made software solution that empowers your business to outperform the competition.");
+                const speakText = new SpeechSynthesisUtterance("Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.");
                 // Speak end
                 speakText.onend = (e) => {
                     console.log("Done reading...");
