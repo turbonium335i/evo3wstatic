@@ -598,6 +598,8 @@
         var tbox7 = document.getElementById("tbox7");
         var tbox8 = document.getElementById("tbox8");
 
+        var readtext = "Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions."
+
 
 
 
@@ -618,7 +620,7 @@
                 tbox6.innerHTML = `EVO AI의 선진적인 웹 기술 전문 지식을 통해 미래를 고려하여 계획할 수 있습니다. 각 회사의 특정 요구에 기반하고 촉진하여 발전시키는 것을 목표로 합니다. 각각의 클라이언트는 독자적이기 때문에 EVO AI에서는 모든 비즈니스가 받아야 할 주의를 확실히 하는 것이 중요하게 여깁니다.`
                 tbox7.innerHTML = `혁신적인 진화는 EVO AI & Technology의 핵심입니다. 따라서 개발하고 싶은 새로운 기술이 있다면 언제든지 저희에게 연락해 주세요.`
                 tbox8.innerHTML = `기술을 통해 경쟁 우위를 찾고 있나요? 비즈니스가 경쟁에서 능가할 수 있도록 일맞춤 소프트웨어 솔루션을 만들어보도록 하죠.`
-
+                readtext = "Evolution AI";
 
 
                 langBlink()
@@ -634,7 +636,7 @@
                 tbox6.innerHTML = `EVO AI's expertise in modern web technology allows us to build with the future in mind. Our dedicated team aims to promote and develop based on each company's specific needs, and because each client is unique, we at EVO AI make sure that every business gets the attention it deserves.`
                 tbox7.innerHTML = `Innovative evolution is at the core of EVO AI & Technology. So if there's any new tech you'd like to develop, please don't hesitate to contact us.`
                 tbox8.innerHTML = `Seeking a competitive edge through technology? Let's talk about creating a tailor-made software solution that empowers your business to outperform the competition.`
-
+                readtext = "Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions."
 
 
                 langBlink()
@@ -719,8 +721,10 @@
                 return;
             }
             if (textInput.value !== "") {
+
+
                 // Get speak text
-                const speakText = new SpeechSynthesisUtterance("Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.");
+                const speakText = new SpeechSynthesisUtterance(readtext);
                 // Speak end
                 speakText.onend = (e) => {
                     console.log("Done reading...");
