@@ -41,6 +41,13 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
+
+    .large-radio {
+        transform: scale(1.4);
+        /* Increase the size of the radio button */
+        margin-right: 1px;
+        /* Add some spacing between the radio button and its label */
+    }
 </style>
 <!--#f0ead6;-->
 
@@ -64,7 +71,7 @@
     </nav>
     <div class="container my-2">
         <div class="d-flex justify-content-between mb-1">
-            <div>Reading Test | Question 5 of 20 </div>
+            <div> <span class="fw-bold">Reading Test</span> | Question 5 of 20 </div>
             <div class="d-flex justify-content-end text-danger pe-4">
                 <span class="text-dark" onclick="timerFunction()" style="cursor: pointer;">
                     <i class="bi bi-clock-history timerOn" id="timer"></i> Remaining &nbsp;
@@ -126,20 +133,20 @@
                 <form action="/action_page.php">
 
                     <br>
-                      <input type="radio" id="A" name="fav_language" value="A">
+                      <input type="radio" id="A" name="fav_language" value="A" class="large-radio">
 
                       <label for="A"></label>The rise of Artificial General Intelligence (AGI) is driven solely by
                     advancements
                     in computational power.<br> <br>
-                      <input type="radio" id="B" name="fav_language" value="B">
+                      <input type="radio" id="B" name="fav_language" value="B" class="large-radio">
                       <label for="B"></label>AGI represents a significant advancement beyond Artificial Narrow
                     Intelligence
                     (ANI), with implications spanning across various fields and disciplines.<br> <br>
-                      <input type="radio" id="C" name="fav_language" value="C">
+                      <input type="radio" id="C" name="fav_language" value="C" class="large-radio">
                       <label for="C"></label>Achieving AGI is primarily dependent on developments in hardware
                     technologies like
                     GPUs and TPUs.<br> <br>
-                      <input type="radio" id="D" name="fav_language" value="D">
+                      <input type="radio" id="D" name="fav_language" value="D" class="large-radio">
                       <label for="D"> </label>The rise of AGI is inevitable and will have minimal ethical implications
                     on
                     society.
@@ -153,7 +160,7 @@
                         Back
                     </button>
                     <button type="button" class="btn btn-outline-dark rounded-pill text-light" id="nextBtn"
-                        onclick="nextFunction()" style="background-color: #087F83;">Next <i
+                        onclick="location.href='/toefl1.html'" style="background-color: #087F83;">Next <i
                             class="bi bi-arrow-right-circle"> </i></button>
                 </div>
                 <div class="text-end">
