@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TOEFL DEMO</title>
+    <!-- <link rel="shortcut icon" type="image/png"
+        href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"> -->
+
+    <link rel="shortcut icon" href="assets/clear.png">
+
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<style>
+    .scrolly {
+        /* height: 600px; */
+        height: 85vh;
+        overflow-y: auto;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: white;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #a9a9a9;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .large-radio {
+        transform: scale(1.4);
+        /* Increase the size of the radio button */
+        margin-right: 1px;
+        /* Add some spacing between the radio button and its label */
+    }
+
+    input[type='radio'] {
+        box-sizing: border-box;
+        appearance: none;
+        background: white;
+        outline: 1px solid rgb(103, 105, 105);
+        border: 3px solid white;
+        width: 12px;
+        height: 12px;
+    }
+
+    input[type='radio']:checked {
+        background: #037452;
+    }
+</style>
+<!--#f0ead6;-->
+
+<body class="" style="background-color:white">
+    <nav class="navbar navbar-expand-md bg-none navbar-light py-2 border-bottom border-secondary">
+        <div class="container">
+            <a href="/" class="navbar-brand"> <img src="assets/etslogo.svg" alt="" width="45%" height='auto'>
+                <span class="fst-italic fw-bold"> by [YOUR ACADEMY]</span>
+            </a>
+            <!-- <a href="" class="navbar-brand"> <img src="assets/clear.png" alt="" width="30px" height='auto'>
+                <span class="fst-italic"><span class="fw-bold">iBT TOEFL</span> by YOUR ACADEMY</span>
+            </a> -->
+
+            <button class="btn btn-small btn-outline-clear mb-2 mb-lg-0  rounded-pill" id="translate"
+                onclick="myFunction()" style="border-color: #087F83;">
+                <i class="bi bi-box-arrow-left"></i> EXIT
+            </button>
+
+
+        </div>
+    </nav>
+    <div class="container my-2">
+        <div class="d-flex justify-content-between mb-1">
+            <div> <span class="fw-bold">Reading Test</span> | Question 5 of 20 </div>
+            <div class="d-flex justify-content-end text-danger pe-4">
+                <span class="text-dark" onclick="timerFunction()" style="cursor: pointer;">
+                    <i class="bi bi-clock-history timerOn" id="timer"></i> Remaining &nbsp;
+                </span>
+                <span id="demo">00h 00m 00s </span>
+            </div>
+        </div>
+
+
+        <div class="progress" style="height: 5px;">
+            <div class="progress-bar " role="progressbar" style="width: 45%;background-color: #087F83;"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
+
+
+    <div class="mx-2 pt-2 mx-lg-4 mx-xl-5">
+
+        <!--    <div class="fw-bold mb-1 mx-0">PASSAGE I</div>-->
+        <div class="row pt-2">
+            <div class="col-sm-6  scrolly border-end border rounded-3 p-3">
+                <!-- <iframe src="https://drive.google.com/file/d/14xUAfhLiG2AQR-jdNcjwT9ZYlA0ZaHZr/preview" width="100%"
+                    height="100%"></iframe> -->
+                <h3>The influence of AGI</h3>
+                <br>
+
+                The rise of Artificial General Intelligence (AGI) represents a pivotal moment in the history of
+                technology and humanity. AGI, often referred to as the next step beyond Artificial Narrow Intelligence
+                (ANI), is envisioned as a form of AI that can understand, learn, and apply knowledge across a wide range
+                of tasks and domains, much like a human being. While ANI systems excel at specific tasks, such as image
+                recognition or language translation, AGI aims to replicate the versatility and adaptability of human
+                intelligence.
+                <br><br>
+                The journey towards AGI involves a convergence of advancements in various fields including machine
+                learning, neuroscience, and cognitive psychology. Researchers are exploring new algorithms and
+                architectures inspired by the workings of the human brain, such as neural networks with more
+                sophisticated learning mechanisms and hierarchical organization. Additionally, breakthroughs in
+                computational power, fueled by developments in hardware like GPUs and TPUs, have accelerated the pace of
+                AGI research. Collaborative efforts between academia, industry, and governmental institutions are
+                further driving progress, with initiatives focusing on interdisciplinary research and ethical
+                considerations.
+                <br><br>
+                The implications of achieving AGI are profound and far-reaching, touching every aspect of society from
+                economy and industry to governance and ethics. AGI has the potential to revolutionize industries by
+                automating complex tasks, enhancing productivity, and unlocking new avenues for innovation. However, it
+                also raises significant ethical concerns regarding its impact on employment, privacy, and the
+                distribution of wealth and power. As AGI systems become increasingly autonomous and capable of
+                decision-making, ensuring alignment with human values and interests becomes paramount to harnessing its
+                potential for the collective good. Thus, the rise of AGI heralds both extraordinary opportunities and
+                daunting challenges, shaping the future of humanity in ways yet to be fully understood.
+            </div>
+            <div class="col-sm-6 scrolly   ps-5 text-dark">
+                <div class="p-3  rounded-2" style="background-color: #E2F7FA;"> Select 2 Answers Below</div>
+                <br>
+                <p class="text-dark">
+                    Which of the following best summarizes the main idea of the passage?
+                </p>
+                <form action="/action_page.php">
+
+                    <br>
+                      <input type="radio" id="A" name="fav_language" value="A" class="large-radio "
+                        onclick="limitSelection(this)">
+
+                      <label for="A"></label>The rise of Artificial General Intelligence (AGI) is driven solely by
+                    advancements
+                    in computational power.<br> <br>
+                      <input type="radio" id="B" name="fav_language2" value="B" class="large-radio "
+                        onclick="limitSelection(this)">
+                      <label for="B"></label>AGI represents a significant advancement beyond Artificial Narrow
+                    Intelligence
+                    (ANI), with implications spanning across various fields and disciplines.<br> <br>
+                      <input type="radio" id="C" name="fav_language3" value="C" class="large-radio "
+                        onclick="limitSelection(this)">
+                      <label for="C"></label>Achieving AGI is primarily dependent on developments in hardware
+                    technologies like
+                    GPUs and TPUs.<br> <br>
+                      <input type="radio" id="D" name="fav_language4" value="D" class="large-radio "
+                        onclick="limitSelection(this)">
+                      <label for="D"> </label>The rise of AGI is inevitable and will have minimal ethical implications
+                    on
+                    society.
+                </form>
+                <br>
+
+                <br><br> <br><br>
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-dark rounded-pill" id="backBtn"
+                        onclick="prevFunction()"><i class="bi bi-arrow-left-circle"></i>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-outline-dark rounded-pill text-light" id="nextBtn"
+                        onclick="location.href='/toefl1.html'" style="background-color: #087F83;">Next <i
+                            class="bi bi-arrow-right-circle"> </i></button>
+                </div>
+                <div class="text-end">
+                    <br> <br> <br>
+                    <br> <br> <br> <br> <br>
+                    <!-- <a href="/results.html" type="button" class="btn btn-outline-primary"> &#10006; End Section</a> -->
+                    <!-- <button type="button" class="btn btn-outline-dark" onclick="doneAnswers()"> &#10006; End
+                        Section</button> -->
+                </div>
+            </div>
+        </div>
+        <p class="mt-5 mb-3 text-muted text-center">
+            <small>
+                &copy; www.evo-ai.co.kr 2024 - iBT TOEFL DEMO</small>
+        </p>
+    </div>
+    </div>
+
+    <script>
+        var clickedList = []
+
+
+
+        function getRadios() {
+            let radios = document.getElementsByClassName('large-radio');
+            let selectedValues = [];
+
+            for (let i = 0; i < radios.length; i++) {
+                // Check if the radio button is checked
+                if (radios[i].checked) {
+                    // If checked, add its value to the selectedValues array
+                    selectedValues.push(radios[i].value);
+                }
+            }
+            clickedList = selectedValues
+            console.log(clickedList)
+            console.log(clickedList.length)
+        }
+
+        function limitSelection(clicked) {
+
+            //   if (clickedList.length < 2) {
+
+
+            //   }
+
+
+            // var checkboxes = document.querySelectorAll('input[type="radio"]');
+            // var checkedCount = 0;
+            // for (var i = 0; i < checkboxes.length; i++) {
+            //     if (checkboxes[i].checked) {
+            //         checkedCount++;
+            //         if (checkedCount > 2) {
+            //             checkboxes[i].checked = false;
+            //             return;
+            //         }
+            //     }
+            // }
+            var clickedValue = clicked.value
+            console.log(clickedValue)
+            var clickid = document.getElementById(clickedValue)
+
+
+
+            if (clickedList.length < 2) {
+                if (clickedList.includes(clickedValue)) {
+                    clickid.checked = false;
+
+                } else {
+                    clickedList.push(clickedValue)
+
+
+                }
+
+
+            } else {
+                clickid.checked = false;
+
+
+            }
+            getRadios()
+
+
+
+
+
+            // var checkboxes = document.querySelectorAll('input[type="radio"]');
+            // for (var i = 0; i < checkboxes.length; i++) {
+            //     checkboxes[i].checked = false;
+            // }
+        }
+    </script>
+
+
+
+    <script>
+        var timeLeft = 3610000
+        var countDownDate = (Date.now() + 2110000)
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (hours < 10) {
+                hours = "0" + hours
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds
+            }
+            document.getElementById("demo").innerHTML = hours + "h "
+                + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "TIME UP";
+            }
+            timeLeft -= 1000
+            localStorage.setItem('timeLeft', JSON.stringify(timeLeft));
+            // console.log(localStorage.getItem('timeLeft'))
+        }, 1000);
+        function timerFunction() {
+            var timer = document.getElementById("timer");
+            var demo = document.getElementById("demo");
+            if (timer.classList.contains('timerOn')) {
+                demo.style.display = "none";
+                timer.classList.remove("timerOn");
+            } else {
+                demo.style.display = "block";
+                timer.classList.add("timerOn");
+            }
+        }
+    </script>
+    <script>
+        var doneList = { "42": "C" }
+        var flagList = { "4": "A" }
+        var currentQuestion = 1;
+        var lastQuestion = 1;
+        var qCount = 45;
+        var qArray = [];
+        for (let i = 1; i < qCount; i++) {
+            qArray.push({ [i]: '' })
+        }
+        console.log(qArray)
+        var questionBox = document.getElementById("questionBox");
+        for (let i = 1; i < qArray.length + 1; i++) {
+            console.log(flagList[i])
+            if (i === 1 && doneList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn   btn-sm  btn-primary py-0  border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            else if (i === 1 && flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn btn-outline-dark btn-sm py-0  btn-warning  border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            else if (i === 1 && doneList[i] !== undefined && flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn btn-outline-dark btn-sm py-0 notDone border-danger border-2"
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            else if (doneList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn  btn-primary btn-sm py-0 border-dark "
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            else if (flagList[i] !== undefined) {
+                var qBtn = `
+<button type="button" class="btn  btn-warning btn-sm  py-0 border-dark "
+id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            else {
+                var qBtn = `
+<button type="button" class="btn btn-light btn-sm notDone border-dark py-0 " id=b${i} onclick="btnFunction(${i})">${i}</button>`
+            }
+            questionBox.innerHTML += qBtn;
+        }
+        function nextFunction() {
+            currentQuestion += 1;
+            btnFunction(currentQuestion)
+        }
+        function prevFunction() {
+            currentQuestion -= 1;
+            btnFunction(currentQuestion)
+        }
+        function btnFunction(id) {
+            var lastClickedBtn = document.getElementById('b' + (lastQuestion.toString()));
+            lastClickedBtn.classList.remove("border-danger", "border-2");
+            lastClickedBtn.classList.add("border-dark");
+            currentQuestion = id
+            var clickedBtn = document.getElementById('b' + (id.toString()));
+            clickedBtn.classList.remove("border-dark");
+            clickedBtn.classList.add("border-danger", "border-2");
+            document.getElementById('questionNo').innerHTML = id
+            $("#questionNo").fadeOut(300).fadeIn(300)
+            console.log(doneList[id.toString()])
+            lastQuestion = currentQuestion
+            try {
+                document.getElementById(doneList[id.toString()]).checked = true;
+            }
+            catch (err) {
+                try { document.getElementById(flagList[id.toString()]).checked = true; }
+                catch (err) {
+                    console.log('error')
+                    var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+                    // console.log(document.querySelector('input[name="fav_language"]:checked'));
+                    if (checkRadio != null) {
+                        document.querySelector('input[name="fav_language"]:checked').checked = false;
+                    }
+                }
+            }
+        }
+        function saveFunction() {
+            var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+            if (checkRadio != null) {
+                // document.querySelector('input[name="fav_language"]:checked').checked = false;
+                var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
+                clickedBtn.classList.remove("btn-light", "btn-warning", "btn-dark");
+                clickedBtn.classList.add("btn-primary");
+                // var localcheck = document.querySelector('input[name="fav_language"]:checked').id;
+                doneList[currentQuestion] = checkRadio.id;
+                // try {
+                //     var savedAnswer = document.querySelector('input[name="fav_language"]:checked').value;
+                //     // clearAnswers();
+                // }
+                // catch (err) {
+                //     var savedAnswer = "not selected";
+                // }
+                // console.log('saved: ', currentQuestion, savedAnswer);
+                localStorage.setItem('doneList', JSON.stringify(doneList));
+                $("#submitCheck").fadeOut(100).fadeIn(200).fadeOut(100).fadeIn(200).fadeOut(100).fadeIn(100)
+            }
+        }
+        function flagFunction() {
+            var checkRadio = document.querySelector('input[name="fav_language"]:checked');
+            if (checkRadio != null) {
+                var clickedBtn = document.getElementById('b' + (currentQuestion.toString()));
+                clickedBtn.classList.remove("btn-light", "btn-outline-primary", "btn-dark");
+                clickedBtn.classList.add("btn-warning");
+                doneList[currentQuestion] = checkRadio.id;
+            }
+        }
+        function clearAnswers() {
+            console.log('clear answers')
+            // document.querySelector('input[name="fav_language"]:checked').checked = false;
+        }
+        function doneAnswers() {
+            console.log(localStorage.getItem("doneList"))
+        }
+        btnFunction(1)
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        var localuserid = localStorage.getItem('userid')
+        // localStorage.setItem('etype', "idiom");
+        // localStorage.removeItem("name of localStorage variable you want to remove"); 
+    </script>
+</body>
+
+</html>
