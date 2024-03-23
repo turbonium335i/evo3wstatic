@@ -32,7 +32,7 @@
         }
     </style>
 
-    
+
     <style>
         body {
 
@@ -45,7 +45,7 @@
     </style>
 
 
-    
+
 </head>
 
 <body class="text-base">
@@ -60,13 +60,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href=" ">DASH</a>
+                        <a class="nav-link active" aria-current="page" href="/dashboard">DASH</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href=" ">Student</a>
+                        <a class="nav-link active" aria-current="page" href="/student">Students</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href=" ">Teacher</a>
+                        <a class="nav-link active" aria-current="page" href="/teacher">Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/teacher">Classes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
@@ -79,164 +82,193 @@
 
         </div>
     </nav>
-    
-<div class="container">
-    <div class="row align-items-md-stretch">
-        <div class="col ">
-            <a href="" class="text-decoration-none text-base">
-                <h2 data-aos="fade-up"><i class="bi bi-person-circle"></i> CRM Student</h2>
+
+    <div class="container">
+        <div class="row align-items-md-stretch">
+            <div class="col ">
+                <a href="" class="text-decoration-none text-base">
+                    <h2 data-aos="fade-up"><i class="bi bi-person-circle "></i> CRM Student</h2>
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="row my-3">
+
+            <div class="col-sm-6 col-12 text-center " style="font-size: 7rem;">
+                <i class="bi bi-person-circle"></i>
+
+            </div>
+            <div class="col-sm-6 col-12 ps-5 ps-sm-0">
+
+                <div>Name: <span class="text-secondary fw-bold">Homer Simpson</span></div>
+                <div>School: Major High School</div>
+                <div>Grade: 9</div>
+                <div>Birthday: 2003/12/01</div>
+                <div>Gender: Female </div>
+                <div>email: email@gmail.com</div>
+                <div>Phone 1: 010 0000 0000</div>
+                <div>Phone 2: 010 0000 0000</div>
+
+            </div>
+
+        </div>
+        <div class="row my-3">
+
+            <div class="col-sm-6 col-12">
+                <canvas id="myChart"></canvas>
+
+            </div>
+            <div class="col-sm-6 col-12">
+
+                <canvas id="myChart2"></canvas>
+            </div>
+
+        </div>
+        <br>
+        <div class="btn-group">
+            <a href="#" class="btn btn-outline-primary">+ Add Class</a>
+            <a href="#" class="btn btn-outline-primary">+ Add Teacher</a>
+            <a href="#" class="btn btn-outline-primary">+ Add Memo</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Group Study Class</h5>
+                    <small>3 days ago</small>
+                </div>
+                <p class="mb-1">Fundamentals Class</p>
+
             </a>
 
 
-        </div>
 
+            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">SAT Class 1</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Reading and Writing</p>
+
+            </a>
+
+
+            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">SAT Class 2</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Reading and Writing</p>
+
+            </a>
+
+
+            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">SAT Class 3</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Reading and Writing</p>
+
+            </a>
+
+
+            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">SAT Class 4</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Reading and Writing</p>
+
+            </a>
+
+
+            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">SAT Class 5</h5>
+                    <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Reading and Writing</p>
+
+            </a>
+
+
+
+        </div>
 
     </div>
-    <div class="row">
-
-        <div class="col-6">
-            <canvas id="myChart"></canvas>
-
-        </div>
-        <div class="col-6">
-
-            <canvas id="myChart2"></canvas>
-        </div>
-
-    </div>
-</div>
-<div class="container">
     <br>
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Group Study Class</h5>
-                <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Fundamentals Class</p>
-
-        </a>
-
-
-        
-        <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">SAT Class 1</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Reading and Writing</p>
-
-        </a>
-
-        
-        <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">SAT Class 2</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Reading and Writing</p>
-
-        </a>
-
-        
-        <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">SAT Class 3</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Reading and Writing</p>
-
-        </a>
-
-        
-        <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">SAT Class 4</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Reading and Writing</p>
-
-        </a>
-
-        
-        <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">SAT Class 5</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Reading and Writing</p>
-
-        </a>
-
-        
-
-    </div>
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-    integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['1', '2', '3', '4', '5', '6'],
-            datasets: [{
-                label: '# of Searches',
-                data: [22, 14, 31, 15, 21, 25],
-                backgroundColor: [
-                    // 'rgba(75, 192, 192, 0.2)',
-                    "#084de0",
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                ],
-                // borderColor: "#084de0",
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6'],
+                datasets: [{
+                    label: '# of Searches',
+                    data: [22, 14, 31, 15, 21, 25],
+                    backgroundColor: [
+                        // 'rgba(75, 192, 192, 0.2)',
+                        "#084de0",
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    // borderColor: "#084de0",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
 
 
-    const ctx2 = document.getElementById('myChart2').getContext('2d');
-    const myChart2 = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow'],
-            datasets: [{
-                label: '# of Searches',
-                data: [22, 14, 31, 15, 21, 25, 22, 14, 31, 22, 14, 31, 15, 21, 25, 22, 14, 31],
-                backgroundColor: [
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    label: '# of Searches',
+                    data: [22, 14, 31, 15, 21, 25, 22, 14, 31, 22, 14, 31, 15, 21, 25, 22, 14, 31],
+                    backgroundColor: [
 
-                    'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
 
-                ],
-                borderColor: [
+                    ],
+                    borderColor: [
 
-                    'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
 
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
 
-</script>
+    </script>
 
 
 
