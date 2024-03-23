@@ -1,267 +1,906 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="assets/clear.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
 
-    <link rel="shortcut icon" type="image/png" href=" ">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'  %}">-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&family=Nanum+Gothic&family=Syne&display=swap"
         rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>EVO AI</title>
 
-    <title>EVO CRM</title>
-    <style>
-        .toeflgreen {
-            background-color: #087F83;
-        }
-
-        .bg-toefl {
-            background-color: #087F83;
-        }
-
-        .text-base {
-            color: #0fa5aa
-        }
-    </style>
 
 
     <style>
         body {
+            margin: 0;
+            background-image: linear-gradient(black, #112541);
+            /* font: normal 75% Arial, Helvetica, sans-serif; */
 
-            background-color: #000000;
-            /* background-color: none; */
             font-family: 'Gothic A1', sans-serif;
             font-family: 'Nanum Gothic', sans-serif;
             font-family: 'Syne', sans-serif;
         }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+
+        canvas {
+            display: block;
+            vertical-align: bottom;
+        }
+
+        /* ---- particles.js container ---- */
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        /* ---- stats.js ---- */
+
+        .count-particles {
+            background: #000022;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 80px;
+            color: #13E8E9;
+            font-size: .8em;
+            text-align: left;
+            text-indent: 4px;
+            line-height: 14px;
+            padding-bottom: 2px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .js-count-particles {
+            font-size: 1.1em;
+        }
+
+        #stats,
+        .count-particles {
+            -webkit-user-select: none;
+        }
+
+        #stats {
+            border-radius: 3px 3px 0 0;
+            overflow: hidden;
+        }
+
+        .count-particles {
+            border-radius: 0 0 3px 3px;
+        }
+
+        body::before {
+            display: block;
+            content: '';
+            height: 60px;
+        }
+
+        .bg-blue {
+            background-color: rgba(132, 195, 255, 0.1)
+        }
+
+        @media screen and (max-width: 992px) {
+            .profileimg {
+                width: 33%;
+                height: auto;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 
 
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-34JS95GNCC"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-<body class="text-base">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><i class="bi bi-grid-3x3-gap text-base"></i> EVO CRM</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">DASH</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Students</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Teachers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Classes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+    gtag('config', 'G-34JS95GNCC');
+</script>
 
-
-                </ul>
-
-            </div>
-
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row align-items-md-stretch">
-            <div class="col ">
-                <a href="" class="text-decoration-none text-base">
-                    <h2 data-aos="fade-up"><i class="bi bi-person-circle"></i> CRM Student</h2>
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-        <div class="row my-3">
-
-            <div class="col-6 text-center" style="font-size: 7rem;">
-                <i class="bi bi-person-circle"></i>
-
-            </div>
-            <div class="col-6">
-
-                <div class="fw-bold">Name: Homer Simpson</div>
-                <div>School: Major High School</div>
-                <div>Grade: 9</div>
-                <div>Birthday: 2003/12/01</div>
-                <div>Gender: Female </div>
-                <div>email: email@gmail.com</div>
-                <div>Phone 1: 010 0000 0000</div>
-                <div>Phone 2: 010 0000 0000</div>
-
-            </div>
-
-        </div>
-        <div class="row my-3">
-
-            <div class="col-6">
-                <canvas id="myChart"></canvas>
-
-            </div>
-            <div class="col-6">
-
-                <canvas id="myChart2"></canvas>
-            </div>
-
-        </div>
-        <br>
-        <div class="btn-group">
-            <a href="#" class="btn btn-outline-primary">+ Add Class</a>
-            <a href="#" class="btn btn-outline-primary">+ Add Teacher</a>
-            <a href="#" class="btn btn-outline-primary">+ Add Memo</a>
-        </div>
+<body class="d-flex flex-column min-vh-100">
+    <div id="particles-js">
     </div>
 
-    <div class="container">
-        <br>
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Group Study Class</h5>
-                    <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Fundamentals Class</p>
 
-            </a>
+    <div class=" text-danger" style="z-index: 100;">
+        <nav class="navbar navbar-expand-md bg-none navbar-dark py-2 fixed-top border-bottom border-primary"
+            style="background: rgba(0, 26, 51, 0.6)">
+            <div class="container">
+                <a href="" class="navbar-brand"> <img src="assets/clear.png" alt="" width="30" height='auto'>
+                    EVO AI</a>
 
-
-
-            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">SAT Class 1</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Reading and Writing</p>
-
-            </a>
+                <button class="btn btn-small btn-outline-clear mb-2 mb-lg-0 text-light" id="translate"
+                    onclick="myFunction()"><i class="bi bi-translate"> <span id="langIcon" class="english">한</span></i>
+                </button>
 
 
-            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">SAT Class 2</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Reading and Writing</p>
-
-            </a>
-
-
-            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">SAT Class 3</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Reading and Writing</p>
-
-            </a>
-
-
-            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">SAT Class 4</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Reading and Writing</p>
-
-            </a>
-
-
-            <a href="#" class="border border-secondary text-base text-decoration-none p-2">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">SAT Class 5</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Reading and Writing</p>
-
-            </a>
-
-
-
-        </div>
-
+            </div>
+        </nav>
     </div>
-    <br>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <section id="learn" class="p-2 p-sm-5" style="z-index: 100;">
+        <div class="container text-light">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col-md p-5">
+                    <h1> <span class="text-danger">Advancement</span> through evolution.</h1>
+
+                    <p class="" id="tbox1">
+                        EVO AI specializes in delivering dynamic, secure software tailored for small to
+                        medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.
+                    </p>
+                    <div class="btn btn-light mt-3" id="evobtn">
+                        <i class="bi bi-chevron-right"></i> Evolution
+                    </div>
+                </div>
+                <div class="col-md">
+                    <img src="assets/realtime.svg" class="img-fluid" alt="" data-aos="fade-up" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-2 p-sm-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card bg-blue text-light h-100">
+                        <div class="card-body d-flex flex-column">
+
+                            <div class="h1 mb-3">
+                                <i class="bi bi-stack" data-aos="fade-up"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Process Automation</h3>
+                            <p class="card-text" id="tbox2">
+                                Our process automation services streamline and optimize your business operations,
+                                reducing manual tasks and increasing efficiency, so you can focus on what truly matters
+                                - growing your business.
+                            </p>
+                            <div class="mt-auto">
+
+                                <div class="btn btn-outline-primary ">Process Automation</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-blue text-light h-100">
+                        <div class="card-body d-flex flex-column">
+
+                            <div class="h1 mb-3">
+                                <i class="bi bi-upc-scan" data-aos="fade-up"></i>
+                            </div>
+                            <h3 class="card-title mb-3">AI/ML Solutions</h3>
+                            <p class="card-text" id="tbox3">
+                                Our AI and machine learning services harness the power of data to unlock valuable
+                                insights and make data-driven decisions, helping your business stay ahead in a rapidly
+                                evolving digital landscape.
+                            </p>
+                            <div class="mt-auto">
+
+                                <div class="btn btn-outline-primary">Artificial Intelligence</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-blue text-light h-100">
+
+                        <div class="card-body d-flex flex-column">
+
+                            <div class="h1 mb-3">
+                                <i class="bi bi-wrench" data-aos="fade-up"></i>
+                            </div>
+                            <h3 class="card-title mb-3">IT Consulting</h3>
+                            <p class="card-text" id="tbox4">
+                                Our IT consulting services offer strategic guidance and expertise to help your business
+                                align technology with your goals, ensuring efficient, secure, and cost-effective
+                                solutions that drive success.
+                            </p>
+                            <div class="mt-auto">
+
+                                <div class="btn btn-outline-primary ">Information Technology</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="learn" class="p-2 p-sm-5">
+        <div class="container text-light">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col-md p-5">
+                    <h2>Innovation is in our DNA. </h2>
+                    <p class="lead">
+                        Unleash Your Full Potential!
+
+                    </p>
+                    <p id="tbox5">
+
+                        We believe that evolution is the path to true progress. At EVO AI, we
+                        don't just develop software. We evolve it. Our commitment to adaptability and
+                        improvement ensures that your business stays at the forefront of the digital landscape.
+                    </p>
+                    <div class="btn btn-light mt-3">
+                        <i class="bi bi-chevron-right"></i> Innovation
+                    </div>
+                </div>
+                <div class="col-md">
+                    <img src="assets/goal.svg" class="img-fluid" alt="" data-aos="fade-up" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="learn" class="p-2 p-sm-5">
+        <div class="container text-light">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col-md p-5">
+                    <h2>AI Learning is the future.</h2>
+                    <p class="lead">
+                        Integrate the Future of Education
+
+                    </p>
+                    <p id="tbox6">
+
+                        EVO AI's expertise in modern web technology allows us to build with the future in mind.
+                        Our dedicated team aims to promote and develop based on each company's specific needs,
+                        and because each client is unique, we at EVO AI make sure that every business gets the
+                        attention it deserves.
+                    </p>
+                    <div class="btn btn-light mt-3">
+                        <i class="bi bi-chevron-right"></i> A.I. Education
+                    </div>
+                </div>
+                <div class="col-md">
+                    <img src="assets/graph.svg" class="img-fluid" alt="" data-aos="fade-up" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructors" class="p-2 p-sm-5  text-light">
+        <div class="container">
+            <h2 class="text-center text-light">PROJECTS</h2>
+            <p class="lead text-center text-white mb-5">
+                Full-stack developments in operation.
+            </p>
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://dojolex.com/" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="/assets/clear.png" class="rounded mb-3 profileimg mt-auto" alt="" />
+                                <!-- <h3 class="card-title mb-3">SAT Verbal Practice</h3> -->
+                                <p class="card-text mt-auto">
+                                    DOJOLEX SAT
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+                    <a href="/toefl.html" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="/assets/etslogo.svg" class="rounded  mt-auto mb-3 profileimg" alt="" />
+                                <!-- <h3 class="card-title mb-3">Wavepoint Korea</h3> -->
+                                <p class="card-text mt-auto">
+                                    EVO AI TOEFL
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://www.wavepointkorea.com" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="https://i.postimg.cc/wvJXZq2d/wavelogo.jpg"
+                                    class="rounded  mt-auto mb-3 profileimg" alt="" />
+                                <!-- <h3 class="card-title mb-3">Wavepoint Korea</h3> -->
+                                <p class="card-text mt-auto">
+                                    WAVEPOINT KOREA
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://www.evo-prep.com" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="assets/clickresult.png" class="rounded  mt-auto mb-3 profileimg" alt="" />
+                                <!-- <h3 class="card-title mb-3">Wavepoint Korea</h3> -->
+                                <p class="card-text mt-auto">
+                                    SMART LEARNING
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="/crm.html" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="assets/crmsnip.PNG" class="rounded  mt-auto mb-3 profileimg" alt="" />
+                                <!-- <h3 class="card-title mb-3">Wavepoint Korea</h3> -->
+                                <p class="card-text mt-auto">
+                                    EVO CRM
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="https://sharp-banach-885ceb.netlify.app/" target="_blank">
+                        <div class="card bg-blue h-100">
+                            <div class="card-body text-center d-flex flex-column">
+                                <img src="https://i.postimg.cc/zftpFhs3/onwearcrop.png"
+                                    class="rounded mt-auto  mb-3 profileimg" alt="" />
+                                <!-- <h3 class="card-title mb-3">Wavepoint Korea</h3> -->
+                                <p class="card-text mt-auto">
+                                    REACT
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="instructors" class="p-2 p-sm-5  text-light">
+        <div class="container">
+            <h2 class="text-center text-light">Our Team</h2>
+            <p class="lead text-center text-white mb-5">
+                Our team all have 10+ years working in the Education Technology Industry.
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+
+
+
+                    <div class="card bg-blue h-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="https://i.postimg.cc/0QyKmf3k/toy.jpg"
+                                class="rounded-circle border border-danger mb-3 profileimg" alt="" />
+                            <h3 class="card-title mb-3">Jon Park</h3>
+                            <p class="card-text">
+                                Lead Developer & CEO
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-blue h-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <!-- <img src="https://randomuser.me/api/portraits/men/11.jpg" -->
+                            <img src="/assets/userimg.png" class="rounded-circle mb-3 profileimg" alt="" />
+                            <h3 class="card-title mb-3">Mike Chang</h3>
+                            <p class="card-text">
+                                Content & Database Manager
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-blue h-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img src="/assets/userimg.png" class="rounded-circle mb-3 profileimg" alt="" />
+                            <h3 class="card-title mb-3">Steve Chong</h3>
+                            <p class="card-text">
+                                Content Advisor
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-blue h-100">
+                        <div class="card-body text-center d-flex flex-column">
+                            <img img src="/assets/userimg.png" class="rounded-circle mb-3 profileimg" alt="" />
+                            <h3 class="card-title mb-3">Mark Chang</h3>
+                            <p class="card-text">
+                                Tech Advisor
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <h3 class="text-center text-light" id="tbox8">Seeking a competitive edge through technology?<br>
+            Let's talk about creating a
+            tailor-made software solution that empowers your business to outperform the competition.</h3>
+    </div>
+    <section class="p-2 p-sm-5">
+        <div class="container ">
+            <div class="row g-4">
+                <div class="col-md">
+                    <h2 class="text-center mb-4 text-light">Contact Info</h2>
+                    <ul class="list-group list-group-flush lead ">
+                        <li class="list-group-item bg-transparent text-light">
+                            <span class="fw-bold">Location:</span> Seoul, KR
+                        </li>
+                        <li class="list-group-item bg-transparent text-light">
+                            <span class="fw-bold">Consultation Phone:</span> (010) 8567-7667
+                        </li>
+                        <li class="list-group-item bg-transparent text-light">
+                            <span class="fw-bold">Technical Issues Phone:</span> (010) 8567-7667
+                        </li>
+                        <li class="list-group-item bg-transparent text-light">
+                            <span class="fw-bold">Email:</span>
+                            jon.evoai@gmail.com
+                        </li>
+                        <li class="list-group-item bg-transparent text-light">
+                            <span class="fw-bold"><i class="bi bi-chat-fill text-dark bg-warning rounded-2 p-1"></i>
+                                KAKAO
+                                ID:</span>
+                            evoai
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+
+
+
+    <footer class="text-center text-lg-start text-muted mt-auto">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+
+
+                <a href="https://www.youtube.com/channel/UCbVzjo_7F1wpm73gpYV92Vg/videos" class="me-4 text-reset">
+                    <i class="bi bi-youtube text-danger"></i></a>
+                <a href="https://www.instagram.com/jon_evo_ai/" class="me-4 text-reset">
+                    <i class="bi bi-instagram" style="color:#fb3958"></i></a>
+                <a href="" class="me-4 text-reset">
+                    <i class="bi bi-facebook text-primary"></i></a>
+                <a href="" class="me-4 text-reset">
+                    <i class="bi bi-whatsapp text-success"></i></a>
+                <a href="" class="me-4" style="color:#FEE500;">
+                    <i class="bi bi-chat-fill"></i></a>
+                <!-- <a href="" class="me-4" style="color:#03c75a;">
+                    <i class="bi bi-bootstrap-fill"></i></a> -->
+
+                <!--<a href="" class="me-4 text-reset">-->
+                <!--    <i class="bi bi-google text-success"></i></a>-->
+
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4 text-danger">
+                            <i class="bi bi-c-circle text-danger"></i> Evo Ai Korea
+
+                        </h6>
+                        <p id="tbox7">
+
+                            Innovative evolution is at the core of EVO AI & Techonology.
+                            So if there's any new tech you'd like to develop, please don't hesitate to contact us.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="https://www.evolution3w.com/ " class="text-reset">Educational
+                                Software</a>
+                        </p>
+                        <p>
+                            <a href="https://www.evolution3w.com/" class="text-reset">EVO-AI</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="/webface.html" class="text-reset">Experimental</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Privacy
+                                Policy</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p>Gangnam, Seoul, 06242 KR</p>
+                        <p>jon.evoai@gmail.com</p>
+                        <p>82 010 8567 7667</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright
+            <a class="text-reset fw-bold text-decoration-none " href="#">EVO AI KOREA</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+
+
     <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['1', '2', '3', '4', '5', '6'],
-                datasets: [{
-                    label: '# of Searches',
-                    data: [22, 14, 31, 15, 21, 25],
-                    backgroundColor: [
-                        // 'rgba(75, 192, 192, 0.2)',
-                        "#084de0",
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    // borderColor: "#084de0",
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        var langIcon = document.getElementById("langIcon");
+        var tbox1 = document.getElementById("tbox1");
+
+        var tbox2 = document.getElementById("tbox2");
+        var tbox3 = document.getElementById("tbox3");
+        var tbox4 = document.getElementById("tbox4");
+        var tbox5 = document.getElementById("tbox5");
+        var tbox6 = document.getElementById("tbox6");
+        var tbox7 = document.getElementById("tbox7");
+        var tbox8 = document.getElementById("tbox8");
+
+        var readtext = "Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions."
+
+
+
+
+        function langBlink() {
+            $("#langIcon").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+        }
+
+        function myFunction() {
+
+            if (langIcon.classList.contains('english')) {
+                langIcon.innerHTML = "A";
+                langIcon.classList.remove("english");
+                tbox1.innerHTML = "EVO AI는 중소기업을 위한 역동적이고 안전한 소프트웨어를 제공하는 전문 기업으로, 교육 기술과 인공지능 솔루션에 주력합니다.";
+                tbox2.innerHTML = `프로세스 자동화 서비스는 비즈니스 운영 업무를 간소화하고 최적화하여 수동 작업을 줄이고 효율성을 증가시킵니다. 이로써 비즈니스 성장에 집중할 수 있습니다.`
+                tbox3.innerHTML = `AI 및 학습 서비스는 데이터를 활용하여  가치있고 통찰력 있는 결정을 내리는 데 도움을 줍니다. 이는 꾸준히 변화하는 디지털 환경에서 귀사의 비즈니스가 선도할 수 있도록 도와줍니다.  `
+                tbox4.innerHTML = `IT 컨설팅 서비스는 전략과 전문 지식을 제공하여 귀사의 기술을 목표에 맞추도록 도와줍니다. 효율적이고 안전하며 비용적으로도 효율적인 솔루션을 보장하여 성공을 이끌어냅니다.`
+                tbox5.innerHTML = `진화가 진정한 진전의 길이라고 믿습니다. EVO AI에서는 소프트웨어를 단순히 개발하는 것이 아니라 진화시킵니다. 적응력과 개선에 대한 우리의 헌신은 귀사의 비즈니스가 디지털 환경의 최전선에 머무를 수 있도록 보장합니다.`
+                tbox6.innerHTML = `EVO AI의 선진적인 웹 기술 전문 지식을 통해 미래를 고려하여 계획할 수 있습니다. 각 회사의 특정 요구에 기반하고 촉진하여 발전시키는 것을 목표로 합니다. 각각의 클라이언트는 독자적이기 때문에 EVO AI에서는 모든 비즈니스가 받아야 할 주의를 확실히 하는 것이 중요하게 여깁니다.`
+                tbox7.innerHTML = `혁신적인 진화는 EVO AI & Technology의 핵심입니다. 따라서 개발하고 싶은 새로운 기술이 있다면 언제든지 저희에게 연락해 주세요.`
+                tbox8.innerHTML = `기술을 통해 경쟁 우위를 확보하고 싶으신가요?
+비즈니스가 경쟁에서 우위를 점할 수 있도록 지원하는 맞춤형 소프트웨어 솔루션을 만드는 방법에 대해 알아보세요.`
+                readtext = "Evolution AI";
+
+
+                langBlink()
+            } else {
+                langIcon.classList.add("english");
+                langIcon.innerHTML = "한";
+                tbox1.innerHTML = `EVO AI specializes in delivering dynamic, secure software tailored for small to
+                        medium-sized businesses, with a primary focus on educational technologies and A.I. solutions.`;
+                tbox2.innerHTML = `Our process automation services streamline and optimize your business operations, reducing manual tasks and increasing efficiency, so you can focus on what truly matters - growing your business.`
+                tbox3.innerHTML = `Our AI and machine learning services harness the power of data to unlock valuable insights and make data-driven decisions, helping your business stay ahead in a rapidly evolving digital landscape.`
+                tbox4.innerHTML = `Our IT consulting services offer strategic guidance and expertise to help your business align technology with your goals, ensuring efficient, secure, and cost-effective solutions that drive success.`
+                tbox5.innerHTML = `We believe that evolution is the path to true progress. At EVO AI, we don't just develop software. We evolve it. Our commitment to adaptability and improvement ensures that your business stays at the forefront of the digital landscape.`
+                tbox6.innerHTML = `EVO AI's expertise in modern web technology allows us to build with the future in mind. Our dedicated team aims to promote and develop based on each company's specific needs, and because each client is unique, we at EVO AI make sure that every business gets the attention it deserves.`
+                tbox7.innerHTML = `Innovative evolution is at the core of EVO AI & Technology. So if there's any new tech you'd like to develop, please don't hesitate to contact us.`
+                tbox8.innerHTML = `Seeking a competitive edge through technology? Let's talk about creating a tailor-made software solution that empowers your business to outperform the competition.`
+                readtext = "Evolution AI specializes in delivering dynamic, secure software tailored for small to medium-sized businesses, with a primary focus on educational technologies and A.I. solutions."
+
+
+                langBlink()
+
+
+            }
+        }
+
+        langBlink()
+    </script>
+
+
+
+
+    <script>
+
+        var longitude = 127.047325
+        var latitude = 37.517235
+
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiYnRyYXZlcnN5IiwiYSI6ImNrbmh0dXF1NzBtbnMyb3MzcTBpaG10eXcifQ.h5ZyYCglnMdOLAGGiL1Auw'
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [127.047325, 37.517235],
+            zoom: 11,
+        })
+
+        const marker1 = new mapboxgl.Marker({ color: 'red' })
+            .setLngLat([longitude, latitude])
+            .addTo(map);
+    </script>
+
+
+
+    <script>
+        // Init SpeechSynth API
+        const synth = window.speechSynthesis;
+        // DOM Elements
+        const textInput = "ehrro"
+        const readBtn = document.querySelector("#evobtn");
+        //Browser identifier
+        // Firefox 1.0+
+        var isFirefox = typeof InstallTrigger !== "undefined";
+        // Chrome 1+
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
+        // Init voices array
+        let voices = [];
+        const getVoices = () => {
+            voices = synth.getVoices();
+            // Loop through voices and create an option for each one
+            voices.forEach((voice) => {
+                // Create option element
+                const option = document.createElement("option");
+                // Fill option with voice and language
+                option.textContent = voice.name + "(" + voice.lang + ")";
+                // Set needed option attributes
+                option.setAttribute("data-lang", voice.lang);
+                option.setAttribute("data-name", voice.name);
+            });
+        };
+        //Line 35, 36 causes voice list duplication
+        getVoices();
+        if (synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = getVoices;
+        }
+        //Fix for duplication, run code depending on the browser
+        if (isFirefox) {
+            getVoices();
+        }
+        if (isChrome) {
+            if (synth.onvoiceschanged !== undefined) {
+                synth.onvoiceschanged = getVoices;
+            }
+        }
+        // Speak
+        const speak = () => {
+            // Check if speaking
+            if (synth.speaking) {
+                synth.cancel();
+                // console.error("Already speaking...");
+                return;
+            }
+            if (textInput.value !== "") {
+
+
+                // Get speak text
+                const speakText = new SpeechSynthesisUtterance(readtext);
+                // Speak end
+                speakText.onend = (e) => {
+                    console.log("Done reading...");
+                };
+                // Speak error
+                speakText.onerror = (e) => {
+                    console.error("Something went wrong");
+                };
+                // Speak
+                synth.speak(speakText);
+            }
+        };
+        // EVENT LISTENERS
+        // Text form submit
+        readBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            speak();
+        });
+    </script>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 200, // offset (in px) from the original trigger point
+            delay: 0, // values from 0 to 3000, with step 50ms
+            duration: 1000 // values from 0 to 3000, with step 50ms
+        });
+
+    </script>
+    <script>
+        /* ---- particles.js config ---- */
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 70,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#FF0000"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
                     }
                 }
-            }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
 
 
-        const ctx2 = document.getElementById('myChart2').getContext('2d');
-        const myChart2 = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Red', 'Blue', 'Yellow'],
-                datasets: [{
-                    label: '# of Searches',
-                    data: [22, 14, 31, 15, 21, 25, 22, 14, 31, 22, 14, 31, 15, 21, 25, 22, 14, 31],
-                    backgroundColor: [
 
-                        'rgba(75, 192, 192, 0.2)',
+    </script>
+</body>
 
-                    ],
-                    borderColor: [
-
-                        'rgba(75, 192, 192, 1)',
-
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-    
+</html>
