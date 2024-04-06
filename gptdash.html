@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #111;
+            color: #fff;
+            position: fixed;
+            left: 0;
+            top: 60px;
+            bottom: 0;
+            width: 200px;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: -1;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Welcome to the Admin Dashboard</h2>
+        <p>This is a cool responsive admin dashboard layout.</p>
+    </div>
+</body>
+
+</html>
