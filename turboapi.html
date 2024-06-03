@@ -314,6 +314,10 @@
                     $("#apireturn").empty();
                     state.page = Number($(this).val());
                     var multipage = state.page;
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                     loadvocab();
                 });
             }
